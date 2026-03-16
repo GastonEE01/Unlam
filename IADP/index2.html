@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./CSS/index2.css">
+  <title>Parciales de Introduccion a la administracion de proyectos</title>
+</head>
+<body>
+  
+  <!-- Botón hamburguesa solo visible en móvil -->
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar" id="sidebar">
+    <h3>Temas</h3>
+    <button onclick="cargarTema('primerParcial1.0')">Primer parcial 1.0</button>
+    <button onclick="cargarTema('primerParcial2.0')">Primer parcial 2.0</button>
+    <button onclick="cargarTema('practicaChatGPTprimerParcial')">Practica CHATGPT primer parcial </button>
+    <button onclick="cargarTema('segundoParcial1.0')">Segundo parcial 1.0</button>
+    <button onclick="cargarTema('segundoParcial2.0')">Segundo parcial 2.0</button>
+    <button onclick="cargarTema('practicaChatGPTsegundoParcial')">Practica CHATGPT segundo parcial</button>
+    <button onclick="window.location.href='index.html'">← Volver a Teoría</button>
+  </div>
+
+  <div class="main" id="contenido">
+    <h2>Seleccioná un tema para comenzar</h2>
+  </div>
+
+  <!-- Inicializamos el objeto temas -->
+  <script>
+    window.temas = {};
+
+    // Definimos la función cargarTema de manera global
+    function cargarTema(clave) {
+      const tema = window.temas[clave];
+      if (!tema) {
+        console.error('No se encontró el tema:', clave);
+        return;
+      }
+      
+      const contenedor = document.getElementById("contenido");
+      if (!contenedor) {
+        console.error('No se encontró el contenedor');
+        return;
+      }
+
+      contenedor.innerHTML = `<h2>${tema.titulo}</h2>`;
+      let index = 0;
+
+      tema.preguntas.forEach((pregunta, i) => {
+        const div = document.createElement("div");
+
+        if (pregunta.subtitulo) {
+          div.innerHTML = `<h3 style="margin-top: 30px;">${pregunta.subtitulo}</h3>`;
+          div.style.borderLeft = "4px solid #4db8ff";
+          div.style.padding = "10px";
+          div.style.margin = "20px 0";
+          contenedor.appendChild(div);
+          return;
+        }
+
+        div.className = "question";
+        let html = `<h4>${pregunta.texto}</h4>`;
+
+        if (pregunta.tipo === "texto") {
+          html += `
+            <div class="text-answer">
+              <textarea 
+                id="respuestaTexto${index}" 
+                rows="6" 
+                style="width: 100%; 
+                padding: 10px; 
+                margin-top: 10px; 
+                background-color: #2b2b2b; 
+                color: #fff; 
+                border: 1px solid #444;
+                border-radius: 4px;
+                resize: vertical;"
+                placeholder="Escribe tu respuesta aquí..."></textarea>
+            </div>`;
+        }
+
+        if (pregunta.imagen && pregunta.tipo !== "esquemaInteractivo") {
+          html += `<div><img src="${pregunta.imagen}" alt="Imagen de pregunta" style="max-width: 100%; margin: 10px 0;" /></div>`;
+        }
+
+        if (pregunta.opciones) {
+          const isMultiple = Array.isArray(pregunta.correcta);
+          html += '<div class="opciones">';
+          pregunta.opciones.forEach((opcion, j) => {
+            html += `
+              <div class="option">
+                <input type="${isMultiple ? 'checkbox' : 'radio'}" name="preg${index}" id="p${index}o${j}" value="${j}">
+                <label for="p${index}o${j}">${opcion}</label>
+              </div>`;
+          });
+          html += '</div>';
+        }
+
+        div.innerHTML = html;
+        contenedor.appendChild(div);
+
+        if (pregunta.tipo === "esquemaInteractivo") {
+          const esquemaDiv = document.createElement("div");
+          esquemaDiv.classList.add("esquema-container");
+          esquemaDiv.id = `esquema${index}`;
+          esquemaDiv.style.position = "relative";
+          esquemaDiv.style.marginTop = "20px";
+
+          const img = document.createElement("img");
+          img.src = pregunta.imagen;
+          img.id = `imagen${index}`;
+          img.style.display = "block";
+          esquemaDiv.appendChild(img);
+
+          const canvas = document.createElement("canvas");
+          canvas.id = `canvas${index}`;
+          canvas.style.position = "absolute";
+          canvas.style.top = "0";
+          canvas.style.left = "0";
+          esquemaDiv.appendChild(canvas);
+
+          const notasLayer = document.createElement("div");
+          notasLayer.id = `notasLayer${index}`;
+          notasLayer.style.position = "absolute";
+          notasLayer.style.top = "0";
+          notasLayer.style.left = "0";
+          esquemaDiv.appendChild(notasLayer);
+
+          contenedor.appendChild(esquemaDiv);
+
+          if (typeof inicializarCanvas === "function") inicializarCanvas(index);
+          if (typeof agregarControlesEsquema === "function") agregarControlesEsquema(index);
+
+          if (pregunta.subpreguntas) {
+            pregunta.subpreguntas.forEach((sub, j) => {
+              const subDiv = document.createElement("div");
+              subDiv.classList.add("question");
+              subDiv.innerHTML = `
+                <label>${sub.texto}</label>
+                <textarea id="subpreg${index}_${j}" rows="2" style="width:100%; margin-top:5px;"></textarea>`;
+              contenedor.appendChild(subDiv);
+            });
+          }
+        }
+
+        index++;
+      });
+
+      const btn = document.createElement("button");
+      btn.textContent = "Corregir";
+      btn.onclick = () => corregirTema(tema);
+      btn.style.marginTop = "20px";
+      btn.style.padding = "10px 20px";
+      contenedor.appendChild(btn);
+    }
+
+    function corregirTema(tema) {
+      const preguntas = tema.preguntas;
+      let correctas = 0;
+      let index = 0;
+
+      preguntas.forEach((pregunta) => {
+        if (pregunta.subtitulo) return;
+
+        if (pregunta.tipo === "texto") {
+          const respuesta = document.getElementById(`respuestaTexto${index}`);
+          if (respuesta) {
+            if (respuesta.value.trim().length > 0) {
+              respuesta.style.borderColor = "#28e07f";
+              correctas++;
+            } else {
+              respuesta.style.borderColor = "#ff4c4c";
+            }
+
+            if (pregunta.posiblesRespuestas) {
+              let sugerida = document.getElementById(`sugerida${index}`);
+              if (!sugerida) {
+                sugerida = document.createElement("div");
+                sugerida.id = `sugerida${index}`;
+                sugerida.style.marginTop = "10px";
+                sugerida.style.padding = "10px";
+                sugerida.style.background = "#333";
+                sugerida.style.borderRadius = "6px";
+                sugerida.style.border = "1px solid #444";
+                sugerida.style.color = "#4db8ff";
+                respuesta.parentElement.appendChild(sugerida);
+              }
+              sugerida.innerText = `Posible respuesta:\n${pregunta.posiblesRespuestas}`;
+            }
+          }
+        }
+
+        if (pregunta.opciones) {
+          const opciones = document.getElementsByName(`preg${index}`);
+          const isMultiple = Array.isArray(pregunta.correcta);
+
+          if (isMultiple) {
+            let seleccionadas = [];
+            opciones.forEach((opcionInput, j) => {
+              const label = opcionInput.parentElement;
+              label.classList.remove("correct", "incorrect");
+
+              if (pregunta.correcta.includes(j)) label.classList.add("correct");
+              if (opcionInput.checked) {
+                seleccionadas.push(j);
+                if (!pregunta.correcta.includes(j)) label.classList.add("incorrect");
+              }
+            });
+
+            if (seleccionadas.length === pregunta.correcta.length &&
+                seleccionadas.every(val => pregunta.correcta.includes(val))) {
+              correctas++;
+            }
+
+          } else {
+            const seleccionada = document.querySelector(`input[name="preg${index}"]:checked`);
+            opciones.forEach((opcionInput, j) => {
+              const label = opcionInput.parentElement;
+              label.classList.remove("correct", "incorrect");
+
+              if (j === pregunta.correcta) label.classList.add("correct");
+              if (seleccionada && parseInt(seleccionada.value) === j && j !== pregunta.correcta) {
+                label.classList.add("incorrect");
+              }
+            });
+
+            if (seleccionada && parseInt(seleccionada.value) === pregunta.correcta) {
+              correctas++;
+            }
+          }
+        }
+
+        index++;
+      });
+
+      let resultado = document.getElementById("resultadoFinal");
+      if (!resultado) {
+        resultado = document.createElement("div");
+        resultado.id = "resultadoFinal";
+        resultado.style.marginTop = "20px";
+        document.getElementById("contenido").appendChild(resultado);
+      }
+      resultado.innerHTML = `<h3>Resultado: ${correctas} de ${index} correctas.</h3>`;
+    }
+  </script>
+
+  <!-- Ahora cargamos los archivos de preguntas -->
+  <script src="./JS/primerParcial1.0.js"></script>
+  <script src="./JS/primerParcial2.0.js"></script>
+  <script src="./JS/segundoParcial1.0.js"></script>
+  <script src="./JS/segundoParcial2.0.js"></script>
+
+  <!-- Luego cargamos las dependencias externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="./JS/practicaChatGPTprimerParcial.js"></script>
+  <script src="./JS/practicaChatGPTsegundoParcial.js"></script>
+  <script>
+    // Función para el botón hamburguesa
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Verificar que los temas se carguen correctamente
+    window.addEventListener('load', function() {
+      console.log('Temas cargados:', Object.keys(window.temas));
+      if (!window.temas || Object.keys(window.temas).length === 0) {
+        console.error('Error: No se han cargado los temas correctamente');
+      }
+    });
+  </script>
+</body>
+</html>

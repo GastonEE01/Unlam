@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina de Introduccion a la Administracion de Proyectos</title>
+  <link rel="stylesheet" href="CSS/index.css"> <!-- si tenés CSS extra -->
+</head>
+<body>
+<h2>Introduccion a la administracion de proyectos </h2>
+
+<div id="botonesPDF">
+  <button data-pdf="ResumenPrimerParcial.pdf">Primer parcial</button>
+  <button data-pdf="ResumenSegundoParcial.pdf">Segundo parcial</button>
+  <button onclick="window.location.href='index2.html'">Parciales</button>
+
+</div>
+
+<div id="pdf-container">
+  <iframe id="visorPDF" src="" width="100%" height="100%" style="border:none;"></iframe>
+</div>
+
+<!-- Contenedor donde se renderizan los temas interactivos -->
+<div id="contenido" style="margin:20px; padding:10px; min-height:300px;"></div>
+
+<!-- Renderer y temas: el renderer define cargarTema/corregirTema y lógica de canvas -->
+<script src="JS/temas-renderer.js"></script>
+<script src="JS/primerParcial1.0.js"></script>
+<script src="JS/practicaChatGPTprimerParcial.js"></script>
+<script src="JS/main.js"></script>
+
+<script>
+  // Asociar botones para cargar los temas (si las funciones ya están definidas)
+  const b1 = document.getElementById('btnTemaPrimerParcial');
+  const b2 = document.getElementById('btnTemaPracticaChatGPT');
+  if (b1) b1.addEventListener('click', () => { if (typeof cargarTema === 'function') cargarTema('primerParcial1.0'); });
+  if (b2) b2.addEventListener('click', () => { if (typeof cargarTema === 'function') cargarTema('practicaChatGPTprimerParcial'); });
+</script>
+
+<script src="JS/main.js"></script>
+</body>
+</html>

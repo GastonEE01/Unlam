@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizador de PDFs</title>
+  <link rel="stylesheet" href="Estilo/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Programacion web 3</h1>
+  </header>
+
+  <div class="botonera">
+    <a href="#"><button>Inicio</button></a>
+    <a href="#"><button>Contacto</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <!-- Primer Parcial -->
+      <div class="sidebar-item">
+        <button class="parcial-button" data-parcial="primer">
+          <i class="fas fa-file-alt"></i>
+          <span>Primer Parcial</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="submenu" id="submenu-primer">
+          <button class="submenu-button" data-parcial="primer" data-tipo="teoria">
+            <i class="fas fa-book"></i>
+            <span>Teoría</span>
+          </button>
+          <button class="submenu-button" data-parcial="primer" data-tipo="practica">
+            <i class="fas fa-file-alt"></i>
+            <span>Práctica</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segundo Parcial -->
+      <div class="sidebar-item">
+        <button class="parcial-button" data-parcial="segundo">
+          <i class="fas fa-file-alt"></i>
+          <span>Segundo Parcial</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="submenu" id="submenu-segundo">
+          <button class="submenu-button" data-parcial="segundo" data-tipo="teoria">
+            <i class="fas fa-book"></i>
+            <span>Teoría</span>
+          </button>
+          <button class="submenu-button" data-parcial="segundo" data-tipo="practica">
+            <i class="fas fa-file-alt"></i>
+            <span>Práctica</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdfviewer" id="pdf-container">
+      <div class="empty-state">
+        <i class="fas fa-file-pdf"></i>
+        <h2>Selecciona un parcial y tipo para ver los PDFs</h2>
+      </div>
+    </div>
+  </div>
+
+  <script src="./JS/script.js"></script>
+</body>
+</html>
+

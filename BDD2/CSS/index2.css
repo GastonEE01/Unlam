@@ -1,0 +1,198 @@
+body {
+    font-family: Arial;
+    display: flex;
+    margin: 0;
+    background-color: #1e1e1e;
+    color: #ddd;
+}
+
+  .sidebar {
+    width: 220px;
+    background: #2c2c2c;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar h3 {
+    color: #f0f0f0;
+    margin-bottom: 15px;
+  }
+
+  .sidebar button {
+    background: #fff;
+    color: #222;
+    border: none;
+    padding: 10px 18px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    width: auto;
+    min-width: 160px;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .sidebar button:hover {
+    background-color: #4db8ff;
+    color: #fff;
+  }
+
+  .main {
+    flex: 1;
+    padding: 20px;
+  }
+
+  /* Centrar el botón Corregir */
+  #contenido > button,
+  .main > button {
+    display: block;
+    margin: 30px auto 0 auto;
+    text-align: center;
+  }
+
+  .question {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #2b2b2b;
+    border-radius: 8px;
+    border-left: 5px solid #444;
+  }
+
+  .option {
+    margin: 5px 0;
+  }
+
+  .correct {
+    color: #28e07f;
+    font-weight: bold;
+  }
+
+  .incorrect {
+    color: #ff4c4c;
+    font-weight: bold;
+  }
+
+  h2, h3, h4 {
+    color: #f8f8f8;
+  }
+
+  button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+  a.volver {
+    display: block;
+    margin-top: 30px;
+    color: #4db8ff;
+    text-decoration: none;
+  }
+
+  a.volver:hover {
+    text-decoration: underline;
+  }
+
+  input[type="radio"] {
+  transform: scale(1.2); 
+  margin-right: 8px;     
+  cursor: pointer;
+}
+
+/* Oculta el botón hamburguesa en escritorio y muestra en móvil */
+.menu-btn {
+  display: none;
+}
+
+/* Sidebar siempre visible en escritorio */
+.sidebar {
+  width: 200px;
+  float: left;
+  min-height: 100vh;
+}
+
+/* Main con margen en escritorio */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* --- Responsive para móvil --- */
+  @media (max-width: 768px) {
+    .menu-btn {
+      display: block;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1100;
+      background: #4db8ff;
+      color: #fff;
+      border: none;
+      font-size: 2em;
+      padding: 5px 15px;
+      border-radius: 5px;
+    }
+    .sidebar {
+      position: fixed;
+      left: -220px;
+      top: 0;
+      width: 220px;
+      height: auto;
+      background: transparent;
+      transition: left 0.3s;
+      z-index: 1000;
+      float: none;
+      min-height: unset;
+      padding-top: 60px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sidebar.open {
+      left: 0;
+      opacity: 1;
+      pointer-events: auto;
+      background: transparent;
+    }
+    .sidebar h3 {
+      text-align: center;
+      color: #222;
+    }
+    .sidebar button {
+      background: #fff;
+      color: #222;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    }
+    .sidebar button:hover {
+      background: #4db8ff;
+      color: #fff;
+    }
+    .main {
+      margin-left: 0 !important;
+      padding: 10px;
+    }
+    .main h2 {
+      text-align: center;
+    }
+    #contenido > button,
+    .main > button {
+      display: block;
+      margin: 30px auto 0 auto;
+      text-align: center;
+    }
+  }

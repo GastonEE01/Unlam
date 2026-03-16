@@ -1,0 +1,3058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/index.css">
+  <title>Secciones con colores personalizables</title>
+ 
+  <h1 style="text-align: center;">BASE DE DATOS 2</h1>
+   
+</head>
+ <div class="botonera">
+    <a href="index.html"><input type="button" value="Teoría"></a>
+    <a href="index2.html"><input type="button" value="Parciales"></a>
+  </div>
+<body>
+       
+
+  <!--SECCION TEORIA Y REPASO BDD-->
+  <section id="RepasoBDD">
+    <h2>Sección 1</h2>
+    <p>Contenido de la sección 1.</p>
+    <article>
+    <h2 class="h2Centrado">BASE DE DATOS:</h2>
+<h4>CREAR BASE DE DATOS (CREATE DATABASE)</h4>
+<pre>
+                CREATE DATABASE test;
+            </pre>
+<h4>ELIMINAR BASE DE DATOS (DROP DATABASE)</h4>
+<pre>
+                DROP DATABASE test;
+            </pre>
+<h2>Estructura de datos</h2>
+<h4>INSERTAR EN UNA TABLA (INSERT INTO)</h4>
+<pre>
+                INSERT INTO usuarios (usuario_id, nombre, apellido) 
+                VALUES (8, 'María', 'López');
+            </pre>
+<h4>ACTUALIZAR TABLA (UPDATE)</h4>
+<pre>
+                UPDATE usuarios SET edad = '21' WHERE usuario_id = 4;
+                UPDATE usuarios SET edad = '20', init_date = '2020-10-12' WHERE usuario_id = 1;
+            </pre>
+<h4>ELIMINAR DE UNA TABLA (DELETE)</h4>
+<pre>
+                DELETE FROM usuarios WHERE usuario_id = 6;
+            </pre>
+<h2>TABLAS</h2>
+<h4>CREAR UNA TABLA (CREATE TABLE)</h4>
+<pre>
+                CREATE TABLE persona (
+                    id_persona INT PRIMARY KEY,
+                    nombre VARCHAR(100),
+                    apellido VARCHAR(100),
+                    FOREIGN KEY (id_persona) REFERENCES usuarios(usuario_id)
+                );
+            </pre>
+<h4>CAMBIAR UNA TABLA (ALTER TABLE)</h4>
+<pre>
+                ALTER TABLE persona
+                MODIFY COLUMN nombre VARCHAR(250); -- Cambiar el tipo de datos de un campo
+                RENAME COLUMN apellido TO descripcion; -- Cambiar el nombre de un campo
+                ADD COLUMN idpersona INT NOT NULL PRIMARY KEY; -- Agregar un nuevo campo
+            </pre>
+<h4>ELIMINAR UNA TABLA (DROP TABLE)</h4>
+<pre>
+                DROP TABLE persona;
+                DROP COLUMN descripcion;
+            </pre>
+
+  <h4>SINTAXIS</h4>
+<pre>
+                SELECT listaCampos
+                [ INTO nuevaTabla ]
+                FROM tablaOrigen
+                [ WHERE condicionFiltro ]
+                [ GROUP BY campoGrupo ]
+                [ HAVING filtroGrupo ]
+                [ ORDER BY campo/s [ ASC | DESC ] ]
+            </pre>
+    </article>
+<article>
+<!-- Sección de Parciales -->
+<div class="subbloque" id="RepasoBDD" style="display: none;">
+<h2>Consultas en SQL:</h2>
+<h4>INNER JOIN</h4>
+<pre>
+                SELECT * FROM users
+                INNER JOIN dni
+                ON users.user_id = dni.user_id;
+            </pre>
+<h5>Resultado de INNER JOIN</h5>
+<table>
+<thead>
+<tr>
+<th>User ID</th>
+<th>Nombre</th>
+<th>DNI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Juan Pérez</td>
+<td>12345678</td>
+</tr>
+<tr>
+<td>2</td>
+<td>María López</td>
+<td>87654321</td>
+</tr>
+</tbody>
+</table>
+<h4>LEFT JOIN</h4>
+<pre>
+                SELECT * FROM users
+                LEFT JOIN dni
+                ON users.user_id = dni.user_id;
+            </pre>
+<h5>Resultado de LEFT JOIN</h5>
+<table>
+<thead>
+<tr>
+<th>User ID</th>
+<th>Nombre</th>
+<th>DNI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Juan Pérez</td>
+<td>12345678</td>
+</tr>
+<tr>
+<td>2</td>
+<td>María López</td>
+<td>87654321</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pedro García</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="RepasoBDD" id="">
+<h2>SELECT</h2>
+<p>Permite seleccionar columnas específicas de una tabla.</p>
+<pre>SELECT nombre, edad FROM Personas;</pre>
+<h2>LIKE</h2>
+<p>Busca coincidencias con patrones de texto usando comodines:</p>
+<ul>
+<li><code>%</code> coincide con varios caracteres</li>
+<li><code>_</code> coincide con un solo carácter</li>
+</ul>
+<pre>SELECT * FROM Productos WHERE nombre LIKE 'C%';</pre>
+<table class="tablaLike">
+<thead>
+<tr>
+<th>Tipo de coincidencia</th>
+<th>Modelo</th>
+<th>Coincide</th>
+<th>No coincide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Varios caracteres</td>
+<td>'a%a'</td>
+<td>'aa', 'aBa', 'aBXBa'</td>
+<td>'aBC'</td>
+</tr>
+<tr>
+<td>Varios caracteres</td>
+<td>'ab%'</td>
+<td>'abcdefg', 'abc'</td>
+<td>'cab', 'aab'</td>
+</tr>
+<tr>
+<td>Un solo carácter</td>
+<td>'a_a'</td>
+<td>'aaa', 'a3a', 'aBa'</td>
+<td>'aBBBa'</td>
+</tr>
+<tr>
+<td>Un solo dígito</td>
+<td>'a[0-9]a'</td>
+<td>'a0a', 'a1a', 'a2a'</td>
+<td>'aaa', 'a10a'</td>
+</tr>
+<tr>
+<td>Rango de caracteres</td>
+<td>'[a-z]'</td>
+<td>'f', 'p', 'j'</td>
+<td>'2', '&amp;'</td>
+</tr>
+<tr>
+<td>Fuera de un rango</td>
+<td>'[^a-z]'</td>
+<td>'9', '&amp;', '%'</td>
+<td>'b', 'a'</td>
+</tr>
+<tr>
+<td>Distinto de un dígito</td>
+<td>'[!0-9]'</td>
+<td>'A', 'a', '&amp;', '~'</td>
+<td>'0', '1', '9'</td>
+</tr>
+<tr>
+<td>Combinada</td>
+<td>'a[^b-m]#'</td>
+<td>'An9', 'az0', 'a99'</td>
+<td>'abc', 'aj0'</td>
+</tr>
+</tbody>
+</table>
+<h2>BETWEEN</h2>
+<p>El operador BETWEEN se utiliza para filtrar valores dentro de un rango determinado (inclusive). Funciona con números, fechas o texto.</p>
+<pre>
+  SELECT * FROM tabla
+  WHERE columna BETWEEN valor1 AND valor2;
+</pre>
+<h2>BACKUP Y RESTORE</h2>
+<p>Son operaciones de mantenimiento o administración de bases de datos,backup hace una copia de seguridad de la base de datos para proteger los datos
+  y restore restaura una base de datos a partir de un backup previo.
+</p>
+<pre>
+BACKUP DATABASE NombreDeLaBase
+TO DISK = 'C:\Backups\NombreDeLaBase.bak';
+
+RESTORE DATABASE NombreDeLaBase
+FROM DISK = 'C:\Backups\NombreDeLaBase.bak';
+
+</pre>
+<h2 class="h2Centrado">Funciones de Agregado</h2>
+<p>Operan sobre conjuntos de datos:</p>
+<h2>COUNT</h2>
+<pre>SELECT COUNT(*) FROM Empleados;
+    SELECT AVG(salario) FROM Empleados;</pre>
+<h2>GROUP BY</h2>
+<p>Agrupa datos para usarlos con funciones de agregado.</p>
+<pre>SELECT departamento, AVG(salario) 
+    FROM Empleados 
+    GROUP BY departamento;</pre>
+<h2>HAVING</h2>
+<p>Filtra resultados después de agrupar.</p>
+<pre>SELECT departamento, AVG(salario)
+    FROM Empleados
+    GROUP BY departamento
+    HAVING AVG(salario) &gt; 50000;</pre>
+<h2>DISTINCT</h2>
+<p>Elimina duplicados en los resultados.</p>
+<pre>SELECT DISTINCT ciudad FROM Clientes;</pre>
+<h2>TOP</h2>
+<p>Limita la cantidad de resultados.</p>
+<pre>SELECT TOP 5 * FROM Productos ORDER BY precio DESC;</pre>
+</div>
+
+<h2>CASE</h2>
+<pre>SELECT 
+  nombre,
+  CASE 
+    WHEN edad >= 18 THEN 'Adulto'
+    ELSE 'Menor'
+  END AS tipoPersona
+FROM Persona;
+</pre>
+</div>
+<h2 class="h2Centrado">BUCLES</h2>
+<p>IF, WHILE, FOR: se usan dentro de procedimientos almacenados (Stored Procedures)</p>
+<h2>IF</h2>
+<pre>
+  DECLARE @edad INT = 20;
+
+IF @edad >= 18
+   PRINT 'Es mayor';
+ELSE
+   PRINT 'Es menor';
+</pre>
+</div>
+<h2>WHILE</h2>
+<pre>
+  DECLARE @contador INT = 1;
+
+WHILE @contador <= 5
+BEGIN
+   PRINT 'Contador: ' + CAST(@contador AS VARCHAR);
+   SET @contador = @contador + 1;
+END
+</pre>
+<h2>FOR</h2>
+<p>No existe como palabra clave, pero se puede lograr algo similar con cursores:
+</p>
+<pre>
+DECLARE cursor_libros CURSOR FOR
+SELECT titulo FROM Libro;
+
+OPEN cursor_libros;
+FETCH NEXT FROM cursor_libros INTO @titulo;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+   PRINT @titulo;
+   FETCH NEXT FROM cursor_libros INTO @titulo;
+END
+
+CLOSE cursor_libros;
+DEALLOCATE cursor_libros;
+
+</pre>
+
+</article>
+
+<article>
+<h2 class="h2Centrado">Tipos de JOIN en SQL</h2> 
+<h2 class="centered">Ejemplos concretos de JOIN en SQL</h2>
+<p style="max-width: 800px; margin: auto; text-align: justify;">
+        Vamos a trabajar con estas dos tablas de ejemplo:
+      </p>
+<div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap;">
+<div>
+<h4>Tabla <code>Empleados</code></h4>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; background-color: #fff;">
+<tr>
+<th>idEmpleado</th>
+<th>nombre</th>
+<th>idDepto</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Ana</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Luis</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Marta</td>
+<td>NULL</td>
+</tr>
+</table>
+</div>
+<div>
+<h4>Tabla <code>Departamentos</code></h4>
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; background-color: #fff;">
+<tr>
+<th>idDepto</th>
+<th>nombreDepto</th>
+</tr>
+<tr>
+<td>10</td>
+<td>Finanzas</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Marketing</td>
+</tr>
+<tr>
+<td>30</td>
+<td>IT</td>
+</tr>
+</table>
+</div>
+</div>
+<h3 style="margin-top: 2rem; text-align: center;">Resultados según tipo de JOIN</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="width: 100%; max-width: 1000px; margin: 2rem auto; border-collapse: collapse; background-color: #fff;">
+<thead style="background-color: #333; color: #fff;">
+<tr>
+<th>JOIN</th>
+<th>Consulta</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INNER JOIN</strong></td>
+<td>
+<code>SELECT e.nombre, d.nombreDepto FROM Empleados e INNER JOIN Departamentos d ON e.idDepto = d.idDepto;</code>
+</td>
+<td>
+              Ana - Finanzas<br/>
+              Luis - Marketing
+            </td>
+</tr>
+<tr>
+<td><strong>LEFT JOIN</strong></td>
+<td>
+<code>SELECT e.nombre, d.nombreDepto FROM Empleados e LEFT JOIN Departamentos d ON e.idDepto = d.idDepto;</code>
+</td>
+<td>
+              Ana - Finanzas<br/>
+              Luis - Marketing<br/>
+              Marta - NULL
+            </td>
+</tr>
+<tr>
+<td><strong>RIGHT JOIN</strong></td>
+<td>
+<code>SELECT e.nombre, d.nombreDepto FROM Empleados e RIGHT JOIN Departamentos d ON e.idDepto = d.idDepto;</code>
+</td>
+<td>
+              Ana - Finanzas<br/>
+              Luis - Marketing<br/>
+              NULL - IT
+            </td>
+</tr>
+<tr>
+<td><strong>FULL JOIN</strong></td>
+<td>
+<code>SELECT e.nombre, d.nombreDepto FROM Empleados e FULL JOIN Departamentos d ON e.idDepto = d.idDepto;</code>
+</td>
+<td>
+              Ana - Finanzas<br/>
+              Luis - Marketing<br/>
+              Marta - NULL<br/>
+              NULL - IT
+            </td>
+</tr>
+<tr>
+<td><strong>CROSS JOIN</strong></td>
+<td><code>SELECT e.nombre, d.nombreDepto FROM Empleados e CROSS JOIN Departamentos d;</code></td>
+<td>
+              Ana - Finanzas<br/>
+              Ana - Marketing<br/>
+              Ana - IT<br/>
+              Luis - Finanzas<br/>
+              Luis - Marketing<br/>
+              Luis - IT<br/>
+              Marta - Finanzas<br/>
+              Marta - Marketing<br/>
+              Marta - IT
+            </td>
+</tr>
+</tbody>
+</table>
+</article>
+<article style="margin-bottom: 2rem;">
+  <h2 class="h2Centrado">¿Qué hace cada tipo de JOIN?</h2>
+<h3 style="color: #0d47a1;">✅ INNER JOIN</h3>
+<p>Trae solo los registros que <strong>coinciden en ambas tablas</strong>.</p>
+<p><em>Ejemplo:</em> Empleados con un departamento válido existente.</p>
+
+<h3 style="color: #0d47a1;">👈 LEFT JOIN</h3>
+<p>Trae <strong>todos los registros de la tabla izquierda</strong>, aunque no tengan coincidencia en la
+            derecha.</p>
+<p><em>Ejemplo:</em> Todos los empleados, incluso los que no tienen departamento (depto será
+            <code>NULL</code>).</p>
+
+<h3 style="color: #0d47a1;">👉 RIGHT JOIN</h3>
+<p>Trae <strong>todos los registros de la tabla derecha</strong>, aunque no tengan coincidencia en la
+            izquierda.</p>
+<p><em>Ejemplo:</em> Todos los departamentos, incluso los que no tienen empleados.</p>
+<h3 style="color: #0d47a1;">🔄 FULL JOIN</h3>
+<p>Une <strong>todo de ambas tablas</strong>. Si no hay coincidencia, muestra <code>NULL</code> en lo que
+            falta.</p>
+<p><em>Ejemplo:</em> Empleados y departamentos, aunque no estén relacionados.</p>
+<h3 style="color: #0d47a1;">🔢 CROSS JOIN</h3>
+<p>Crea <strong>todas las combinaciones posibles</strong> entre las filas de ambas tablas.</p>
+<p><em>Ejemplo:</em> 3 empleados y 3 departamentos = 9 combinaciones posibles.</p>
+
+  <img alt="" src="https://i.postimg.cc/3JBgndbc/Chat-GPT-Image-4-may-2025-03-01-06.png" style="display: block; margin: 0 auto;"/>
+</article>
+
+<article class="articuloSQLServer">
+  <h2 class="h2Centrado">Introducción a SQL Server
+</h2>
+  <p style="max-width: 900px; margin: auto; text-align: justify; color: #333;">
+<strong>SQL Server</strong> es un sistema de gestión de bases de datos relacional (RDBMS) desarrollado por
+        Microsoft.
+        Se utiliza para almacenar y recuperar datos cuando lo requieren otras aplicaciones, ya sea en un entorno local o
+        en la nube.
+      </p>
+<ul style="max-width: 900px; margin: 1.5rem auto; color: #444; line-height: 1.6;">
+<li><strong>Lenguaje:</strong> Utiliza T-SQL (Transact-SQL), una extensión de SQL estándar.</li>
+<li><strong>Componentes principales:</strong>
+<ul>
+<li><strong>Motor de base de datos:</strong> Procesa solicitudes de datos.</li>
+<li><strong>Herramientas de administración:</strong> SQL Server Management Studio (SSMS).</li>
+<li><strong>Servicios adicionales:</strong> Reporting Services (SSRS), Integration Services (SSIS), Analysis
+              Services (SSAS).</li>
+</ul>
+</li>
+<li><strong>Ventajas:</strong> Alta seguridad, escalabilidad, integración con el ecosistema de Microsoft.</li>
+<li><strong>Versiones:</strong> Express, Standard, Enterprise, Developer (gratuita para pruebas).</li>
+</ul>
+<p style="max-width: 900px; margin: auto; text-align: justify; color: #333;">
+        Es ideal para aplicaciones empresariales que requieren gestión robusta de datos, consultas avanzadas, y
+        funcionalidades como transacciones, seguridad y replicación.
+      </p>
+
+
+<article>
+  <h2 class="h2Centrado">¿ QUE ES UN MOTOR DE BD?</h2>
+  <p style="max-width: 900px; margin: auto; text-align: justify; color: #333;">
+<strong>Motor de BDD </strong>es el componente principal que se instala como un servicio en sistemas operativos para almacenar, 
+procesar y proteger los datos.
+Proporciona acceso controlado y procesamiento
+rápido de transacciones para cumplir los
+requisitos de las aplicaciones consumidoras
+de datos más exigentes de la empresa.
+      </p>
+  <h2 class="h2Centrado">¿Qué es Transact-SQL (T-SQL)?</h2>
+  <ul>
+    <li>Es el lenguaje de programación que se emplea para mandar peticiones entre el cliente y el servidor. </li>
+    <li>Es un lenguaje exclusivo de SQL Server, pero basado en el lenguaje SQL estándar (ANSI SQL), utilizado por casi todos los tipos de bases de datos relacionales que existen.</li> 
+  </ul>
+  <strong>Tiene ventajas como: </strong>
+<ul style="max-width: 900px; margin: 1rem auto; color: #444; line-height: 1.6;">
+<li>Uso de <strong>variables</strong> y estructuras de control (<code>IF</code>, <code>WHILE</code>).</li>
+<li>Creación de <strong>procedimientos almacenados</strong>, funciones y triggers.</li>
+<li>Control de errores con <code>TRY...CATCH</code>.</li>
+</ul>
+<p style="max-width: 900px; margin: auto; text-align: justify;">
+        Es el lenguaje que el cliente usa para enviar instrucciones al servidor SQL Server. Solo está disponible para
+        este sistema.
+      </p>
+<pre style="max-width: 900px; margin: 2rem auto; background-color: #f4f4f4; padding: 1rem; overflow-x: auto;">
+              <code>
+          -- Ejemplo simple de T-SQL con variables
+          DECLARE @Nombre NVARCHAR(50)
+          SET @Nombre = 'Ana'
+          
+          SELECT * FROM Empleados WHERE nombre = @Nombre
+              </code>
+            </pre>
+  <h2 class="h2Centrado">Caracteristicas del SQL</h2>
+  <p>SQL proporciona dos tipos de sentencias diferentes:</p>
+  <h3>1.Especificar el esquema relacional: DDL(DATA DEFINITION LANGUAGE)</h3>
+  <p>
+    Las sentencias DDL permiten crear(CREATE), modificar(ALTER) y eliminar(DROP) objetos de la base de datos, como tablas, índices y Permisos(GRANT Y REVOKE)
+  </p>
+
+  <h3>2.Expresar las consultas y 
+actualizaciones de la base de datos:
+DML(DATA MANIPULATION LANGUAGE)</h3>
+<p>Permite la recuperación de información (SELECT),Inserción de nueva información
+(INSERT),modificación de información almacenada (UPDATE),Eliminación (borrado) de información existente (DELETE)</p>
+
+<h2 class="h2Centrado">DISEÑO DE LA BASE DE DATOS</h2>
+<ul>
+  <li>Cuando se utiliza una base de datos para gestionar información, se está plasmando una parte del mundo real en una serie de tablas, registros y campos ubicados en una computadora, creándose un modelo parcial de la realidad. </li>
+  <li>Antes de crear físicamente estas tablas se debe realizar un modelo de datos, llamado de entidad-relación</li>
+</ul>
+
+</article>
+<article>
+  <h2 class="h2Centrado">ENTIDAD</h2>
+  <ul>
+    <li>Una entidad es cualquier "objeto" discreto sobre el que se tiene información.</li>
+    <li>Cada ejemplar de una entidad se denomina instancia.</li>
+    <li>Las entidades son modeladas en la base de datos como tablas.</li>
+
+  </ul>
+ 
+  <h2 class="h2Centrado">RELACIÓN</h2>
+  <ul>
+    <li>Una relación describe cierta interdependencia (de cualquier tipo) entre una o más entidades.</li>
+    <li>Una relación no tiene sentido sin las entidades que relaciona.</li>
+    <li>Las relaciones son definidas con claves primarias y claves foráneas, manteniendo la integridad referencial.</li>
+  </ul>
+
+  <h2 class="h2Centrado">CARNALIDAD DE LAS RELACIONES</h2>
+  <ul>
+    <li>Una relación describe cierta interdependencia (de cualquier tipo) entre una o más entidades.</li>
+    <li>Relaciones de uno a uno: una instancia de la entidad a se relaciona con una y solamente una de la entidad b.</li>
+    <li>Relaciones de uno a muchos: cada instancia de la entidad a se relaciona con varias instancias de la entidad b.</li>
+    <li>Relaciones de muchos a muchos: cualquier instancia de la entidad a se relaciona con cualquier instancia de la entidad b.</li>
+    
+  </ul>
+
+   <h2 class="h2Centrado">Relaciones y Claves Foráneas</h2>
+   <p style="max-width: 900px; margin: auto; text-align: justify; color: #333;">
+        En bases de datos relacionales, una <strong>relación</strong> define cómo se conectan los datos entre distintas
+        tablas. Las relaciones más comunes son:
+      </p>
+<ul style="max-width: 900px; margin: 1rem auto; line-height: 1.6;">
+<li><strong>Uno a uno:</strong> Un registro de una tabla se relaciona con un solo registro de otra.</li>
+<li><strong>Uno a muchos:</strong> Un registro de una tabla puede estar relacionado con varios registros de otra
+          (muy común).</li>
+<li><strong>Muchos a muchos:</strong> Requiere una tabla intermedia para unir ambas.</li>
+</ul>
+<p style="max-width: 900px; margin: auto;">
+        Una <strong>clave foránea</strong> (foreign key) es un campo que conecta dos tablas, asegurando la integridad
+        referencial.
+      </p>
+<pre style="max-width: 900px; margin: 2rem auto; background-color: #f9f9f9; padding: 1rem; overflow-x: auto;">
+              <code>
+          -- Crear tabla Departamentos
+          CREATE TABLE Departamentos (
+            idDepto INT PRIMARY KEY,
+            nombreDepto VARCHAR(50)
+          )
+          
+          -- Crear tabla Empleados con clave foránea
+          CREATE TABLE Empleados (
+            idEmpleado INT PRIMARY KEY,
+            nombre VARCHAR(50),
+            idDepto INT FOREIGN KEY REFERENCES Departamentos(idDepto)
+          )
+              </code>
+            </pre>
+
+    <h2 class="h2Centrado">ATRIBUTOS</h2>
+    <ul>
+      <li>Las entidades tienen atributos. </li>
+      <li>Un atributo de una entidad representa alguna propiedad</li>
+      <li>En el modelo de bases de datos, los atributos son almacenados como columnas o campos de una tabla.</li>
+    </ul>
+
+    <h2 class="h2Centrado">MODELADO DE ELEMENTOS DE DATOS</h2>
+    <ul>
+      <li>SQL emplea tablas como objetos de almacenamiento de datos, que los usuarios manipulan a través de sus aplicaciones. </li>
+      <li>Las tablas son objetos compuestos por una estructura (conjunto de columnas) que almacenan información interrelacionada (filas) acerca de algún objeto en general. </li>
+    </ul>
+
+     <h2 class="h2Centrado">MODELADO DE ELEMENTOS DE DATOS-CARACTERISTICAS</h2>
+    <ul>
+      <li>Las tablas tienen un solo nombre y es único en toda la base datos.</li>
+      <li>Están compuestas por registros y campos.</li>
+      <li>Los registros y campos pueden estar en diferentes órdenes.</li>
+      <li>Una base de datos contiene muchas tablas. cada tabla almacena información.</li>
+    </ul>
+
+    <h2 class="h2Centrado">RESTRICCIONES</h2>
+    <ul>
+      <li>Los nombres de las tablas deben ser únicos en la base de datos.</li>
+      <li>Los nombres de las columnas deben ser únicos en la tabla.</li>
+      <li>No puede haber dos registros con el mismo valor de la clave primaria.(Primary key – pk – clave principal)</li>
+    </ul>
+    <p>
+      Dentro de las restricciones que podemos establecer desde el diseño de los campos, además del tipo de datos son:
+      <br>
+      NO ADMITA VALORES NULOS
+      <br>
+      NO ADMITA VALORES DUPLICADOS
+    </p>
+
+     <h2 class="h2Centrado">CLAVE PRIMARIA (PRIMARY KEY)</h2>
+    <ul>
+      <li>Es un campo o un grupo de campos que fuerzan la integridad de los datos en la tabla, asegurándose que cada registro en la tabla es único.</li>
+      <li>Solo puede haber una sola clave primaria por tabla.</li>
+      <li>La clave primaria no permite valores nulos o duplicados.</li>
+      <li>Se crea un índice al definir una clave primaria.</li>
+    </ul>
+
+    <h2 class="h2Centrado">CLAVE FORANEA (FOREIGN KEY)</h2>
+    <ul>
+      <li>Es un campo que permite establecer un vínculo entre las tablas, en general , se ubican en las tablas del lado de “muchos”, ya que este campo se puede repetir.</li>      
+    </ul>
+
+    <h2 class="h2Centrado">ACCESO A LAS BASES DE DATOS</h2>
+    <p>
+      El acceso para trabajar con las bases de 
+datos, en nuestro caso sql sever, debemos, 
+ademas del motor, tener instalado un IDE para
+el manejo de los datos, nosotros tenemos 
+instalado el sql server managment studio
+express ( gratuito) para sencillas aplicaciones
+y educación.
+    </p>
+    <p>
+      Para acceder al motor de sql y sus bases de datos existen 2 maneras:
+    </p>
+    <ol>
+      <li><strong>Con credenciales de Windows (S.O.):</strong> Este tipo de acceso se denomina “integrado con windows” o autenticacion de windows”, y no requiere usuario y password.</li>
+      <li><strong>Con credenciales de sql server:</strong> Este tipo de acceso se denomina autenticación de sql server ”, y requiere un usuario de sql registrado y una contraseña. </li>
+    </ol>
+    <h2 class="h2Centrado">FORMAS NORMALES EN LAS BASES DE DATOS</h2>
+    <p>
+      La normalización de bases de datos es un proceso que consiste en designar y aplicar una serie de reglas a las relaciones obtenidas  tras el paso del modelo entidad-relación al modelo relacional.
+    </p>
+    <p>
+      Es un proceso para organizar las tablas de una base de datos de forma lógica, dividiendo la información en partes más pequeñas y eliminando duplicaciones.
+    </p>
+    <p>
+      Las bases de datos relacionales se normalizan para:
+    </p>
+    <ul>
+      <li>Evitar la redundancia de los datos.</li>
+      <li>Disminuir problemas de actualización de los datos en las tablas.</li>
+      <li>Proteger la integridad de los datos.</li> 
+    </ul>
+    <h2>Formas Normales (1FN, 2FN, 3FN)</h2>
+
+<p>La normalización es el proceso de organizar los datos en una base de datos para reducir la redundancia y mejorar la integridad de los datos. Las tres primeras formas normales (1FN, 2FN y 3FN) son las más comunes y suficientes en la mayoría de los casos.</p>
+
+<h3>📦 Primera Forma Normal (1FN)</h3>
+<ul>
+  <li>Todos los atributos deben contener valores atómicos (un solo valor por celda).</li>
+  <li>No debe haber columnas con listas o grupos repetitivos.</li>
+  <li>Se encuentra en 1FN si todo atributo contiene un valor indivisible o atomico (ausencia de grupos repetitivos).</li>
+</ul>
+
+<p><strong>Ejemplo NO cumple 1FN:</strong></p>
+<table border="1">
+  <tr><th>Cliente</th><th>Teléfonos</th></tr>
+  <tr><td>Ana</td><td>1111, 2222</td></tr>
+  <tr><td>Juan</td><td>3333, 4444, 5555</td></tr>
+</table>
+
+<p><strong>Ejemplo corregido (1FN cumplida):</strong></p>
+<table border="1">
+  <tr><th>Cliente</th><th>Teléfono</th></tr>
+  <tr><td>Ana</td><td>1111</td></tr>
+  <tr><td>Ana</td><td>2222</td></tr>
+  <tr><td>Juan</td><td>3333</td></tr>
+  <tr><td>Juan</td><td>4444</td></tr>
+  <tr><td>Juan</td><td>5555</td></tr>
+</table>
+
+<h3>✌️ Segunda Forma Normal (2FN)</h3>
+<ul>
+  <li>Ya debe cumplir 1FN.</li>
+  <li>Todos los atributos no clave deben depender de toda la clave primaria.</li>
+  <li>Una tabla que está en la primera forma normal (1NF) debe satisfacer criterios adicionales para calificar para la segunda forma normal. </li>
+  <li>Específicamente: una tabla 1NF está en 2NF si y solo si, dada una clave primaria y cualquier campo que no sea un constituyente de la clave primaria, el campo NO clave depende de toda la clave primaria y no solo de una parte.</li>
+</ul>
+
+<p><strong>Ejemplo NO cumple 2FN:</strong></p>
+<table border="1">
+  <tr><th>ID_Curso</th><th>ID_Alumno</th><th>NombreAlumno</th><th>NombreCurso</th></tr>
+  <tr><td>1</td><td>101</td><td>Ana</td><td>SQL Básico</td></tr>
+  <tr><td>1</td><td>102</td><td>Juan</td><td>SQL Básico</td></tr>
+</table>
+
+<p><strong>Solución (dividir en dos tablas):</strong></p>
+<p><em>Cursos</em></p>
+<table border="1">
+  <tr><th>ID_Curso</th><th>NombreCurso</th></tr>
+  <tr><td>1</td><td>SQL Básico</td></tr>
+</table>
+
+<p><em>Alumnos_Curso</em></p>
+<table border="1">
+  <tr><th>ID_Curso</th><th>ID_Alumno</th><th>NombreAlumno</th></tr>
+  <tr><td>1</td><td>101</td><td>Ana</td></tr>
+  <tr><td>1</td><td>102</td><td>Juan</td></tr>
+</table>
+
+<h3>🔺 Tercera Forma Normal (3FN)</h3>
+<ul>
+  <li>Ya debe cumplir 2FN.</li>
+  <li>No debe haber dependencias transitivas (un atributo no clave no debe depender de otro no clave).</li>
+</ul>
+
+<p><strong>Ejemplo NO cumple 3FN:</strong></p>
+<table border="1">
+  <tr><th>ID_Empleado</th><th>Nombre</th><th>ID_Departamento</th><th>NombreDepartamento</th></tr>
+  <tr><td>1</td><td>Ana</td><td>10</td><td>Recursos Humanos</td></tr>
+</table>
+
+<p><strong>Solución (dividir en dos tablas):</strong></p>
+<p><em>Empleados</em></p>
+<table border="1">
+  <tr><th>ID_Empleado</th><th>Nombre</th><th>ID_Departamento</th></tr>
+  <tr><td>1</td><td>Ana</td><td>10</td></tr>
+</table>
+
+<p><em>Departamentos</em></p>
+<table border="1">
+  <tr><th>ID_Departamento</th><th>NombreDepartamento</th></tr>
+  <tr><td>10</td><td>Recursos Humanos</td></tr>
+</table>
+
+<h3>🧠 Resumen de las Formas Normales</h3>
+<table border="1">
+  <thead>
+    <tr><th>Forma</th><th>Qué evita</th><th>Regla principal</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1FN</td><td>Valores múltiples por celda</td><td>Solo un valor por campo</td></tr>
+    <tr><td>2FN</td><td>Dependencia parcial</td><td>Todos los campos dependen de toda la clave</td></tr>
+    <tr><td>3FN</td><td>Dependencia transitiva</td><td>Ningún campo no clave depende de otro no clave</td></tr>
+  </tbody>
+</table>
+</article>
+<article>
+  <h2 class="h2Centrado">Operadores Lógicos en SQL</h2>
+  <p style="max-width: 900px; margin: auto; text-align: justify;">
+        Los operadores lógicos se usan en la cláusula <code>WHERE</code> para combinar condiciones.
+      </p>
+<ul style="max-width: 900px; margin: 1rem auto; line-height: 1.6;">
+<li><strong>AND:</strong> Devuelve resultados si todas las condiciones son verdaderas.</li>
+<li><strong>OR:</strong> Devuelve resultados si alguna condición es verdadera.</li>
+<li><strong>IN:</strong> Verifica si un valor está en una lista.</li>
+</ul>
+<pre style="max-width: 900px; margin: 2rem auto; background-color: #f1f5f9; padding: 1rem; overflow-x: auto;">
+              <code>
+          -- Empleados que trabajan en los departamentos 1, 2 o 3
+          SELECT * FROM Empleados WHERE idDepto IN (1, 2, 3)
+          
+          -- Empleados que se llaman Ana y están en el depto 2
+          SELECT * FROM Empleados WHERE nombre = 'Ana' AND idDepto = 2
+          
+          -- Empleados que están en el depto 1 o se llaman Juan
+          SELECT * FROM Empleados WHERE idDepto = 1 OR nombre = 'Juan'
+              </code>
+            </pre>
+</article>
+<article>
+  <h2 class="h2Centrado">Funciones en SQL Server</h2>
+  <p style="max-width: 900px; margin: auto; text-align: justify;">
+        En SQL Server, una <strong>función</strong> es un bloque de código reutilizable que puede recibir parámetros y
+        devolver un valor. Se utilizan para realizar cálculos o transformar datos.
+      </p>
+<h3 style="color: #457b9d;">Tipos de funciones</h3>
+<ul style="max-width: 900px; margin: 1rem auto; line-height: 1.6;">
+<li><strong>Funciones escalares:</strong> Devuelven un solo valor (por ejemplo: fecha, número, texto).</li>
+<li><strong>Funciones de agregado:</strong> Operan sobre un conjunto de filas y devuelven un único valor.</li>
+<li><strong>Funciones de sistema:</strong> Incluidas por SQL Server para tareas comunes.</li>
+<li><strong>Funciones definidas por el usuario (UDF):</strong> Creadas por el usuario.</li>
+</ul>
+<h3 style="color: #457b9d;">Ejemplos comunes</h3>
+<pre style="max-width: 900px; margin: 2rem auto; background-color: #f9f9f9; padding: 1rem; overflow-x: auto;">
+              <code>
+          -- Función escalar: convierte a mayúsculas
+          SELECT UPPER('hola mundo') -- Resultado: HOLA MUNDO
+          
+          -- Función de fecha: día actual
+          SELECT GETDATE() -- Resultado: fecha y hora actual
+          
+          -- Función de agregado: suma total de sueldos
+          SELECT SUM(sueldo) FROM Empleados
+          
+          -- Función definida por el usuario (ejemplo simple)
+          CREATE FUNCTION dbo.SumarDosNumeros (@a INT, @b INT)
+          RETURNS INT
+          AS
+          BEGIN
+            RETURN @a + @b
+          END
+          
+          -- Uso de función definida por el usuario
+          SELECT dbo.SumarDosNumeros(5, 3) -- Resultado: 8
+              </code>
+            </pre>
+<p style="max-width: 900px; margin: auto; text-align: justify;">
+        Las funciones son muy útiles para reutilizar lógica, realizar cálculos personalizados o limpiar datos dentro de
+        consultas SQL.
+      </p>
+</article>
+</section> <!--FIN DEL REPASO -->
+
+
+<!--FUNCIONES AVANZADAS-->
+  <section id="FuncionesAvanzadas" >
+    <h2>Sección 2</h2>
+    <p>Contenido de la sección 2.</p>
+    <h2 class="h2Centrado">Funciones avanzadas en SQL Server</h2>
+    <p style="max-width: 900px; margin: auto; text-align: justify;">
+        En SQL Server existen diferentes tipos de funciones que permiten trabajar con números, fechas, cadenas y datos
+        agrupados. A continuación, se detallan las más usadas con ejemplos.
+      </p>
+      <strong>Definición:</strong>
+      <ul>
+        <li>Una función es un conjunto de sentencias que operan como una unidad lógica. </li>
+        <li>Una función tiene un nombre, retorna un valor de salida y opcionalmente acepta parámetros de entrada. </li>
+      </ul>
+
+      <h3 style="color: #606c38;">Funciones del sistema</h3>
+      <ul>
+        <li>Son las que trae incorporadas el motor de SQL Server Por ejemplo: GETDATE()</li>
+      </ul>
+
+      <h3 style="color: #606c38;">Funciones definidas por el usuario (UDFs)</h3>
+      <ul>
+        <li>Son las que creamos para encapsular lógica que necesitamos aplicar.</li>
+        <li>Las funciones de SQL Server no pueden ser modificadas, las funciones definidas por el usuario si. </li>
+      </ul>
+
+      <h3 style="color: #606c38;">Funciones de Configuración</h3>
+      <ul>
+        <li>Son funciones que devuelven valores relacionados con la configuración del sistema, del usuario o de la sesión actual.</li>
+      </ul>
+
+      <h3 style="color: #606c38;">🔢 Funciones de agregado (devuelven un valor a partir de muchas filas)</h3>
+      <ul style="line-height: 1.6;">
+        <li><strong>COUNT:</strong> Cuenta la cantidad de filas.<br>
+          <code>SELECT COUNT(*) FROM Empleados;</code>
+        </li>
+        <li><strong>SUM:</strong> Suma los valores de una columna.<br>
+          <code>SELECT SUM(Sueldo) FROM Empleados;</code>
+        </li>
+        <li><strong>MIN / MAX:</strong> Mínimo o máximo valor.<br>
+          <code>SELECT MIN(Edad), MAX(Edad) FROM Empleados;</code>
+        </li>
+        <li><strong>AVG :</strong> Se utiliza para obtener el valor promedio de una columna numérica.<br>
+          <code>SELECT AVG(edad) FROM Empleados;
+</code>
+        </li>
+      </ul>
+      <strong>Definicion de funcion de agregado:</strong>
+      <ul>
+        <li>Realizan un cálculo sobre un conjunto de valores y retornan un único valor. </li>
+      </ul>
+
+      <h3 style="color: #606c38;">📅 Conversión de tipos (funciones escalares)</h3>
+      <ul>
+        <li><strong>CAST:</strong> Convierte de un tipo a otro.<br>
+          <code>SELECT CAST(GETDATE() AS VARCHAR);</code>
+        </li>
+        <li><strong>DECLARE:</strong> Se usa para declarar variables en SQL.<br>
+          <code>DECLARE @dato VARCHAR(2), @dato2 INT;</code>
+        </li>
+      </ul>
+      <strong>Definicion de funcion escalar:</strong>
+      <ul>
+        <li>Toman un solo valor y retornan un único valor (como un número, cadena, fecha, etc.). </li>
+        <li>Se puede usar en SELECT, WHERE, ORDER BY, etc. </li>        
+      </ul>
+
+      <section>
+        <h2>📅 Funciones de Fecha y Hora (SQL Server)</h2>
+
+        <p>Estas funciones forman parte de las <strong>funciones escalares</strong>, ya que devuelven un solo valor.
+          Permiten trabajar con fechas, extraer partes de ellas, modificarlas o convertirlas a texto.</p>
+
+        <h3>✅ Obtener la fecha y hora actual</h3>
+        <ul>
+          <li><code>GETDATE()</code>: Devuelve la fecha y hora actual del sistema.<br>
+            <code>SELECT GETDATE();</code>
+          </li>
+          <li><code>SYSDATETIME()</code>: Igual que GETDATE pero con mayor precisión.</li>
+          <li><code>CURRENT_TIMESTAMP</code>: Funciona igual que GETDATE (estándar ANSI).</li>
+          <li><code>GETUTCDATE()</code>: Devuelve la hora actual en formato UTC.</li>
+        </ul>
+
+        <h3>🕒 Extraer partes de una fecha</h3>
+        <ul>
+          <li><code>DAY(fecha)</code>: Devuelve el día del mes. <br><code>SELECT DAY(GETDATE());</code></li>
+          <li><code>MONTH(fecha)</code>: Devuelve el mes.</li>
+          <li><code>YEAR(fecha)</code>: Devuelve el año.</li>
+          <li><code>DATEPART(parte, fecha)</code>: Extrae una parte específica (día, hora, mes, etc).<br>
+            <code>SELECT DATEPART(hour, GETDATE());</code>
+          </li>
+        </ul>
+
+        <h3>🔄 Modificar fechas</h3>
+        <ul>
+          <li><code>DATEADD(parte, cantidad, fecha)</code>: Suma/resta a una fecha.<br>
+            <code>SELECT DATEADD(day, 7, GETDATE());</code> (suma 7 días)
+          </li>
+          <li><code>DATEDIFF(parte, fecha1, fecha2)</code>: Diferencia entre dos fechas.<br>
+            <code>SELECT DATEDIFF(day, '2025-01-01', GETDATE());</code>
+          </li>
+          <li><code>EOMONTH(fecha)</code>: Último día del mes.<br><code>SELECT EOMONTH(GETDATE());</code></li>
+        </ul>
+
+        <h3>🔁 Conversión de fecha a texto</h3>
+        <ul>
+          <li><code>CAST(valor AS tipo)</code>: Convierte el tipo de dato.<br>
+            <code>SELECT CAST(GETDATE() AS VARCHAR);</code>
+          </li>
+          <li><code>CONVERT(tipo, valor, estilo)</code>: Convierte con formato específico.<br>
+            <code>SELECT CONVERT(VARCHAR, GETDATE(), 103);</code> (formato dd/mm/yyyy)
+          </li>
+        </ul>
+
+        <h3>🧪 Ejemplo completo</h3>
+        <pre><code>
+            SELECT
+              GETDATE() AS FechaActual,
+              CAST(GETDATE() AS VARCHAR) AS FechaTexto,
+              YEAR(GETDATE()) AS Anio,
+              DATEADD(day, 30, GETDATE()) AS FechaEn30Dias,
+              DATEDIFF(day, '2025-01-01', GETDATE()) AS DiasDesdeInicioAno;
+              </code></pre>
+      </section>
+
+      <h3 style="color: #606c38;">🔠 Funciones de cadena (funciones escalares)</h3>
+      <p style="margin-top: 1rem;">Sirven para manipular texto. Estas son muy comunes:</p>
+      <ul style="line-height: 1.6;">
+        <li><strong>SUBSTRING(cadena, inicio, cantidad):</strong> Devuelve una parte de la cadena especificada como primer argumento, empezando desde la posición especificada por el segundo argumento y de tantos caracteres de longitud como indica el tercer argumento.<br>
+          <code>SELECT SUBSTRING('Hola Mundo', 1, 4); -- Resultado: Hola</code>
+        </li>
+        <li><strong>CHARINDEX(buscar, cadena[, inicio]):</strong> Busca una subcadena dentro de una cadena a partir de una ubicación especificada. Devuelve la posición de la subcadena encontrada en la cadena buscada, o cero si no se encuentra la subcadena. La posición inicial devuelta se basa en 1, no en 0.<br>
+          <code>SELECT CHARINDEX('OM', 'Customer'); -- Resultado: 5</code>
+        </li>
+        <li><strong>PATINDEX(patrón, cadena):</strong> Devuelve la posición de comienzo (de la primera ocurrencia) del patrón especificado en la cadena enviada como segundo argumento. Si no la encuentra retorna 0. <br>
+          <code>SELECT PATINDEX('%mer%', 'Customer'); -- Resultado: 5</code>
+        </li>
+        <li><strong>LEFT(cadena, n):</strong> Devuelve los primeros n caracteres.<br>
+          <code>SELECT LEFT('Customer', 4); -- Resultado: Cust</code>
+        </li>
+        <li><strong>RIGHT(cadena, n):</strong> Devuelve los últimos n caracteres.<br>
+          <code>SELECT RIGHT('Customer', 2); -- Resultado: er</code>
+        </li>
+        <li><strong>LEN(cadena):</strong> Devuelve la longitud del texto.<br>
+          <code>SELECT LEN('Hola'); -- Resultado: 4</code>
+        </li>
+        <li><strong>CHAR(X):</strong> Retorna un caracter en código ASCII del entero enviado como argumento. <br>
+        <code>SELECT char(65); retorna "A".</code>
+        </li>
+        <li><strong>REVERSE(cadena):</strong> Invierte el texto.<br>
+          <code>SELECT REVERSE('Hola'); -- Resultado: aloH</code>
+        </li>
+        <li><strong>LOWER(cadena):</strong> Convierte todo a minúsculas.<br>
+          <code>SELECT LOWER('HOLA ESTUDIAnte'); -- Resultado: hola estudiante</code>
+        </li>
+        <li><strong>UPPER(cadena):</strong> Convierte todo a mayúsculas.<br>
+          <code>SELECT UPPER('Hola'); -- Resultado: HOLA</code>
+        </li>
+        <li><strong>STR(numero,longitud,cantidadDecimales): </strong> números a caracteres; el primer parámetro indica el valor numérico a convertir, el segundo la longitud del resultado (debe ser mayor o igual a la parte entera del número más el signo si lo tuviese) y el tercero, la cantidad de decimales. El segundo y tercer argumento son opcionales y deben ser positivos. <br>
+        <code>SELECT str(123456.67,7,3)</code>
+        </li>
+        <li><strong>LTRIM(cadena):</strong> Quita espacios a la izquierda.<br>
+          <code>SELECT LTRIM(' Hola '); -- Resultado: 'Hola '</code>
+        </li>
+        <li><strong>RTRIM(cadena):</strong> Quita espacios a la derecha.<br>
+          <code>SELECT RTRIM(' Hola '); -- Resultado: ' Hola'</code>
+        </li>
+        <li><strong>REPLACE(cadena, buscar, reemplazo):</strong> Reemplaza partes del texto.<br>
+          <code>SELECT REPLACE('xxx.unlam.edu.ar','x','w'); -- Resultado: www.unlam.edu.ar</code>
+        </li>
+        <li><strong>REPLICATE(cadena, n):</strong> Repite una cadena varias veces.<br>
+          <code>SELECT REPLICATE('Hola ', 3); -- Resultado: Hola Hola Hola </code>
+        </li>
+        <li><strong>SPACE(n):</strong> Devuelve n espacios en blanco.<br>
+          <code>SELECT 'Hola' + SPACE(3) + 'Mundo'; -- Resultado: Hola   Mundo</code>
+        </li>
+      </ul>
+
+      <h3 style="color: #606c38;">📚 Clasificación de funciones</h3>
+      <ul style="line-height: 1.6;">
+        <li><strong>Funciones escalares:</strong> Devuelven un solo valor (ej: UPPER, LEN, GETDATE, CAST).</li>
+        <li><strong>Funciones de agregado:</strong> Operan sobre varias filas (ej: COUNT, SUM, AVG, MAX).</li>
+        <li><strong>Funciones de sistema:</strong> Ya vienen con SQL Server (ej: GETDATE, SCOPE_IDENTITY).</li>
+        <li><strong>Funciones definidas por el usuario (UDF):</strong> Creadas por vos o tu equipo.Son las que creamos para encapsular lógica que necesitamos aplicar.
+        Las funciones de SQL Server no pueden ser modificadas, las funciones definidas por el usuario si.</li>
+      </ul>
+      <h2>Ejemplo de funcion definida por el usuario</h2>
+      <img src="./IMG/FuncionesUsuario1.png" alt="">
+      <h2>Funciones de configuracion</h2>
+      <p>Son funciones que devuelven valores relacionados con la configuración del sistema, del usuario o de la sesión actual.</p>
+      <ul>
+         <li><strong>SELECT @@VERSION AS VersionSQL; -- Retorna la fecha, versión y tipo de procesador de SQL Server.</strong> Reemplaza partes del texto.<br></li>
+         <li><strong>SELECT DB_NAME() AS BaseDatosActual; -- Retorna la base de datos actual</strong></li>
+        <li><strong>SELECT HOST_NAME() AS Cliente; -- Retorna el nombre del equipo que se conecta</strong></li>
+      </ul>
+    </section> <!--FIN DE FUNCIONES AVANZADAS-->
+
+    <!--CREAR BDD-->
+  <section id="CrearBDD">
+    <h2>Sección 3</h2>
+    <p>Contenido de la sección 3.</p>
+    <h2 class="h2Centrado">Dos categorías de aplicaciones de BD</h2>
+    <ul>
+        <li>Proceso de transacciones en línea(OLTP, Online Transaction Processing): Datos que cambian con frecuencia.
+          Estas aplicaciones cuentan normalmente con muchos usuarios que realizan transacciones al mismo tiempo que
+          cambian datos en tiempo real. Alto grado de normalización, dosificación de índices, ubicación correcta de los
+          datos y pocos datos históricos. </li>
+        <li>Ayuda a la toma de decisiones (OLAP, OnLine Analytical Processing): son óptimas para las consultas de datos
+          que no impliquen cambios frecuentes en los mismos. Poca normalización, muchos índices y datos preprocesados,.
+        </li>
+      </ul>
+      <h2 class="h2Centrado">Base de Datos del Sistema</h2>     
+      <p>Estas bases vienen preinstaladas con SQL Server y son cruciales para su funcionamiento interno. No son creadas por el usuario, y cada una cumple un rol específico:</p>
+      
+      <ul>
+        <li><strong>Master:</strong>Guarda toda la información vital del servidor: inicio de sesión, configuración, metadatos de todas las bases de datos. Si se daña, SQL Server no arranca.Realizan el seguimiento de la instalación del servidor y de todas las bases de datos que se creen posteriormente. </li>
+        <li><strong>Tempdb:</strong>Se usa como área de trabajo temporal. Se borra y se recrea cada vez que arranca SQL Server. Ahí van las tablas temporales, ordenamientos, etc.</li>
+        <li><strong>Model:</strong>Se utiliza como plantilla para todas las bases de datos creadas en un sistema. Cuando se ejecuta una instrucción CREATE DATABASE, la primera parte de la base de datos se crea copiando el contenido de la base de datos model, el resto de la nueva base de datos se llena con páginas vacías</li>
+        <li><strong>Msdb:</strong>Es empleada por los servicios SQL Server Agent, Database Mail, Service Broker, log shipping, etc. para guardar información con respecto a tareas de automatización como por ejemplo copias de seguridad y tareas de duplicación, asimismo solución a problemas</li>
+      </ul>
+      
+
+        </ul><h2 class="normal">Vistas del Catalogo</h2>
+        <h3>
+          Todos los metadatos del catálogo disponiblespara el usuario se exponen mediante las vistas de catálogo. Las
+          vistas de catálogo de SQL Server se han organizado en varias categorías.
+        </h3>
+
+        <ul>
+          <li>Vistas de catálogo de archivos y bases de datos: Por ejemplo:</li>
+          <ul>
+            <li>sys.databases que devuelve un registro por cada base de datos</li>
+            <li>sys.database_files que devuelve un registro por cada archivo de una base de datos. </li>
+          </ul>
+          <li>Objetos: Por ejemplo:</li>
+          <ul>
+            <li>sys.tables que devuelve un registro por cada tabla de una base de datos.</li>
+            <li>sys.views que devuelve un registro por cada vista de una base de datos.</li>
+            <li>sys.columns que devuelve un registro por cada columna de un objeto.</li>
+          </ul>
+          <li>Seguridad: Por ejemplo: </li>
+          <ul>
+            <li>sys.database_permissions que devuelve un registro por cada permiso definido en una base de datos. </li>
+            <li>sys.database_role_member que devuelve un registro por cada miembro de un rol de una base de datos.</li>
+          </ul>
+        </ul>        <h2 class="normal">FUNCIONES DEL SISTEMA</h2>
+        <h3>Devuelven información acerca de la base de datos y de los objetos de la misma. Solo se mencionan algunas de
+          ellas: </h3>        
+        <p><strong>DB_ID:Devuelve el número de identificación (Id.) de esa base de datos.
+          SELECT DB_ID('master') Devuelve 1</strong></p>
+          <h2 class="normal"></h2>
+        
+          <p><strong>DB_NAME:</strong>Devuelve el nombre de la base de datos.SELECT DB_NAME(1) Devuelve master</p>
+          <p><strong>FILE_ID:</strong>Devuelve el número de identificación del archivo (Id.) del nombre de archivo lógico dado de la base de datosactual.SELECT FILE_ID('AdventureWorks_Data') Devuelve 1</p>
+          <p><strong>FILE_NAME:</strong>Devuelve el nombre del archivo lógico dado de la base de datos actual.SELECT FILE_NAME(1) Devuelve AdventureWorks_Data</p>
+
+        
+               <h2 class="normal">Procedimientos Almacenados de Sistema
+        </h2>
+        <h3>
+          Estos son algunos de los procedimientos almacenados de sistema que permiten consultar información sobre base
+          de datos:
+          Sp_Databases: Lista las bases de datos disponibles de un Server
+          Sp_Databases
+        </h3>  
+        <p><strong>Sp_HelpDB:</strong>Información sobre las bases de datos de un servidor</p>
+        <p><strong>Sp_Help:</strong>Presenta información acerca de un objeto de base de datos(cualquier objeto de la vista de compatibilidad sys.sysobjects), un tipo de datos definido por el usuario o un tipo de datos. Puede ejecutarse sin parámetros, entonces muestra la información sobre todos los objetos o puede pasarse como parámetro el nombre del objeto a consultar.</p>
+      
+
+        
+        <h2 class="h2Centrado">GRUPOS DE ARCHIVOS </h2>
+        <h3>Son parte de la estructura física de la base de datos. <br> Las bases de datos de SQL Server utilizan tres tipos de archivos:
+          
+          <p><strong>Archivos de datos principales:</strong>Es el punto de partida de la base de datos y apunta a los otros archivos de la base de datos. Cada base de datos tiene un archivo de datos principal. La extensión recomendada para los nombres de archivos de datos principales es .mdf.</p>
+          <p><strong>Archivos de datos secundarios:</strong>Son todos los archivos de datos menos el archivo de datos principal.Puede que algunas bases de datos no tengan archivos de datos secundarios, mientras que otras pueden tener varios archivos de datos secundarios. La extensión de nombre de archivo recomendada para los archivos de datos secundarios es .ndf.</p>
+          <p><strong>Archivos de registro:</strong>almacenan toda la información de registroque se utiliza para recuperar la base de datos. Como mínimo, tiene que haber un archivo de registro por cada base de datos, aunque puede haber varios. La extensión de nombre de archivo recomendada para los archivos de registro es .ldf.</p> 
+        <h3>SQL Server no exige las extensiones de nombre de archivo .mdf, .ndf y .ldf, pero estas extensiones ayudan a
+          identificar las distintas clases de archivos y su uso.</h3>        <h2 class="normal">ESQUEMAS (SCHEMAS)</h2>
+        <p><strong>Definición:</strong>
+          Es un espacio de nombres (namespace) distintoque existe de forma independientemente del usuario de base de
+          datos que lo creó. Es un contenedor de objetos. Cualquier usuario puede ser propietario de un esquema, y esta
+          propiedad es transferible. Todas las bases de datos contienen un esquema llamado dbo. Es el esquema
+          predeterminado para todos los usuarios cuando no se define explícitamente el esquema.
+          Ejemplo: CREATE SCHEMA Ventas
+        </p>
+                <h2 class="h2Centrado">Ventajas</h2>
+        <ul>
+          <li>Mayor flexibilidad para organizar la base de datosusando nombres de espacio, ya que de esta manera los
+            objetos no dependen del usuario que lo creo.</li>
+          <li>Manejo de permisos mejorada, ya que los permisos pueden ser asignados a los esquemas y no directamente a
+            cada objeto. </li>
+          <li>Al dar de baja un usuario no es necesario renombrar los objetos que le pertenecían. </li>
+        </ul>        <h2 class="h2Centrado">Instantáneas de Base de Datos</h2>
+        <ul>
+          <li>Es una vista estática de sólo lecturade una base de datos denominada base de datos de origen </li>
+          <li>Se mantiene hasta que el propietario de la base de datos la quita explícitamente.</li>
+          <li>Deben residir en la misma instancia de servidor que la base de datos </li>
+          <li>Se pueden utilizar para crear informes. Además, en el caso de que se produzca un error de usuario en una
+            base de datos de origen, ésta se puede revertir al estado en que se encontraba cuando se creó la
+            instantánea. </li>
+        </ul>        
+        <h2 class="normal">Tipos de restricciones</h2>
+        <ul>
+          <li>PRIMARY KEY</li>
+          <li>UNIQUE</li>
+          <li>FOREIGN KEY</li>
+          <li>CHECK</li>
+          <li>DEFAULT</li>
+
+
+        </ul>
+      </section>
+  </section><!--FIN CREAR BDD-->
+
+
+  <!--PROPIEDADES Y ARGUMENTOS DE CONFIGURACION DEL SISTEMA-->
+  <section id="Argumentos">
+     <h2>Sección 4</h2>
+    <p>Contenido de la sección 4.</p>
+         <h2 class="h2Centrado">Argumentos</h2><!--aaa-->
+         <h3>Parámetros de creación de base de datos:</h3>
+        <ul>
+          <li><strong>Nombre_BaseDatos: </strong>Nombre lógico de la base de datos </li>
+          <li><strong>ON:</strong> Especifica la información sobre el archivo de datos </li>
+          <li><strong>LOG ON: </strong>Especifica la información sobre el archivo del registro de transacciones. </li>
+          <li><strong>Collate:</strong> Establece el juego de caracteres soportados. </li>
+          <li><strong>Primary:</strong> Especifica el grupo de archivos (filegroup) para este archivo. El grupo de archivo base del SQL
+            Server se llama Primary. </li>
+          <li><strong>FileName:</strong> Nombre físico del archivo para el sistema operativo </li>
+          <li><strong>Size: </strong>Tamaño inicial de la base de datos. Si no se especifica es de 1MB. </li>
+          <li><strong>MaxSize:</strong> Tamaño máximo para la base de datos. Si no se especifica la base de datos puede crecer hasta
+            llenar el disco. </li>
+          <li><strong>FileGrowth:</strong> Especifica el incremento de crecimiento de la base de datos </li>
+        </ul>   
+
+        <h2 class="h2Centrado">Opciones de BD </h2>
+        <h3>Opciones de configuración de la base de datos:</h3>
+        <ul>
+          <li><strong>AUTO_CREATE_STATISTICS:</strong> Crea estadísticas en forma automática necesarias para la optimización de
+            consultas. El valor predeterminado es ON. </li>
+          <li><strong>AUTO_UPDATE_STATISTICS:</strong> Actualiza automáticamente las estadísticas que están desactualizadas. El valor
+            predeterminado es ON. </li>
+          <li><strong>AUTO_CLOSE:</strong> Si está en ON cierra la base de datos automáticamente cuando el último usuario cierra su
+            sesión. El valor predeterminado es OFF (excepto para la edición Express) </li>
+          <li><strong>AUTO_SHRINK:</strong> Si está en ON la base de datos se encoge automáticamente en forma periódica. El valor
+            predeterminado es OFF. </li>
+          <li><strong>READ_ONLY / READ_WRITE:</strong> Controla si los usuarios pueden modificar los datos. El valor predeterminado es
+            READ_WRITE. </li>
+          <li><strong>SINGLE_USER / RESTRICTED_USER / MULTI_USER:</strong> SINGLE_USER, sólo se puede conectar un usuario a la base de
+            datos en un momento dado. RESTRICTED_USER, sólo pueden conectarse a la base de datos los miembros de la
+            función fija de base de datos db_owner y los de las funciones fijas de servidor dbcreator y sysadmin, pero
+            no se limita la cantidad de miembros. MULTI_USER, se permite el acceso de todos los usuarios que cuenten con
+            los permisos adecuados para conectarse a la base de datos. </li>
+          <li><strong>RECOVERY MODEL:</strong> FULL / SIMPLE / BULK_LOGGED: El valor predeterminado es FULL. Provee un modelo de
+            recuperación completo ante fallas. BULK_LOGGED no usa el registro de transacciones para ese tipo de
+            movimiento. SIMPLE recupera la base de datos solo desde el último backup completo o diferencial. </li>
+          <li><strong>PAGE_VERIFY:</strong> Permite detectar entradas de E/S incompletas. CHECKSUM: guarda un valor calculado en la
+            cabecera de la página basado en su contenido. Este valor es recalculado y comparado con los datos de la
+            página para controlarlas. </li>
+          <li><strong>SQL ANSI_NULL_DEFAULT:</strong> Permite al usuario controlar el uso predeterminado del valor nulo de una columna al
+            crear o modificar una tabla. El valor predeterminado es OFF o sea NOT NULL. </li>
+          <li><strong>ANSI_NULLS:</strong> Cuando está en ON, todas las comparaciones con nulos devuelven nulos. Si está en OFF solo
+            devuelve nulo si ambos valores son nulos. El valor predeterminado es OFF </li>
+          <li><strong>QUOTED_IDENTIFIER:</strong> Cuando se especifica ON, se pueden utilizar comillas dobles para encerrar los
+            identificadores delimitados. Cuando se especifica OFF, los identificadores no pueden ir entre comillas y
+            deben adaptarse a todas las reglas de Transact-SQL que se aplican a los identificadores (Usar [] para
+            delimitar identificadores). </li>
+            
+  </section><!--FIN DE PROPIEDADES Y ARGUMENTOS DE CONFIGURACION DEL SISTEMA-->
+
+  <!--INDICES-->
+  <section id="Indices">
+    <h2>Sección 5</h2>
+    <p>Contenido de la sección 5.</p>
+    <h2 class="h2Centrado">Indices</h2>
+    <p>Un índice es una estructura que acelera la búsqueda de datos en una tabla, similar a cómo un índice de un libro te ayuda a encontrar temas rápidamente.</p>
+<ul>
+      <li>Facilitan la obtención de información de una tabla.Una tabla se indexa por un campo (o varios).</li>
+      <li>Posibilita el acceso directo y rápido haciendo más eficiente las búsquedas. Sin índice, SQL Server debe
+        recorrer secuencialmente toda la tabla para encontrar un registro.</li>
+      <li>Acelera la recuperación de información. </li>
+      <li>Optimiza el acceso a los datos, mejora el rendimiento acelerando las consultas y otras operaciones. </li>
+
+    </ul>    <h2 class="normal">SQL Server accede a los datos de dos maneras:</h2>
+    <ol>
+      <li>recorriendo las tablas;comenzando el principio y extrayendo los registros que cumplen las condiciones de la
+        consulta.</li>
+      <li>empleando índices; recorriendo la estructura de árbol del índice para localizar los registros y extrayendo los
+        que cumplen las condiciones de la consulta.</li>
+    </ol>
+    <h3>
+      La desventaja es que consume espacio en disco y genera costo de mantenimiento (tiempo y recursos).
+      <br>
+      Los índices más adecuados son aquellos creados con campos que contienen valores únicos.
+      <br>
+      Es importante identificar el o los campos por los que sería útil crear un índice, aquellos campos por los cuales
+      se realizan búsqueda con frecuencia: claves primarias, claves externas o campos que combinan tablas.
+      <br>
+      No se recomienda crear índices por campos que no se usan con frecuencia en consultas o no contienen valores
+      únicos.
+    </h3>
+    <h3>SQL Server permite crear 2 tipos de índices: </h3>
+
+    <ul>
+      <li><strong>1) Índice Agrupado (Clustered Index):</strong>Ordena físicamente los datos en la tabla y la tabla queda organizada en base a ese índice, como si fuera una guía telefónica. </li>
+      <p><strong>Caractericticas clave:</strong> Solo puede haber uno por tabla (porque los datos físicos solo pueden estar ordenados de una manera). <br> Ideal para consultas que usan rangos, ordenamientos o filtrado frecuente sobre ese campo. <br> Se crea automáticamente si hacés una PRIMARY KEY (si no especificás lo contrario).</p>
+        <p><strong>Ejemplo común de uso: </strong>buscar todos los productos ordenados por precio o fechas.</p>
+      
+      <li><strong>2) Índice No Agrupado (Nonclustered Index):</strong>El índice está separado de los datos reales, como el índice de un libro que te dice en qué página está un tema y contiene punteros que apuntan al lugar exacto donde están los datos en la tabla.</li>
+      <p><strong>Características clave:</strong>Una tabla puede tener muchos índices no agrupados (hasta 249).Ideal para columnas que se buscan seguido pero no ordenan toda la tabla, como un código, un email o una identificación.Se crea automáticamente cuando hacés una UNIQUE (si no es clustered).</p>
+      <p><strong>Ejemplo común de uso:</strong> buscar por DNI, por número de cliente o por un email único.</p>
+    </ul>
+
+    <ul>
+      <li>Si no se especifica un tipo de índice, de modo predeterminado será no agrupado.</li>
+      <li>Los campos de tipo text, ntext e image no se pueden indizar.</li>
+      <li>Es recomendable crear los índices agrupados antes que los no agrupados, porque los primeros modifican el orden
+        físico de los registros, ordenándolos secuencialmente.</li>
+      <li>La diferencia básica entre índices agrupados y no agrupados es que los registros de un índice agrupado están
+        ordenados y almacenados de forma secuencial en función de su clave. </li>
+      SQL Server crea automaticamente índices cuando se crea una restricción "primary key" o "unique" en una tabla.Es
+      posible crear índices en las vistas.
+      <li>Crea un índice en una tabla. se permiten valores duplicados:</li>
+      <h3>CREATE INDEX index_name <br>
+
+        ON table_name (column1, column2, ...);
+      </h3>
+      <li>Crea un índice único en una tabla. Los valores duplicados no están permitidos:</li>
+      <h3>CREATE UNIQUE INDEX index_name
+        ON table_name (column1, column2, ...);
+      </h3>
+    </ul>
+    <li>Create a single nonclustered index
+    </li>
+    <h3>
+      CREATE UNIQUE NONCLUSTERED INDEX IX_NC_PresidentNumber
+      ON dbo.Presidents (PresidentNumber) -- specify table and column name
+
+    </h3>
+    <img src="https://i.ibb.co/3yhz1P27/a.png" alt="a" border="0">
+    </section> <!--FIN DE INDICES-->
+
+  <!--VISTAS-->
+  <section id="Vistas">
+    <h2>Sección 6</h2>
+    <p>Contenido de la sección 6.</p>
+<h2 class="h2Centrado">Vistas(Views)</h2>  
+<ul>
+  <li>Una vista es una consulta que se presenta como una tabla (virtual) a partir de un conjunto de tablas en una base de datos relacional.</li>
+  <li>Las vistas tienen la misma estructura que una tabla: filas y columnas.</li>
+  <li>La única diferencia es que sólo se almacena de ellas la definición, no los datos.</li>
+  <li>Una vista es una alternativa para mostrar datos de varias tablas. </li>
+  <li>Una vista es como una tabla virtual que almacena una consulta. 
+</li>
+  <li>Los datos accesibles a través de la vista no están almacenados en la base de datos como un objeto
+</li>
+<li>Una vista almacena una consulta como un objeto para utilizarse posteriormente. 
+</li>
+<li>Las tablas consultadas en una vista se llaman tablas base. </li>
+<li>En general, se puede dar un nombre a cualquier consulta y almacenarla como una vista. 
+</li>
+</ul>
+
+<h2 class="h2Centrado">Las vistas Permiten</h2>
+
+<ol>
+  <li><strong>Ocultar información:</strong> Permitiendo el acceso a algunos datos y manteniendo oculto el resto de la información que no se incluye en la vista. El usuario opera con los datos de una vista como si se tratara de una tabla, pudiendo modificar tales datos.</li>
+  <li><strong>Simplificar la administración de los permisos de usuario:</strong> Se pueden dar al usuario permisos para que solamente pueda acceder a los datos a través de vistas, en lugar de concederle permisos para acceder a ciertos campos, así se protegen las tablas base de cambios en su estructura.</li>
+</ol>
+
+<ul>
+  <li>Primer ejemplo de vistas
+</li>
+  <li>Ventajas de las vistas</li>
+  <li>Definición de vistas
+</li>
+  <li>Modificación de datos mediante vistas
+</li>
+  <li>Optimización del rendimiento mediante vistas
+</li>
+  <li>Práctica: Implementación de vistas
+</li>  
+</ul>
+<h2 >VENTAJAS DE VISTAS </h2>
+
+<ul>
+  <li>Centrar el interés en los datos de los usuarios</li>
+  <ul>
+    <li>Centrarse sólo en los datos importantes o adecuados.
+</li>
+    <li>Limitar el acceso a los datos confidenciales
+</li> 
+  </ul>
+  <li>Enmascarar la complejidad de la base de datos</li>
+  <ul>
+    <li>Ocultar el diseño de la base de datos. 
+</li>
+    <li>Simplificar las consultas complejas, incluyendo las consultas distribuidas a datos heterogéneos
+</li>
+  </ul>
+  <li>Simplificar la administración de los permisos de usuario
+</li>
+  <li>Mejorar el rendimiento ( con indices )
+</li>
+  <li>Organizar los datos para exportarse a otras aplicaciones
+</li>
+  
+</ul>
+
+<h2>DEFINICION DE VISTAS </h2>
+<ul>
+  <li>CREACIÓN DE VISTAS
+</li>
+  <li>EJEMPLO: VISTA DE TABLAS COMBINADAS
+</li>
+  <li>MODIFICACIÓN Y ELIMINACIÓN DE VISTAS</li>
+  <li>EVITAR LA INTERRUPCIÓN DE LAS CADENAS DE PERTENENCIA</li>
+  <li>UBICACIÓN DE LA INFORMACIÓN DE DEFINICIÓN DE VISTAS
+</li>
+  <li>OCULTACIÓN DE LA DEFINICIÓN DE LAS VISTAS
+</li>
+</ul>
+
+<h2>Creacion de vistas</h2>
+<p>Supongamos que tenés una tabla Empleados y querés crear una vista que muestre solo a los empleados con sueldo mayor a $3000.</p>
+<pre>
+  CREATE VIEW Vista_EmpleadosActivos
+  AS
+  SELECT Nombre, Edad, Sueldo
+  FROM Empleados
+  WHERE Sueldo > 3000;
+</pre>
+<p><strong>Nota:</strong>Cualquier tabla se puede crear una vista. <br>No se puede incluir la cláusula ORDER BY. <br>No se puede incluir la palabra clave INTO. <br> No se puede incluir la palabra clave INTO 
+
+<h2>Modificacion de vistas</h2>
+<p>Si querés cambiar la definición de una vista existente, usás ALTER VIEW</p>
+<p>Por ejemplo, ahora querés que también muestre la fecha de ingreso:</p>
+<pre>
+  ALTER VIEW Vista_EmpleadosActivos
+  AS
+  SELECT Nombre, Edad, Sueldo, FechaIngreso
+  FROM Empleados
+  WHERE Sueldo > 3000;
+</pre>
+<p><strong>Nota:</strong>Alteración de vistas. <br> Hace que la instrucción SELECT y las opciones reemplacen la definición existente. <br> No pueden afectar a más de una tabla subyacente. <br> No pueden afectar a ciertas columnas. <br> Pueden provocar errores si afectan a columnas a las que la vista no hace referencia. <br> Consideraciones acerca del rendimiento. <br> Uso de vistas para dividir datos. <br> Conserva los permisos asignados.</p>
+
+<h2>Modificacion de datos en las vistas</h2>
+<ul>
+  <li>No pueden afectar a más de una tabla subyacente.</li>
+  <li>No pueden afectar a ciertas columnas.</li>
+  <li>Pueden provocar errores si afectan a columnas a las que la vista no hace referencia </li> 
+</ul>
+
+<h2>Eliminar vista</h2>
+<p>Para eliminarla completamente:</p>
+<pre>
+  DROP VIEW Vista_EmpleadosActivos;
+</pre>
+<p><strong>Nota:</strong>Esto borra la vista de la base de datos. Si después intentás hacer un SELECT * FROM Vista_EmpleadosActivos, te va a dar error.</p>
+
+
+<h3>🔧 Optimización del rendimiento mediante vistas</h3>
+<p>Las vistas pueden ayudar a mejorar el rendimiento de consultas frecuentes al encapsular lógica compleja en una estructura reutilizable. Aunque no almacenan datos, SQL Server puede optimizar el uso de vistas en ciertas condiciones.</p>
+
+<ul>
+  <li><strong>Consultas complejas reutilizadas:</strong> SQL Server evita recompilar la consulta completa si ya está definida en una vista.</li>
+  <li><strong>División de grandes volúmenes de datos:</strong> Podés crear vistas específicas para regiones, fechas, o categorías, reduciendo los datos analizados.</li>
+  <li><strong>Uso en consultas distribuidas:</strong> Simplifica el acceso a datos provenientes de múltiples fuentes o uniones complejas.</li>
+</ul>
+
+<h3>🔐 Otorgar permisos sobre vistas</h3>
+<p>En lugar de dar acceso directo a las tablas base, podés controlar el acceso de los usuarios usando vistas.</p>
+
+<ul>
+  <li>Permite mostrar solo ciertas columnas o filas.</li>
+  <li>Evita exponer datos sensibles (como sueldos, emails, etc.).</li>
+  <li>Simplifica la seguridad y la administración de permisos.</li>
+</ul>
+
+<p><strong>Ejemplo:</strong></p>
+<pre>
+-- Otorgar permiso de lectura sobre una vista específica
+GRANT SELECT ON Vista_EmpleadosPublicos TO usuarioX;
+
+-- Otorgar permiso a un rol (por ejemplo, 'Vendedores')
+GRANT SELECT ON PedidosAlfki TO Vendedores;
+</pre>
+
+<h2>Restricciones</h2>
+<h3>🚫 Uso de WITH CHECK OPTION en vistas</h3>
+<p>La cláusula <code>WITH CHECK OPTION</code> se usa en la creación de vistas para asegurar que toda operación de inserción o actualización hecha a través de la vista respete la condición definida en la misma.</p>
+
+<p><strong>Ejemplo sin restricción:</strong></p>
+<pre>
+CREATE VIEW Vista_EmpleadosBienPagos AS
+SELECT * FROM Empleados
+WHERE Sueldo >= 3000;
+</pre>
+
+<p><em>Permite insertar empleados con sueldo menor a 3000, pero luego no se verán en la vista.</em></p>
+
+<p><strong>Ejemplo con restricción:</strong></p>
+<pre>
+CREATE VIEW Vista_EmpleadosBienPagos AS
+SELECT * FROM Empleados
+WHERE Sueldo >= 3000
+WITH CHECK OPTION;
+</pre>
+
+<p><em>Evita insertar o actualizar registros que no cumplan la condición de la vista.</em></p>
+
+</section><!--FIN DE VISTAS-->
+
+  <!--PROCEDIMIENTO ALMACENADO-->
+  <h2>Tema segundo parcial</h2>
+  <section id="ProcedimientosYFunciones">
+    <img src="https://i.postimg.cc/zGtKqWmP/3.png" alt="">
+    <h2 class="h2Centrado">Variables en SQL Server </h2>
+    <ul>
+      <li>Permiten almacenar un valor y recuperarlo más adelante para emplearlos en otras sentencias. </li>
+      <li>Son específicas de cada conexión y son liberadas automáticamente al abandonar la conexión.</li>
+      <li>Comienzan con "@" (arroba) seguido del nombre (sin espacios), dicho nombre puede contener cualquier carácter.</li>
+    </ul>
+    <h2>Declaración:</h2>
+    <p><strong>Una variable local se declara así:</strong>DECLARE @NOMBREVARIABLE TIPO</p>
+ <strong>Ejemplo:</strong>
+         DECLARE @nombre varchar(20)
+</p>
+<ul>
+  <li>Una variable debe ser declarada antes de usarse.</li>
+  <li>Puede declarar varias variables en una misma sentencia:    <br>DECLARE @nombre varchar(20), @edad int</li>
+  <li>No existen variables globales en SQL Server. Una variable declarada existe dentro del entorno en que se declara.</li>
+  <li>Una variable a la cual no se le ha asignado un valor contiene "null".</li>
+  <li>La asignación de variables se realiza con la sentencia SELECT o SET.<br>SET @edad=45</li>
+  <li>Si le asignamos un valor resultado de una consulta, la sintaxis es: <br> SELECT @nombre = name  <br>FROM Production.Product where ProductID = 998 </li>
+  <li>Ver el contenido de una variable con: select @nombre;</li>
+  <li>La utilidad de las variables consiste en que almacenan valores para utilizarlos en otras consultas.</li>
+  <li>Ejemplo, queremos saber todos los datos de productos con mayor precio de la tabla "Product". Para ello podemos emplear una variable para almacenar el precio más alto:
+    <pre>
+       DECLARE @mayorprecio money
+       SELECT @mayorprecio = MAX(ListPrice) FROM Production.Product  
+       y luego mostrar todos los datos de dicho producto empleando la variable anterior:
+       SELECT * FROM libros
+       WHERE precio=@mayorprecio;
+    </pre>
+  </li>
+  <li>Una variable puede ser definida con cualquier tipo de dato, excepto text, ntext e image; incluso de un tipo de dato definido por el usuario.
+</li>
+</ul>
+
+<h2 class="h2Centrado">Procedimientos almacenados</h2>
+<ul>
+  <li>Un Procedimiento Almacenado (Stored Procedure) es un grupo de sentencias T-SQL compiladas dentro de un plan de ejecución. </li>
+  <li>Son un método de encapsular tareas repetitivas que involucran variables definidas por el usuario para cálculos intermedios, como también sentencias de control de flujo de ejecución, para la implementación de bloques condicionales o repetitivos.</li>
+  <li>Son módulos o rutinas que encapsulan código para su reutilización.</li>
+</ul>
+<p><strong> Caracteristicas</strong></p>
+<ul>
+  <li>Aceptan parámetros de entrada. </li>
+  <li>Devuelven un valor de retorno (escalar) que indica el éxito o falla de su ejecución.</li>
+  <li>Pueden llamar a otros SPs (o sea dentro de un SP de puede llamar a otros SP).</li>
+  <li>Pueden devolver valores en la forma de parámetros de salida.</li>
+</ul>
+<p><strong>Ventajas</strong></p>
+<ul>
+  <li>Encapsulan la lógica de negocio y crean piezas de código reutilizable por la aplicación.</li>
+  <li>Todas las aplicaciones pueden usar los mismos procedimientos para asegurar un acceso consistente a los datos.</li>
+  <li>Evitan la exposición de los detalles de las tablas al usuario, haciendo innecesario el acceso a las tablas en forma directa, lo que incrementa sensiblemente la seguridad.</li>
+  <li>Puede otorgarse permisos de ejecución a un procedimiento a un usuario aun cuando no tenga permisos sobre las tablas o vistas usadas por el procedimiento.</li>
+  <li>Mejor desempeño. Los procedimientos establecen su plan de ejecución en su primera compilación y lo reutilizan en las siguientes invocaciones.</li>
+  <li>Reducción de tráfico de red. En lugar de enviar cientos de sentencias, el usuario puede ejecutar una operación compleja enviando una sola sentencia.</li>
+  <li>Reducción de la vulnerabilidad a ataques por inyección de SQL. Usando parámetros definidos explícitamente se minimiza la posibilidad del envío de código malicioso embebido en el valor de un parámetro.</li>
+  <li>Los procedimientos almacenados proporcionan ventajas de performance, un marco de trabajo, y mayores capacidades de seguridad. </li>
+  <li>La mejora en el rendimiento se logra a través de un almacenamiento local (en la base de datos), código precompilado, y manejo de cachés (almacenamientos temporarios). </li>
+</ul>
+<p><strong>Creacion de Procedimientos</strong></p>
+<p>
+  Se puede usar el comando CREATE PROCEDURE, o su versión abreviada, CREATE PROC, para crear un procedimiento almacenado en el Query.
+</p>
+<pre>
+  CREATE PROC [ EDURE ] procedure_name [ ; number ] 
+    [ { @parameter data_type } 
+        [ VARYING ] [ = default ] [ OUTPUT ] 
+    ] [ ,...n ] 
+
+  [ WITH 
+    { RECOMPILE | ENCRYPTION | RECOMPILE , ENCRYPTION } ]
+</pre>
+<p>Si se especifica RECOMPILE no se podrá cachear el procedimiento y el mismo será recompilada cada vez que se utilice</p>
+<p><strong>ENCRYPTION:</strong> Encriptar el contenido del procedimiento almacenado por razones de seguridad.</p>  
+<p><strong>Ejemplo:</strong></p>
+<pre>
+  CREATE PROC Production.LongLeadProducts
+  AS
+  SELECT Name, ProductNumber
+  FROM Production.Product
+  WHERE DaysToManufacture >= 1
+  GO
+</pre>
+<p>Este código creará un procedimiento llamado LongLeadProducts dentro del esquema Production.</p>
+<p><strong>Llamadas a Procedimientos</strong></p>
+<p>Si el procedimiento almacenado no es el primer comando en un batch, para ejecutarlo se debe preceder el nombre del procedimiento con las palabras claves EXECUTE o EXEC. Ejemplo muestra cómo llamar al procedimiento LongLeadProducts: <br>   EXEC Production.LongLeadProducts</p>
+<p><strong>Modificando Procedimientos </strong></p>
+<p>
+  Los Procedimientos a menudo deben ser modificados en respuesta a requerimientos del usuario o cambios en las definiciones de las tablas involucradas.
+  Para modificar un Procedimiento, reteniendo los permisos asignados, use la sentencia ALTER PROCEDURE. Modifica un solo Procedimiento, si este llama a otros procedimientos, estos últimos no resultan modificados.
+</p>
+<p><strong>Ejemplo:</strong></p>
+<pre>
+  ALTER PROC Production.LongLeadProducts
+  AS
+  SELECT Name, ProductNumber, DaysToManufacture
+  FROM Production.Product
+  WHERE DaysToManufacture >= 1
+  ORDER BY DaysToManufacture DESC, Name
+  GO
+</pre>
+
+<p><strong>Eliminar Procedimientos </strong></p>
+<ul>
+  <li>Se puede usar el comando DROP PROCEDURE, o su versión abreviada DROP PROC, para eliminar un procedimiento almacenado definido por el usuario, varios procedimientos a la vez o un conjunto de procedimientos agrupados.</li>
+  <li>El siguiente ejemplo elimina el procedimiento LongLeadProducts. <br>DROP PROC Production.LongLeadProducts</li>
+</ul>
+<p><strong>Parámetros </strong></p>
+<ul>
+  <li>Definir parámetros de entrada-salida, sus tipos de datos, y sus valores por defecto. </li>
+  <li>Cuando se definen parámetros de entrada y salida, estos siempre van precedidos por el signo @, seguido del nombre del parámetro y luego una designación del tipo de dato.</li>
+  <li>Los parámetros de salida deben incluir la palabra clave OUTPUT para diferenciar de los de entrada.</li>
+</ul>
+  
+<p><strong>Procedimientos con Parámetros </strong></p>
+<ul>
+  <li>Los Procedimientos son más flexibles cuando le incluimos parámetros en su definición, de modo tal que pueda crear una lógica de comportamiento más genérica.</li>
+  <li>Los parámetros de entrada permiten pasar información al SP.</li>
+  <li> Estos valores son usados como variables locales dentro del procedimiento almacenado.</li>
+</ul>
+<p><strong>Ejemplo:</strong></p>
+<pre>
+  CREATE PROC Production.LongLeadProducts( @dias int )
+  AS
+  SELECT Name, ProductNumber
+  FROM Production.Product
+  WHERE DaysToManufacture >= @dias
+        
+  Ejemplo de un procedimiento con más de un parámetro:
+  CREATE PROC Production.LongLeadProducts( @dias_desde int, @dias_hasta int )
+  AS
+  SELECT Name, ProductNumber
+  FROM Production.Product
+  WHERE DaysToManufacture BETWEEN @dias_desde AND @dias_hasta
+</pre>
+
+<ul>
+  <li><p><strong>Llamando a Procedimientos con Parámetros:</strong>Puede pasar valores a un Procedimiento, separados por comas, tanto por nombre del parámetro, como por posición. No debe mezclar ambos métodos. <br></p></li>
+  <li><p><strong>La forma: </strong> @parametro = valor es llamada pasaje por nombre.Cuando pasa parámetros por nombre, estos pueden ser especificados en cualquier orden.Incluso pueden omitirse, si tienen un valor por defecto, o si es válido que su valor sea NULL.</p></li>
+  <strong>Ejemplo:</strong>
+  <p>
+  EXEC Production.LongLeadProducts @MinimumLength=4
+  <br>
+  La forma de pasar solo los valores (sin los nombres) es llamada pasaje por posición. 
+  En esta forma los parámetros deben estar listados en el orden en que fueron definidos en la sentencia CREATE PROCEDURE.
+</p>
+<p><strong>Ejemplo:</strong> EXEC Production.LongLeadProducts 4</p>
+</ul>
+
+<h3>Creación del SP</h3>
+<pre>
+  CREATE PROCEDURE proc_producto
+  @n1 smallint,
+  @n2 smallint,
+  @resultado smallint OUTPUT
+  AS
+  SET @resultado = @n1* @n2
+</pre>
+
+<h3>Ejecución del SP</h3>
+<pre>
+  DECLARE @resp smallint
+  EXECUTE proc_producto 5, 6, @resp OUTPUT
+  SELECT 'El resultado es: ' , @resp 
+</pre>
+
+<h3>Resultados del SP</h3>
+<pre>
+  El resultado es : 30
+</pre>
+
+<h2 class="h2Centrado">Manejo de Errores con SQL</h2>
+<h3>TRY – CATCH</h3>
+<ul>
+  <li>Al igual que en otros lenguajes como C#.NET se puede abrir un TRY para la secuencia de comandos que podrían dar error y un CATCH para realizar un “deshacer” si esto ocurre.</li>
+  <li>Se puede incluir un grupo de instrucciones T-SQL en un bloque TRY. Si se produce un error en el bloque TRY, el control se transfiere a otro grupo de instrucciones que está incluido en un bloque CATCH.</li>
+</ul>
+<p><strong>Sintaxis </strong></p>
+<pre>
+  BEGIN TRY
+     { sql_statement | statement_block }
+  END TRY
+  BEGIN CATCH
+     { sql_statement | statement_block }
+  END CATCH
+</pre>
+
+<ul>
+  <li><strong>ERROR_NUMBER: </strong>Devuelve el número interno del error </li>
+  <li><strong>ERROR_STATE: </strong>Devuelve la información sobre la fuente </li>
+  <li><strong>ERROR_SEVERITY: </strong>Devuelve la información sobre cualquier cosa, desde errores informativos hasta errores que el usuario de DBA puede corregir, etc. </li>
+  <li><strong>ERROR_LINE: </strong>Devuelve el número de línea en el que ocurrió un error </li>
+  <li><strong>ERROR_PROCEDURE: </strong>Devuelve el nombre del procedimiento almacenado o la función.</li>
+  <li><strong>ERROR_MESSAGE: </strong>Devuelve la información más esencial y ese es el mensaje de texto del error.</li>
+</ul>
+<p><strong>Ejemplo:</strong></p>
+<pre>
+  USE AdventureWorks2014
+
+  BEGIN TRY
+  -- Generate a divide-by-zero error  
+  SELECT
+    1 / 0 AS Error;
+  END TRY
+  BEGIN CATCH
+    SELECT
+      ERROR_NUMBER() AS ErrorNumber,
+      ERROR_STATE() AS ErrorState,
+      ERROR_SEVERITY() AS ErrorSeverity,
+      ERROR_PROCEDURE() AS ErrorProcedure,
+      ERROR_LINE() AS ErrorLine,
+      ERROR_MESSAGE() AS ErrorMessage;
+  END CATCH;
+  GO
+</pre>
+<h2 class="h2Centrado">Funciones definidas por el usuario</h2>
+<ul>
+  <li>Es un conjunto de sentencias que operan como una unidad lógica. </li>
+  <li>Tiene un nombre, retorna un valor de salida y opcionalmente acepta parámetros de entrada.</li>
+  <li>Las funciones de SQL Server no pueden ser modificadas, las funciones definidas por el usuario si. </li>
+  <li>La adición de funciones al lenguaje del SQL solucionara los problemas de reutilización del código, dando mayor flexibilidad al programar las consultas de SQL.</li>
+</ul>
+<h2 class="h2Centrado">Tipos de Funciones</h2>
+<h3>SQL Server provee diferentes tipos de funciones:</h3>
+<table>
+<thead>
+<tr>
+<th>Funciones Escalares</th>
+<th>Funciones Tabulares En Línea</th>
+<th>Funciones Tabulares Multi-sentencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+  <ul>
+    <li>Devuelven un solo valor del tipo definido en la cláusula RETURNS.</li>
+    <li>Este tipo de funciones es sintácticamente similar a las funciones del Sistema tales como COUNT() o MAX(). </li>
+  </ul>  
+</td>
+<td>
+  <ul>
+    <li>Devuelven una tabla que es el resultado de una sola sentencia SELECT.</li>
+    <li>Es similar a una Vista, pero ofrecen más flexibilidad que una Vista porque se le pueden suministrar parámetros a la Función.</li>
+  </ul>  
+</td>
+<td>
+  <ul>
+    <li>Devuelve una Tabla construida por una o más sentencias Transact-SQL.</li>
+    <li>Es similar a un Procedimiento Almacenado, pero a diferencia de este último, la Vista puede referenciarse en la cláusula FROM de una sentencia SELECT como si se tratase de una Tabla.</li>
+  </ul> 
+</td>
+</tr>
+</tbody>
+</table>
+<strong>NOTA:</strong>El cuerpo de la Función es definido por un bloque BEGIN…END , contiene las sentencias Transact-SQL que devuelven el valor.
+<p><strong>Ejemplo funcion escalar:</strong></p>
+<pre>
+  CREATE FUNCTION Sales.SumSold(@ProductID int) RETURNS int  
+  AS  
+  BEGIN 
+    DECLARE @ret int 
+    SELECT @ret = SUM(OrderQty)  
+    FROM Sales.SalesOrderDetail WHERE ProductID = @ProductID  
+    IF (@ret IS NULL)  
+      SET @ret = 0 
+    RETURN @ret 
+  END 
+</pre>
+<p>
+  Para modificar o eliminar una Función. Use ALTER FUNCTION para modificar sus funciones. Luego de creadas, use DROP FUNCTION para eliminar Funciones de la base de datos. <br>
+  Una Función Escalar puede ser invocada en cualquier lugar del código dónde se necesite una expresión del mismo tipo de datos. <br>
+  El siguiente ejemplo, hace un SELECT que recupera ProductID, Name, y el resultado de la función escalar llamada SumSold para cada producto en la base AdventureWorks.  <br>
+  SELECT ProductID, Name, Sales.SumSold(ProductID) AS SumSold <br> FROM Production.Product  
+</p>
+<p><strong>Funciones Tabulares En Línea:</strong>Podemos usar Funciones Tabulares En Línea para obtener la funcionalidad de Vistas parametrizadas. 
+Devuelven un ROWSET. O sea que la salida de una de estas funciones es una simple declaración SELECT.  
+<br>
+Una de las limitaciones de las vistas, es que no podemos incluir parámetros en la vista que estamos creando. Usualmente lo resolveríamos con un filtro WHERE cuando invocamos a la Vista.  
+<br>
+Sin embargo, esto puede requerir la construcción de una cadena de caracteres que constituye la consulta SELECT a ejecutar, aumentando la complejidad de la solución. Puede conseguir la funcionalidad de una Vista parametrizada, usando una Función Tabular.
+</p>
+<p><strong>Características: </strong></p>
+<ul>
+  <li>La cláusula RETURNS especifica TABLE como el tipo de dato retornado.</li>
+  <li>El conjunto de resultados de la sentencia SELECT define el formato de salida. </li>
+  <li>La cláusula RETURN contiene un solo SELECT entre paréntesis. </li>
+  <li>El cuerpo de la Función no necesita estar encerrado en un bloque BEGIN…END. </li>
+</ul>
+<p>El siguiente ejemplo crea una Función Tabular En Línea, que devuelve los nombres de los empleados para un Administrador en particular. </p>
+<pre>
+  CREATE FUNCTION HumanResources.EmployeesForManager 
+  (@ManagerId int)  
+  RETURNS TABLE 
+  AS 
+  RETURN  
+  ( 
+  SELECT FirstName, LastName 
+  FROM HumanResources.Employee Employee  
+  INNER JOIN Person.Contact Contact  
+  ON Employee.ContactID = Contact.ContactID 
+  WHERE ManagerID = @ManagerId  
+  )
+</pre>
+<p>
+  Use una Función Tabular En Línea donde normalmente usaría una Vista, tal como en la cáusula FROM de una sentencia SELECT. 
+  <br>
+  El siguiente ejemplo devuelve todos los nombres de los empleados para dos administradores (3 y 6) : 
+  <br>
+  SELECT * FROM HumanResources.EmployeesForManager(3) 
+  <br>
+  SELECT * FROM HumanResources.EmployeesForManager(6) 
+</p>
+<p><strong>Caracteristicas:</strong></p>
+<p>
+  La salida se puede utilizar dentro de joins o querys como si fuera una tabla de estándar. 
+  <br>
+  El tipo de datos que devuelve es TABLE. 
+  <br>
+  La cláusula RETURNS especifica un TABLE sin información adicional, esta debe ser una simple sentencia SELECT
+</p>
+<p><strong>Funciones Tabulares Multi-Sentencia</strong></p>
+<ul>
+  <li>Una Función Tabular Multi-Sentencia es una combinación de una Vista y un Procedimiento. Este tipo de Función Tabular puede usar lógica compleja y múltiples sentencias Transact-SQL para construir una Tabla. </li>
+  <li>Del mismo modo que usaría una Vista, puede usar estas Funciones en la cláusula FROM de Transact-SQL. </li>
+</ul>
+<p><strong>Caracteristicas:</strong></p>
+<ul>
+  <li>La sentencia RETURNS especifica TABLE como tipo de dato a retornar y define un nombre y un formato para la tabla de salida. </li>
+  <li>Un bloque BEGIN…END delimita el cuerpo de la función. </li>
+</ul>
+<p>
+  El siguiente ejemplo crea una Función Tabular Multi-Sentencia llamada @tbl_Employees con dos columnas. 
+  <br>
+  La segunda columna cambia dependiendo del valor del parámetro de entrada @ format. 
+</p>
+<pre>
+  CREATE FUNCTION HumanResources.EmployeeNames(@format nvarchar(9)) 
+  RETURNS @tbl_Employees TABLE 
+  ( 
+  EmployeeID int PRIMARY KEY,  
+  EmployeeName nvarchar(100) 
+  ) 
+  AS 
+  BEGIN 
+    IF (@format = 'SHORTNAME') 
+      INSERT @tbl_Employees  
+      SELECT [BusinessEntityID], LastName  
+      FROM HumanResources.vEmployee 
+    ELSE IF (@format = 'LONGNAME') 
+      INSERT @tbl_Employees  
+      SELECT [BusinessEntityID], (FirstName + ' ' + LastName)  
+      FROM HumanResources.vEmployee 
+  RETURN 
+  END 
+
+</pre>
+<p>Los siguientes ejemplos obtienen la lista de empleados en su forma corta y larga, respectivamente: </p>
+<pre>
+  SELECT * 
+  FROM HumanResources.EmployeeNames('SHORTNAME’) 
+
+  SELECT *
+  FROM HumanResources.EmployeeNames('LONGNAME’) 
+</pre>
+<p><strong>Características:</strong></p>
+<ul>
+  <li>Las funciones de tabla de multi sentencias son similares a los procedimientos almacenados excepto que devuelven una tabla. </li>
+  <li>Este tipo de función se usa en situaciones donde se requiere más lógica y proceso. </li>
+</ul>
+</section>
+<!--FIN PROCEDIMIENTO ALMACENADO-->
+
+
+<!--SEGURIDAD -->
+<section id="Seguridad">
+<h2 class="h2Centrado">Tipos de Inicio de Sesión en SQL Server</h2>  
+<ul>
+  <li><p><strong>Usuario local de Windows:</strong> SQL Server usa Windows para autenticar cuentas de usuario de Windows.</p></li>
+  <li><p><strong>Cuenta de Dominio de Active Directoy: </strong> Es un tipo de cuenta de usuario de Windows. Cuando SQL Server está configurado para usar la autenticación de Windows,SQL Server se integra con Active Directory para autenticar las cuentas de usuario de Windows.</p></li>
+  <li><p><strong>Grupo de Windows: </strong>concede acceso a un grupo de Windows otorga acceso a todos los inicios de sesión de usuario de Windows que son miembros del grupo. Al quitar un usuario de un grupo, se quitan los derechos del usuario que proviene del grupo. La pertenencia a grupos es la estrategia preferida.</p></li>
+  <li><p><strong>SQL Server: </strong>almacena el nombre de usuario y un hash de la contraseña en la base de datos master.</p>Inicio de Sesión de SQLServer</li>
+  <li><p><strong>Usuarios de la Base de Datos:</strong> independiente autentifican las conexiones de SQL Server en el nivel de la base de datos. Una base de datos independiente es una base de datos que está aislada de otras bases de datos y de la instancia del SQL Server (y de la base de datos master) que hospeda la base de datos. SQL Server admite usuarios de base de datos independientes para la autenticación de Windows y SQL Server.</li>
+</ul>
+
+<h2 class="h2Centrado">Seguridad General en SQL Server</h2>
+<ul>
+  <li>Creación de Inicios de Sesión</li>
+  <ul>
+    <p><strong>Sesión de Windows: </strong>Toda entidad de seguridad tiene una identidad de seguridad (SID). <br> Este tema se aplica a todas las versiones de SQL Server, pero hay algunas restricciones en las entidades de seguridad a nivel de servidor de SQL Database o Azure Synapse Analytics y es un ejemplo de un tipo de colección.</p>
+    <p><strong>Sesión de SQL Server: </strong> Es una entidad de seguridad a nivel de servidor. Se crea de forma predeterminada cuando se instala una instancia. A partir de SQL Server 2005 (9.x), la base de datos predeterminada de sa es poster; Es un cambio de comportamiento con respecto a versiones anteriores de SQL Server. El inicio de sesión es miembro del rol fijo de sysadmin. Este inicio de sesión tiene todos los permisos en el servidor y no puede limitarse. Además, no se puede quitar, pero puede deshabilitarse para que nadie lo emplee. </p>
+  </ul>
+  <li>Creación de usuarios en la base de datos</li>
+  <p><strong>Esquemas de Base de Datos: </strong>SQL Server 2005 introduce el concepto ANSI de Esquema, a través del cual podemos agrupar los objetos de base de datos de datos, tablas, vistas, procedimientos almacenados, etc., siguiendo el criterio que mejor se adecue a nuestras necesidades. El nombre de esquema formulará parte del nombre completo de los objetos que pertenecen a dicho esquema. Por ejemplo, si creamos un Esquema denominado Ventas, y dentro de él una tabla denominada Pedidos, deberemos de calificar la tabla utilizando el nombre del esquema, al estilo Objeto.Schema o de las grandes ventajas de uso de Esquemas, es que podremos asignar permisos a estos nivel, en lugar de tener que asignar permisos a los diferentes objetos de forma individual. Las siguientes sentencias ilustran este ejemplo:</p>
+  <pre>
+    USE MASTER
+    GO
+
+    -- Creamos un Inicio de Sesión de SQL Server
+    CREATE LOGIN Alumno WITH PASSWORD='Pa$$w0rd'
+    GO
+
+    -- Creamos una Base de Datos para pruebas
+    CREATE DATABASE TestDB
+  </pre>
+  <p><strong>Linaje de Datos, integridad de datos: </strong>Mantener registros históricos de los cambios de datos a lo largo del tiempo puede ser beneficioso para abordar los cambios accidentales en los datos. También puede ser útil para la auditoría de cambios de aplicación y puede recuperar elementos de datos cuando un actor malintencionado ha introducido cambios de datos que no estaban autorizados.</p>
+  <ul>
+    <li>Usa las tablas temporales para conservar las versiones de registros a lo largo del tiempo y para ver los datos tal y como han pasado en el período de vida del registro para proporcionar una vista histórica de los datos de la aplicación.</li> 
+    <li>Las tablas temporales se pueden usar para proporcionar una versión de la tabla actual en cualquier momento dado.</li>  
+  </ul>
+</ul>
+
+<h3>Seguridad Amenazas de SQL </h3>
+<ul>
+  <p><strong>Inyección de Código SQL: </strong>Es un ataque en el que se inserta código malintencionado en cadenas que posteriormente se pasan a una instancia de SQL Server para su ejecución.</p>
+ 
+  <p><strong>Riegos en el canal lateral: </strong>Para minimizar el riesgo de un ataque de canal lateral, tenga en cuenta lo siguiente: </p>
+  <ul>
+    <li>Asegúrese de que se aplican las revisiones más recientes de la aplicación y del sistema operativo.</li>
+    <li>En el caso de cargas de trabajo híbridas, asegúrese de que se aplican las revisiones de firmware más recientes para cualquier hardware local.</li>
+    <li>En Azure, para cargas de trabajo y aplicaciones altamente confidenciales, puede agregar protección adicional contra ataques de canal lateral con máquinas virtuales aisladas, hosts dedicados o mediante el uso de máquinas virtuales de proceso confidencial, como las series DC y máquinas virtuales que usan los procesadores EPYC AMD de 3ª generación.</li>
+  </ul>
+  <p><strong>Amenazas de infraestructura: </strong>Tenga en cuenta las siguientes amenazas comunes de infraestructura: </p>
+  <ul>
+    <li><strong>Acceso por fuerza bruta: </strong>El atacante intenta autenticarse con varias contraseñas en cuentas diferentes hasta que se encuentra una contraseña correcta.</li>
+    <li><strong>Difusión/Averiguación de contraseña: </strong> Los atacantes prueban una contraseña diseñada cuidadosamente con todas las cuentas de usuario conocidas (una contraseña para muchas cuentas). Si se produce un error en la distribución inicial de contraseñas, lo intentan de nuevo, usando una contraseña diseñada cuidadosamente diferente, normalmente esperando una cantidad de tiempo establecida entre los intentos para evitar la detección.</li>
+    <li><strong>Los ataques de ransomware: </strong>Son un tipo de ataque dirigido en el que se usa malware para cifrar datos y archivos, lo que impide el acceso a contenido importante. Los atacantes intentan obtener dinero de las víctimas, normalmente en forma de criptomonedas, a cambio de la clave de descifrado. La mayoría de las virus ransomware comienzan con mensajes de correo electrónico con datos adjuntos que intentan instalar ransomware o sitios web que hospedan kits de vulnerabilidades que intentan usar vulnerabilidades en exploradores web u otro software para instalar ransomware.</li>
+  </ul>
+  <p><strong>Riesgos de la contraseña: </strong> Dado que no quiere que los atacantes adivinen fácilmente nombres de cuenta o contraseñas, los pasos siguientes ayudan a reducir el riesgo de que se descubran contraseñas:</p>
+  <ul>
+    <li>Cree una cuenta de administrador local única que no se llame Administrador.</li>
+    <li>Use contraseñas seguras complejas para todas sus cuentas. Para más información sobre cómo crear una contraseña segura, vea el artículo Crear una contraseña segura.</li>
+    <li>De forma predeterminada, Azure selecciona la Autenticación de Windows durante la instalación de la máquina virtual de SQL Server. Por lo tanto, el inicio de sesión de SA está deshabilitado y el programa de instalación asigna una contraseña. Se recomienda no usar la cuenta sa con contraseña predeterminada y, en su lugar, crear una contraseña segura y única para esa cuenta.</li>
+  </ul>
+  <p><strong>Riegos de ransomware: </strong>La mejor estrategia para protegerse contra ransomware es prestar especial atención a las vulnerabilidades de RDP y SSH. Además, tenga en cuenta las recomendaciones siguientes:</p>
+  <ul>
+    <li>Usa firewalls y bloqueo de puertos</li>
+    <li>Asegurarse de que se aplican las actualizaciones de seguridad del sistema operativo y de la aplicación más recientes</li>
+    <li>Usar cuentas de servicio administradas de grupo (gMSA)</li>
+    <li>Limitar el acceso a las máquinas virtuales</li>
+    <li>Requerir acceso Just-In-Time (JIT) y Azure Bastion</li>
+    <li>Mejorar la seguridad del área de superficie evitando la instalación de herramientas como Sysinternals y SSMS en el equipo local.</li>
+    <li>Evitar instalar características de Windows, roles y servicios que no son necesarios</li>
+    <li>debe haber una copia de seguridad completa normal, protegida por separado, de una cuenta de administrador común para no eliminar copias de las bases de datos.</li>
+  </ul>
+</ul>
+
+<h3>Seguridad: Entidades y objetos de Base de Datos</h3>
+<ul>
+    <p><strong>Entidades de seguridad: </strong>Las entidades de seguridad en SQL Server son básicamente quién tiene acceso al sistema. Esto incluye individuos, grupos y procesos que interactúan con SQL Server. Cada entidad de seguridad puede tener permisos específicos configurados para diferentes elementos protegibles, como el propio servidor, las bases de datos o los objetos dentro de ellas. El objetivo es limitar el acceso y reducir la superficie de ataque de SQL Server.</p>
+    <p><strong>Nivel SQL Server: </strong>Las entidades de seguridad son los individuos, grupos y procesos que tienen acceso a SQL Server. Los elementos probables son el servidor, la base de datos y los objetos incluidos en la base de datos. Cada uno de estos elementos dispone de un conjunto de permisos que pueden configurarse para reducir el área expuesta de SQL Server. En la tabla siguiente se incluye información sobre las entidades de seguridad y los elementos protegidos.</p>
+    <p><strong>Base de Datos: </strong>son entidades que pueden solicitar recursos de SQL Server. Igual que otros componentes del modelo de autorización de SQL Server, las entidades de seguridad se pueden organizar en jerarquías. El ámbito de influencia de una entidad de seguridad depende del ámbito de su definición: Windows, servidor o base de datos; y de la entidad de seguridad es indivisible o es una colección.</p>
+    <ul>
+      <p><strong>Inicio de Sesión cuenta sa: </strong>El usuario sa es la cuenta de administrador predeterminada de SQL Server, creada durante la instalación, con privilegios totales e ilimitados sobre todas las bases de datos y objetos del servidor. Esto le permite realizar cualquier acción administrativa, desde crear bases de datos hasta modificar configuraciones. <br> Dado su alto nivel de privilegios, el uso del usuario sa debe ser mínimo y estar reservado solo para personal autorizado en situaciones críticas. En entornos de producción, siempre es mejor usar cuentas con privilegios limitados, siguiendo el principio de mínimo privilegio necesario, lo que significa asignar solo los permisos esenciales para cada tarea.</p>
+      <p><strong>Usuario y esquema dbo: </strong>El usuario dbo es una entidad de seguridad de usuario especial que hay en cada base de datos. <br> Todos los administradores de SQL Server, los miembros del rol fijo de servidor sysadmin, el inicio de sesión sa y los propietarios de la base de datos especifican las bases de datos como el usuario dbo. El usuario dbo tiene todos los permisos en la base de datos y no se limitará ni a quitar. dbo representa el propietario la base de datos, pero la cuenta de usuario dbo no es lo mismo que el rol fijo de base de datos db_owner, mientras que el rol de base de datos db_owner no es lo mismo que la cuenta de usuario que se registra como el propietario de la base de datos.
+        El usuario dbo tiene la propiedad del esquema dbo. El esquema dbo es el predeterminado para todos los usuarios, salvo que se especifique otro. El esquema dbo no puede quitarse</p>
+      <p><strong>Rol Publico: </strong>Es un rol predeterminado y fijo en SQL Server, lo que significa que no se puede eliminar. Tanto cada inicio de sesión (login) a nivel de servidor como cada usuario de base de datos (user) pertenecen automáticamente a este rol.</p>
+      <ul>
+        <li><strong>Base de Datos: </strong>En el contexto de una base de datos, el rol public asegura que todos los usuarios de esa base de datos hereden ciertos permisos por defecto. Estos permisos suelen ser necesarios para realizar operaciones básicas y rutinarias dentro de la base de datos, tareas que cualquier usuario normalmente debería poder hacer.</li>
+        <li><strong>Servidor: </strong>A nivel de servidor, el rol public garantiza que cada inicio de sesión tenga una línea base de permisos. Al igual que con el rol public de base de datos, estos permisos son fundamentales para las operaciones básicas del servidor que todos los inicios de sesión requieren.</li>
+      </ul>  
+      <p><strong>Usuario y esquema sys: </strong>Son esquemas internos del motor de SQL Server que contienen vistas de catálogo. Estas vistas muestran metadatos sobre la base de datos (como tablas, usuarios, permisos). Aunque pueden aparecer como "usuarios" en algunas vistas de catálogo, en realidad son entidades del sistema, cruciales para su funcionamiento interno. Por lo tanto, no se pueden modificar ni eliminar.</p>
+      <p><strong>Inicio de sesión Basado en certificados: </strong>Las entidades de seguridad de servidor cuyos nombres están entre signos de número dobles (por ejemplo, ##Nombre##) son exclusivamente para uso interno del sistema SQL Server. Se crean automáticamente a partir de certificados durante la instalación y no deben eliminarse. Estas cuentas no tienen contraseñas que los administradores puedan cambiar, ya que se basan en certificados emitidos por Microsoft.</p>
+      <ul>
+        <li>##MS_SQLResourceSigningCertificate##</li>
+        <li>##MS_SQLReplicationSigningCertificate##</li>
+        <li>##MS_SQLAuthenticatorCertificate##</li>
+        <li>##MS_AGENTSigningCertificate##</li>
+        <li>##MS_PolicyEventProcessingLogin##</li>
+        <li>##MS_PolicySigningCertificate##</li>
+        <li>##MS_PolicyTsqlExecutionLogin##</li>  
+      </ul>
+      <p><strong>Usuario guest: </strong>Cada base de datos incluye un usuario guest. Los permisos concedidos al usuario guest se aplican a todos los usuarios que tienen acceso a la base de datos, pero no disponen de una cuenta en ella. No se puede quitar su usuario, pero se puede deshabilitar si se revoca su permiso CONNECT.  El permiso CONNECT se puede revocar si se expone REVOKE CONNECT FROM GUEST; en cualquier base de datos que no sea master ni msdb.</p>
+    </ul>
+  </ul>
+</ul>
+
+<h3>Seguridad: Elementos protegibles</h3>
+  <p><strong>Ámbito protegible: </strong> Los elementos protegibles son los recursos cuyo acceso es regulado por el sistema de autorización del motor de base de datos SQL Server. Por ejemplo, una tabla en un elemento protegible. Algunos elementos protegibles pueden estar incluidos en otros, con lo que se crean jerarquías anidadas denominadas ámbitos que a su vez se pueden proteger. Los ámbitos protegibles son servidor, base de datos y esquema.</p>
+<ul>
+  <p><strong>Servidor: </strong>El ámbito protegido servidor contiene los siguientes valores que puede proteger:</p>
+  <ul>
+    <li>grupo de disponibilidad</li>
+    <li>Punto de conexión</li>
+    <li>Iniciar sesión</li>
+    <li>Rol del servidor</li>
+    <li>Base de datos</li>  
+  </ul>
+  <p><strong>Base de Datos: </strong>El ámbito protegido base de datos contiene los siguientes valores que puede proteger:</p>
+  <ul>
+    <li>Rol de aplicación</li>
+    <li>Enmblado</li>
+    <li>Clave asimétrica</li>
+    <li>Certificado</li>
+    <li>Contrato</li>
+    <li>Catálogo de texto completo</li>
+    <li>Lista de palabras irrelevantes de texto completo</li>
+    <li>Tipo de mensaje</li>
+    <li>Enlace de servicio remoto (Base de datos) Rol</li>
+    <li>Ruta</li>
+    <li>Esquema</li>
+    <li>Lista de propiedades de búsqueda</li>
+    <li>Service</li>
+    <li>Clave simétrica</li>    
+  </ul>
+  <p><strong>Esquema: </strong>El ámbito protegido esquema contiene los siguientes valores que se pueden proteger:</p>
+  <ul>
+    <li>Tipo</li>
+    <li>Colección de esquemas XML</li>
+    <li>Objeto: la clase de objeto tiene los miembros siguientes:</li>
+    <ul>
+      <li>Agregada</li>
+      <li>Función</li>
+    </ul>
+  </ul>
+</ul>
+
+<h3>Seguridad: Jerarquía de Permisos en Base de Datos</h3>
+<ul>
+  <p><strong>Cifrado y Certificado: </strong>El cifrado no reemplaza los controles de acceso, pero mejora drásticamente la seguridad al limitar el daño en caso de una brecha. Si los controles de acceso fallan y datos sensibles (como números de tarjetas de crédito) caen en manos equivocadas, el cifrado los vuelve ilegibles, protegiendo así la información. Es una capa de defensa crucial para prevenir la exposición de datos, incluso en el peor escenario.</p>
+  <p><strong>Mecanismos de Cifrado: </strong>SQL Server ofrece los mecanismos siguientes para el cifrado:</p>
+  <ul>
+    <li>Funciones de Transact-SQL</li>  
+    <li>Claves simétricas</li>  
+    <li>Certificados</li>  
+    <li>Cifrado de datos transparente</li>  
+  </ul>
+  <p><strong>Funciones Transact-SQL: </strong>Los elementos individuales se pueden cifrar a medida que se insertan o actualizan utilizando las funciones de Transact-SQL.</p>
+  <p><strong>Claves Asimétricas: </strong>Las claves asimétricas usan un par de claves: una pública y una privada. Lo que cifra una, lo descifra la otra. Son muy seguras, pero consumen muchos recursos al cifrar y descifrar. Se usan a menudo para proteger claves simétricas.</>
+  <p><strong>Claves Simétricas: </strong>Las claves simétricas usan una misma clave tanto para cifrar como para descifrar. Son rápidas y eficientes, lo que las hace ideales para el cifrado diario de grandes volúmenes de datos sensibles en una base de datos.</p>
+  <p><strong>Cifrado de datos de transparente(TDE): </strong>El TDE es una forma de cifrado que utiliza una clave simétrica para cifrar toda una base de datos. Esta clave simétrica, llamada "clave de cifrado de base de datos", a su vez, está protegida por otras claves o certificados (ya sean claves maestras de base de datos o claves asimétricas externas). Es una característica que ofrece seguridad a nivel de base de datos sin requerir cambios en la aplicación.</p>
+  <p><strong>Configuración del Motor SQLServer para cifrar conexiones: </strong>Configurar SQL Server para cifrar las conexiones entrantes es crucial para la seguridad. Este proceso implica dos pasos principales: primero, instalar y configurar un certificado que cumpla los requisitos de SQL Server, y segundo, ajustar las opciones de cifrado en la instancia del servidor.</p>
+  <ul>
+    <li><strong>1ro. Utilización de Certificados: </strong>Para que SQL Server pueda cifrar las conexiones, debe usar un certificado digital válido. Este certificado se instala en el equipo que ejecuta SQL Server. A partir de SQL Server 2019, la gestión de certificados está integrada en el Administrador de configuración de SQL Server, simplificando la instalación y configuración. Para versiones anteriores (SQL Server 2017 y previas), el proceso requiere el uso de la Consola de administración de Microsoft (MMC) para importar y configurar el certificado manualmente, asegurando que la cuenta de servicio de SQL Server tenga acceso a su clave privada.</li>  
+    <li><strong>2do. Opciones de Cifrado: </strong>Una vez que el certificado está configurado, puedes habilitar el cifrado obligatorio para todas las conexiones en las propiedades del protocolo de SQL Server dentro del Administrador de configuración. Esto asegura que tanto las credenciales como los datos se transmitan cifrados. También es posible habilitar el cifrado solo para clientes específicos. Para verificar que el cifrado de red está funcionando, puedes ejecutar la consulta SELECT DISTINCT (encrypt_option) FROM sys.dm_exec_connections; en master y verificar que el valor sea TRUE.</li>
+    </ul>
+  <p><strong>Cifrado de paquetes: </strong>El tráfico de red entre un cliente y SQL Server se divide en paquetes de credenciales (inicio de sesión) y paquetes de datos. Independientemente de si el cifrado general está configurado o no, las credenciales enviadas durante el inicio de sesión siempre se cifran. Si se configura el cifrado (ya sea del lado del servidor o del cliente), ambos tipos de paquetes (credenciales y datos) se cifrarán siempre. SQL Server prioriza el uso de un certificado de una autoridad de certificación de confianza para este cifrado.</p>
+  <p><strong>Certificados autofirmados: </strong>Los certificados autofirmados son generados por SQL Server o creados manualmente, y no son emitidos por una autoridad de certificación externa.</p>
+  <ul>
+    <li><strong>Generados por SQL Server: </strong>Si no hay un certificado de una autoridad de confianza instalado, SQL Server genera automáticamente un certificado autofirmado durante el inicio. Este certificado se usa para cifrar las credenciales de inicio de sesión y ayuda a aumentar la seguridad, pero no protege contra la suplantación de identidad del servidor. Si se fuerza el cifrado de todas las conexiones con este tipo de certificado, todos los datos se cifrarán con él. Las versiones de SQL Server 2016 y anteriores usaban SHA1 para estos certificados, lo que puede generar advertencias de seguridad en entornos modernos. Se recomienda usar certificados con algoritmos más seguros (como SHA256, usado a partir de SQL Server 2017) o crear un certificado de terceros.</li>
+    <li><strong>Script PowerShell: </strong>Puedes crear un certificado autofirmado con algoritmos más modernos y seguros (como SHA256) usando un script de PowerShell. Este script genera un certificado y lo guarda en el almacén de certificados del equipo local, cumpliendo con los requisitos para el cifrado de una instancia de SQL Server. Es una alternativa a los certificados generados automáticamente por SQL Server que podrían tener algoritmos obsoletos.</li>
+  </ul>
+  <p><strong>Funciones y vistas de catalogo de Seguridad: </strong>SQL Server proporciona diversas funciones y vistas de catálogo que exponen información de seguridad del motor de base de datos. Estas herramientas son optimizadas para rendimiento y utilidad, y permiten acceder a metadatos relevantes para la seguridad. Incluyen:</p>
+  <ul>
+    <li>Vistas de catálogo de seguridad: Proporcionan información sobre permisos a nivel de base de datos y servidor, entidades de seguridad, roles, así como datos sobre claves de cifrado, certificados y credenciales.</li>
+    <li>Funciones de seguridad: Devuelven información sobre el usuario actual, permisos y esquemas.</li>
+    <li>Funciones y vistas de administración dinámica (DMV) relacionadas con la seguridad: Ofrecen datos de rendimiento y estado en tiempo real sobre aspectos de seguridad.</li>
+  </ul>
+</ul>
+
+<strong>Conceptos sobre cifrado en SQL Server</strong>
+<ul>
+  <li>Las claves maestras de base de datos se protegen mediante la clave maestra de servicio.</li>
+  <li>El módulo de Administración extensible de claves (EKM) mantiene las claves simétricas y asimétricas fuera de SQL Server</li>
+  <li>El cifrado de datos transparente (TDE) debe utilizar una clave simbólica denominada clave de cifrado de base de datos que se protege bien mediante un certificador protegido por la clave maestra de base de datos o mediante una clave asimétrica almacenada en una EKM.</li>
+  <li>La clave maestra de servicio y todas las claves maestras de base de datos se deben tener con claves simetricas</li>
+  <li>El programa de instalación de SQL Server crea la clave maestra de servicio, que se cifra con la API de protección de datos de Windows (DPAPI).</li>
+  <li>Para obtener el máximo rendimiento, cifre los datos utilizando claves simbólicas en lugar de certificados o claves asimetricas.</li>
+</ul>
+
+
+</section>
+<!--FIN SEGURIDAD-->
+
+<!--TRIGGERS-->
+<section id="Triggers">
+<h2 class="h2Centrado">Triggers</h2>
+
+<p>
+  Un "trigger" (disparador o desencadenador) es un tipo de stored procedure que se ejecuta cuando se intenta modificar (ABM O CRUD) los datos de una tabla o vista. 
+</p>
+<ul>
+  <li>Asociación a una tabla</li>
+  <li>Invocación automática</li>
+  <li>Imposibilidad de llamada directa</li>
+  <li>Identificación con una transacción</li>
+</ul>
+
+<h3>Caracteristicas</h3>
+<ul>
+  <li>Asociación a una tabla</li>
+  <li>Invocación automática</li>
+  <li>Imposibilidad de llamada directa</li>
+  <li>Identificación con una transacción</li>
+    
+</ul>
+<h3>Uso de los triggers</h3>
+<ul>
+  <li>Cambios en cascada en tablas relacionadas de una base de datos</li>
+  <li>Exigir una integridad de datos más compleja que una restricción CHECK</li>
+  <li>Definición de mensajes de error personalizados</li>
+  <li>Mantenimiento de datos no normalizados</li>
+  <li>Comparación de los datos antes y después de su modificación</li>
+</ul>
+
+<h3>Consideraciones acerca del uso de triggers</h3>
+<ul>
+  <li>Los triggers son reactivos, mientras que las restricciones son proactivas.</li>
+  <li>Las restricciones se comprueban antes.</li>
+  <li>Las tablas pueden tener varios triggers para cualquier acción.</li>
+  <li>Debe tener permiso para ejecutar todas las instrucciones definidas en los triggers.</li>
+</ul>
+
+<strong>Sintaxis de triggers</strong>
+<pre>
+  CREATE TRIGGER nombre_trigger 
+  ON { tabla|vista }
+  [ WITH ENCRYPTION ] 
+  { AFTER | INSTEAD OF }
+  { INSERT, UPDATE, DELETE }
+  [ NOT FOR REPLICATION ]
+  AS 
+  Bloque de instrucciones
+</pre>
+<p><strong>WITH ENCRYPTION: </strong>Encripta el código del Trigger para que no pueda ser interpretado por nadie mas.</p>
+<p><strong>AFTER: </strong>Indica que el Trigger se ejecutará después de que las operaciones DML se hayan ejecutado correctamente. Esta clausula no se aplica en las vistas.</p>
+<p><strong>INSTEAD OF: </strong>Permite ejecutar el Trigger en lugar  de la operación DML, es decir, SQL Server ignora dicha operación para ejecutar al Trigger. <br> Tener en cuenta que solo debe existir un Trigger tipo INSTEAD OF para cada operación DML. </p>
+<p><strong>INSERT, UPDATE, DELETE: </strong></p>
+<p><strong>NOT FOR REPLICATION: </strong>Evita que el Trigger se ejecute cuando una operación de replicación vaya a alterar nuestra tabla asociada. </p>
+<p>
+  Se aplica cuando estás replicando un servidor SQL Server a otro servidor. En ese caso, si el trigger llega a correr durante el proceso de replicación, eso a menudo no es el comportamiento deseado y puede corromper los datos en el servidor replicado.
+  <br> 
+  Por esta razón, se puede agregar NOT FOR REPLICATION a la definición de un trigger para que este no se ejecute si la modificación de datos ocurre durante el proceso de replicación. 
+</p>
+<strong>Triggers DML:</strong>
+<ul>
+  <p><strong>INSTEAD OF: </strong>Los TRIGGERS de tipo Instead OF son TRIGGERS que se disparan en lugar de la operación que los produce, es decir, una operación de borrado de registros con la instrucción delete sobre una tabla que tiene un TRIGGER de tipo INSTEAD OF no se llega a realizar realmente, sino que SQL Server 2012 cuando detecta esta operación invoca al TRIGGER que es el responsable de actuar sobre los registros afectados, en el ejemplo que estamos siguiendo, el TRIGGER sería el responsable de borrar los registros de la tabla que ha disparado el evento. Si el TRIGGER no se encarga de esta tarea, el usuario tendrá la sensación de que SQL Server no hace caso a sus comandos ya que por ejemplo una instrucción DELETE no borrará los registros.</p>
+  <p><strong>AFTER: </strong>Todos los TRIGGERS sirven en general para implementar restricciones de negocio avanzadas, como ejemplo vamos a ver como se construiría un TRIGGER que impidiese que se aumentase el Crédito total de un cliente que tenga pagos pendientes, para ello vamos a suponer una tabla de clientes con identificador idCliente y con un campo llamado CreditoTotal y una tabla de recibos conteniendo el idcliente y el estado del recibo (estos son solamente los campos que son relevantes para nuestro ejemplo).</p>
+</ul>
+
+<h3>Creación de triggers</h3>
+<pre>
+  CREATE TRIGGER Empl_Borrar 
+  ON Employees
+  FOR DELETE 
+  AS
+  IF (SELECT COUNT(*) FROM Deleted) > 1
+  BEGIN
+    ROLLBACK TRANSACTION   
+    THROW 50000, 'NO SE PUEDE BORRAR MAS DE UN EMPLEADO A LA VEZ',1
+  END
+</pre>
+
+<h3>Modificacion de triggers</h3>
+<pre>
+  ALTER TRIGGER Empl_Borrar 
+  ON Employees
+  FOR DELETE 
+  AS
+  IF (SELECT COUNT(*) FROM Deleted) > 6
+  BEGIN
+    THROW 50000,' NO SE PUEDE BORRAR MAS DE 6 EMPLEADOS X VEZ ',  1
+    ROLLBACK TRANSACTION
+  END
+</pre>
+
+<h3>Funcionamiento de un TRIGGER INSERT</h3>
+<pre>
+  CREATE TRIGGER OrdDet_Insert
+  ON [Order Details]
+  FOR INSERT
+  AS
+  UPDATE P SET 
+  UnitsInStock = (P.UnitsInStock – I.Quantity)
+  FROM Products AS P INNER JOIN Inserted AS I
+  ON P.ProductID = I.ProductID
+</pre>
+
+<h3>Funcionamiento de un trigger UPDATE</h3>
+<pre>
+  AS
+  IF UPDATE (EmployeeID)
+  BEGIN TRANSACTION
+	  RAISERROR (' No se puede procesar la transacción
+	  ***** El ID de Empleado NO puede ser modificado!!', 10, 1)
+	  ROLLBACK TRANSACTION
+</pre>
+
+<h3>Funcionamiento de un Trigger INSTEAD OF</h3>
+<strong>1)Creamos el trigger (INSERT)</strong>
+<pre>
+  CREATE TRIGGER dbo.tr_Categoria 
+  ON dbo.categories
+  AFTER INSERT 
+  AS
+  PRINT ‘Se agregaron la siguiente cantidad de filas’;
+</pre>
+
+<strong>2)Damos un alta de categoria:</strong>
+<pre>
+  INSERT INTO Categories (CategoryName,Description)
+  VALUES ('Bebidas Frias','BIEN HELADAS') 
+</pre>
+
+<strong>3)Modificamos el trigger anterior</strong>
+
+<pre>
+  Alter TRIGGER dbo.tr_Categoria 
+  ON dbo.categories
+  INSTEAD OF INSERT
+  AS
+  PRINT "Se agregaron la siguiente cantidad de filas";
+</pre>
+
+<strong>4)Nueva alta de categoria:</strong>
+<pre>
+  INSERT INTO Categories (CategoryName,Description)
+  VALUES (Infusiones',’Bebidas derivadas de las hojas y flores')
+  Ejecutamos
+  Comprobamos con el resultado anterior
+</pre>
+
+<h3>Triggers INSTEAD OF</h3>
+<strong>Creo una tabla con los clientes de Brazil y Argentina.</strong>
+<pre>
+  SELECT *
+  INTO ClientesBra
+  FROM Customers
+  WHERE country=‘Brazil'
+  SELECT * FROM ClientesBra
+
+  SELECT *
+  INTO ClientesArg
+  FROM Customers
+  WHERE country= 'Argentina'
+  SELECT * FROM ClientesArg
+</pre>
+
+<pre>
+  CREATE VIEW ArgBra AS
+  SELECT * 
+  FROM ClientesArg
+  UNION
+  SELECT * 
+  FROM ClientesBra  
+</pre>
+
+<h3>Funcionamiento de un desencadenador INSTEAD OF</h3>
+<p>
+  Actualizo un telefono de un cliente de brasil desde la vista: 
+</p> 
+<strong>Codigo:</strong>
+<pre>Update ArgBra set Phone=‘12345’ where Customerid=‘CACTU’</pre>
+
+<strong>¿ como se que tabla debo actualizar ?</strong>
+Para eso creo el trigger , reemplazando el codigo que actualiza sobre la vista por el que actualiza la tabla ClientesArg o ClientesBra segun corresponda.
+</p>
+
+<pre>
+  CREATE trigger t_clientes
+  ON ArgBra INSTEAD OF update
+  AS
+  BEGIN
+  DECLARE @pais nvarchar(15)
+  DECLARE @telefono nvarchar(20)
+  DECLARE @idCliente nvarchar(5)
+  SET @pais =(select country from inserted)
+  SET @telefono=(select phone from inserted)
+  SET @idCliente=(select Customerid from inserted)
+  IF @pais='Argentina'
+      BEGIN
+	      UPDATE ClientesArg SET phone=@telefono
+        WHERE CustomerID=@idCliente
+      END
+  ELSE
+      BEGIN
+        UPDATE ClientesBra SET phone=@telefono
+        WHERE CustomerID=@idCliente
+      END
+  END
+</pre>
+
+<h3>DESHABILITAR UN TRIGGER</h3>
+<pre>
+  ALTER TABLE employees
+  DISABLE TRIGGER empleado_trigge
+</pre>
+
+<h3>Consideraciones acerca del rendimiento</h3>
+<ul>
+  <li>Los trigger trabajan rápidamente porque las tablas inserted y deleted están en la caché.</li>
+  <li>El tiempo de ejecución está determinado por:</li>
+  <ul>
+    <li>Número de tablas a las que se hace referencia.</li>
+    <li>Número de filas afectadas.</li>   
+  </ul>
+  <li>Las acciones contenidas en un trigger forman parte de una transacción.</li>
+</ul>
+<strong>Triggers DDL:</strong>
+<ul>
+  <p><strong>Base de Datos: </strong>Los TRIGGERS DML (Data Manipulation Language) responden a la necesidad de garantizar la integridad y consistencia de los datos dentro de nuestras tablas de usuario. <br> No ayudan a mantener las reglas de diseño de nuestra base de datos. <br> El nombre coincide pero el propósito es distinto, los triggers DDL (Data Definition Language). <br> Nos proporcionarán mecanismos para garantizar que nuestra base de datos está diseñada e implementada de acuerdo a los estándares que hayamos definido. <br> Tienen dos alcances diferenciados, a nivel de servidor y a nivel de base de datos. <br> Estos alcances están enlazados con el tipo de evento que los dispare, en esta primera parte los eventos que vamos a ver son a nivel de Base de datos y algunos ejemplos de ellos son:</p>
+  <ul>
+    <li>CREATE / ALTER /DROP View </li>
+    <li>CREATE / ALTER /DROP Table </li>
+    <li>CREATE / ALTER /DROP Schema </li>  
+  </ul>
+  <p><strong>Servidor: </strong>Los triggers DDL a nivel de servidor son muy similares a los triggers a nivel de base de datos en su concepción.<br>
+     Responden a los eventos que son propios del servidor y no a los que están en el alcance de base de datos. <br> A esta categoría de eventos pertenecen entre otros los de CREATE LOGIN o CREATE/ALTER/DROP Database y los relativos por ejemplo a los nuevos ENDPOINTS. <br>  Están muy alineadas con las de los que son a nivel de base de datos e incluso la información.</p>
+</ul>
+
+<h3>Triggers DML => INSTEAD OF</h3>
+<pre>
+  CREATE TRIGGER TR_BorradoSelectivo on Clientes INSTEAD OF DELETE
+  AS
+  BEGIN
+   DELETE c
+   FROM Clientes C
+   INNER JOIN DELETED d
+      ON C.idCliente=D.idCliente
+   WHERE C.CreditoTotal=0
+  END 
+</pre>
+
+<h3>Triggers DML => AFTER</h3>
+<pre>
+  CREATE TRIGGER TR_CompruebaCreditoTotal ON Clientes AFTER UPDATE
+  AS
+  BEGIN
+  IF UPDATE(CreditoTotal)
+   -- Se está actualizando el campo crédito total, comprobemos
+   -- las restricciones.
+   BEGIN
+     IF EXISTS( SELECT IdCliente
+     FROM RECIBOS
+     WHERE Estado=’PEN’ AND idCliente IN (SELECT idCliente FROM DELETED)
+     )
+     BEGIN
+      ROLLBACK -- Deshacemos la transacción impidiendo que se actualize
+      RAISERROR (‘No se pueden actualizar el crédito de clientes con recibos pendientes’,16,1)
+     END
+   END
+  END 
+</pre>
+
+<h3>Triggers DDL: a nivel de base de datos</h3>
+<div style="display: flex;">
+  <pre>
+    CREATE / ALTER /DROP View 
+    CREATE / ALTER /DROP Table 
+    CREATE / ALTER /DROP Schema
+  </pre>
+
+  <pre>
+    CREATE TRIGGER TablasDocumentadas
+    ON DATABASE
+    FOR CREATE_TABLE
+    AS
+    BEGIN
+      DECLARE @TabName Sysname 
+      SELECT @TabName=EventData().value(‘(/EVENT_INSTANCE/ObjectName)[1]’,’sysname’)
+      IF NOT EXISTS(SELECT * FROM TablasDocumentadas WHERE TableName=@TabName)
+      BEGIN
+        ROLLBACK -- Deshacemos la transacción impidiendo que se actualize
+        RAISERROR (‘No se pueden crear tablas indocumentadas en nuestro sistema’,16,1)
+      END
+    END 
+  </pre>
+</div>
+
+<h3>Triggers DDL: a nivel Servidor</h3>
+<pre>
+  CREATE LOGIN
+  CREATE/ALTER/DROP 
+
+  CREATE TRIGGER LoginsConTresLetrasYGuionBajo
+  ON ALL SERVER
+  FOR DDL_LOGIN_EVENTS
+  AS
+  BEGIN
+    DECLARE @ObjName Sysname
+    SELECT @ObjName=EventData().value(‘(/EVENT_INSTANCE/ObjectName)[1]’,’sysname’)
+    IF NOT @ObjName LIKE ‘[A-Z][A-Z][A-Z][_]%’
+    BEGIN
+      ROLLBACK
+      RAISERROR (‘Todos los logins deben comenzar por tres letras y un guión bajo’,16,1)
+    END
+  END 
+</pre>
+</section>
+<!--FIN TRIGGERS-->
+
+<!--NIVELES DE AISLAMIENTO-->
+<section id="Aislamiento">
+  <h2 class="h2Centrado">Niveles de aislamiento</h2>
+  <p>
+    Las cuatro propiedades ACID son Atomicidad, Consistencia, Aislamiento y Durabilidad. Estas cuatro propiedades definen las transacciones de la base de datos. Cuando se cumplen, garantizan su validez, incluso en caso de fallo, corte de energía u otros errores. 
+  </p>
+  <ul>
+    <li><p><strong>ATOMICIDAD: </strong>Las transacciones son todo o nada.</p></li>
+    <li><p><strong>CONSISTENCIA: </strong>Solo se guardan datos validos.</p></li>
+    <li><p><strong>AISLAMIENTO: </strong>Las transacciones no se afectan entre si.</p></li>
+    <li><p><strong>DURABILIDAD: </strong>Los datos escritos no se perderan.</p></li>
+  </ul>
+  <h2 class="h2centrado">Niveles </h2>
+  <p><strong>READ UNCOMMITED: </strong>Lecturas no confirmadas, realmente lo que sucede en este nivel de aislamiento es que los usuarios pueden leer datos que aún no están confirmados.</p>
+  <h3>Presenta los siguientes problemas:</h3>
+  <ul>
+    <li>Lecturas sucias. </li>
+    <li>Lecturas no repetibles.</li>
+    <li>Datos fantasma</li>    
+  </ul>
+
+  <p><strong>READ COMMITED: </strong>No lee datos que no estén confirmados. Las lecturas solo se ven bloqueadas por las escrituras</p>
+  <h3>Presenta los siguientes problemas:</h3>
+  <ul>
+    <li>Lecturas no repetibles</li>
+    <li>Datos fantasma. </li>
+  </ul>
+
+  <p><strong>REPETEABLE READ: </strong>Garantiza que dos select consecutivas dentro de una transacción devolverán la misma información.</p>
+  <h3>Presenta los siguientes problemas:</h3>
+  <ul>
+    <li>Datos fantasma. </li>
+  </ul>
+  
+  <p><strong>SERIALIZABLE: </strong>Las lecturas solo se ven bloqueadas por las escrituras. Este es el nivel máximo de aislamiento y también genera el nivel máximo de bloqueos.</p>
+  <table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Niveles – Comparacion</th>
+      <th>Lectura Sucia (Dirty Read)</th>
+      <th>Lectura No Repetible (Non-Repetable Read)</th>
+      <th>Lectura Fantasma (Phantom Read)</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>READ</td>
+      <td>Permitida ✔️</td>
+      <td>Permitida ✔️</td>
+      <td>Permitida ✔️</td>
+      <td>La transacción puede ver cambios no confirmados de otras transacciones. Mayor concurrencia, menor integridad.</td>
+    </tr>
+    <tr>
+      <td>UNCOMMITTED</td>
+      <td>Permítida ✔️</td>
+      <td>Permítida ✔️</td>
+      <td>Permítida ✔️</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>READ COMMITTED</td>
+      <td>No permitida ❌</td>
+      <td>Permitida ✔️</td>
+      <td>Permitida ✔️</td>
+      <td>Solo se leen datos confirmados. Pero los datos pueden cambiar entre lecturas dentro de una misma transacción.</td>
+    </tr>
+    <tr>
+      <td>REPEATABLE READ</td>
+      <td>No permitida ❌</td>
+      <td>No permitida ❌</td>
+      <td>Permitida ✔️</td>
+      <td>Los datos leídos no cambian durante la transacción, pero aún pueden aparecer nuevas filas que cumplan una condición.</td>
+    </tr>
+    <tr>
+      <td>SERIALIZABLE</td>
+      <td>No permitida ❌</td>
+      <td>No permitida ❌</td>
+      <td>No permitida ❌</td>
+      <td>El más estricto. Se comporta como si las transacciones se ejecutaran secuencialmente. Máxima integridad, menor concurrencia.</td>
+    </tr>
+  </tbody>
+</table>
+  <h2 class="h2Centrado">Nuevo nivel de aislamiento de instantánea </h2>
+  <p><strong>SNAPSHOT Isolation Level:</strong>Esta estrategia permite evitar todos los problemas descritos, sin necesidad de bloquear las filas, de tal forma que una sentencia SELECT devolverá exactamente los mismos datos cada vez que se ejecute.</p>
+  <ul>
+    <li>SNAPSHOT ISOLATION</li>
+    <li>READ COMMITTED SNAPSHOT</li>
+    <li>Para habilitarlos debemos usar el comando:</li>
+    <pre>
+      ALTER DATABASE <Base de Datos> SET ALLOW_SNAPSHOT_ISOLATION ON
+	    ALTER DATABASE <Base de Datos> SET READ_COMMITTED_SNAPSHOT ON.
+
+    </pre>
+  </ul>
+  
+  </section>
+  <!--FIN DE AISLAMIENTO-->
+
+  <!--CURSOR-->
+<section id="Cursor">
+  <h2 class="h2Centrado">Cursores</h2>
+<ul>
+  <li>En Sql server un cursor es un objeto que permite recorrer filas de un conjunto de resultados (el resultado obtenido de una sentencia SELECT) ) de manera secuencial. </li>
+  <li>Los cursores son muy útiles si lo que queremos es realizar una acción si el código identificador de un registro es autonumérico.</li>
+  <li>No lo conocemos hasta que se inserta el registro y queremos insertar ese identificador en cualquier otra tabla.</li>
+</ul>
+
+<h3>Caracteristicas</h3>
+<ul>
+  <li>Las instrucciones de SQL Server producen un conjunto completo de resultados, pero hay ocasiones en que los resultados se procesan mejor de fila en fila. 
+  <li>Abrir un cursor sobre un conjunto de resultados permite procesar el conjunto de resultados de fila en fila.</li>
+  <li>Puede asignar un cursor a una variable o parámetro con un tipo de datos cursor.</li>
+  <li>Los cursores permiten operar individualmente registro por registro a partir de un resultado de una consulta.</li>
+</ul>
+
+<h3>Intrucciones</h3>
+<strong><p>DECLARE CURSOR: </strong>Define los atributos de un cursor de servidor de Transact-SQL,como su comportamiento de desplazamiento y la consulta utilizada para generar el conjunto de resultados sobre el que opera el cursor. </p>
+<strong><p>Sentencia OPEN: </strong>Abre un cursor del servidor Transact-SQL y lo llena ejecutando la instrucción Transact-SQL especificada en la instrucción DECLARE CURSOR o SET cursor_variable.</p>
+<strong><p>Sentencia FETCH: </strong>Recupera una fila específica de un cursor de servidor de Transact-SQL. Esta sentencia se utiliza para leer los registros del cursor: Su sintaxis es la siguiente:</p>
+<pre>
+  FETCH 
+      [[NEXT | PRIOR | FIRST | LAST 
+          | ABSOLUTE { n | @nvar } 
+          | RELATIVE { n | @nvar } 
+        ] 
+        FROM 
+      ] 
+  { { [ GLOBAL ] cursor_name } | @cursor_variable_name } 
+  [ INTO @variable_name [ ,...n ] ] 
+ </pre>
+
+ <h3>Sus argumentos son:</h3>
+ <strong><p>NEXT: </strong>Devuelve la fila de resultados inmediatamente después de la fila actual y se posiciona en la fila devuelta. </p>
+ <strong><p>PRIOR: </strong>Devuelve la fila de resultados inmediatamente anterior de la fila actual y se posiciona en la fila devuelta. </p>
+ <strong><p>FIRST: </strong>Devuelve la primera fila en el cursor y la convierte en la fila actual.</p>
+ <strong><p>LAST: </strong>Devuelve la última  fila en el cursor y la convierte en la fila actual.</p>
+
+<h3>Intrucciones</h3>
+<strong>ABSOLUTE { n | @nvar} </strong><p>Si n o @nvar es positivo, devuelve la fila n de del cursor y hace la fila devuelta la fila actual (o sea, se posiciona en la fila n). Si n o @ nvar es negativo, devuelve la fila n antes de que finalice el cursor y hace que la fila devuelta sea la fila actual. Si n o @ nvar es 0, no se devuelven filas. n debe ser una constante entera y @ nvar debe smallint, tinyint o int.</p>
+<strong>RELATIVE { n | @nvar} </strong><p>Trabaja similar a ABSOLUTE pero devuelve la fila n desde la fila actual donde esta posicionado el cursor.</p>
+<strong><p>Sentencia CLOSE:  </strong>Cierra un cursor abierto mediante la liberación del conjunto actual de resultados y todos los bloqueos de cursor mantenidos en las filas en las que está colocado. <br>
+  CLOSE deja las estructuras de datos accesibles para que se puedan volver a abrir, pero las recuperaciones y las actualizaciones posicionadas no se permiten hasta que se vuelva a abrir el cursor. 
+<br>
+CLOSE debe ejecutarse en un cursor abierto, por lo que no se permite en cursores que sólo están declarados o que ya están cerrados.
+</p>
+<strong><p>Sentencia DEALLOCATE: </strong>Quita una referencia a un cursor. Cuando se ha quitado la última referencia al cursor, Microsoft SQL Server libera las estructuras de datos que componen el cursor.</p>
+
+<strong>Ejemplo:</strong>
+<p>
+A continuación, juntaremos todos los pasos descriptos previamente y crearemos el ejemplo más simple de un cursor el cual recorrerá la tabla Production.ProductDescription de la base de datos AdventureWorks y mostrará por pantalla el valor del registro Description luego que el mismo ha sido copiado a la variable @Description.
+</p>
+<pre>
+  DECLARE @Description AS nvarchar(400) 
+  DECLARE ProdInfo CURSOR FOR SELECT [Description] FROM Production.ProductDescription 
+  OPEN ProdInfo
+	  FETCH NEXT FROM ProdInfo INTO @Description
+	  WHILE @@fetch_status = 0
+	  BEGIN
+		    PRINT @Description
+	        FETCH NEXT FROM ProdInfo INTO @Description
+	  END
+  CLOSE ProdInfo
+  DEALLOCATE ProdInfo
+</pre>
+
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+<meta charset="UTF-8" />  
+<title>SQL Consultas Dinámicas</title>  
+<style>  
+  body {  
+    font-family: Arial, Helvetica, sans-serif;  
+    margin: 20px;  
+    background-color: #ffffff;  
+  }  
+
+  h1 {  
+    text-align: center;  
+    margin-bottom: 20px;  
+  }  
+
+  table {  
+    width: 100%;  
+    border-collapse: collapse;  
+    margin-bottom: 20px;  
+  }  
+
+  th {  
+    background-color: #0066cc;  
+    color: #fff;  
+    padding: 8px;  
+    text-align: left;  
+    font-weight: bold;  
+  }  
+
+  td {  
+    padding: 8px;  
+    border: 1px solid #000;  
+  }  
+
+  .header {  
+    background-color: #007bff;  
+    color: #fff;  
+  }  
+
+  .section-heading {  
+    font-weight: bold;  
+    font-style: italic;  
+    margin-top: 20px;  
+  }  
+
+  .red-text {  
+    color: red;  
+  }  
+</style>  
+</head>  
+<body>  
+
+<h1>SQL – Consultas Dinámicas</h1>  
+<p>Son consultas que no están determinadas en tiempo de compilación. Se compilan en tiempo de ejecución.</p>  
+<p>Y su ejecución se determina la primera vez que se ejecuta, en las siguientes se usa el mismo.</p>  
+
+<table class="main-table">
+            <tr>
+                <th class="table-header">EXEC</th>
+                <th class="table-header">SP_EXECUTESQL</th>
+            </tr>
+            <tr>
+                <td class="table-subheader">Consulta Sin parámetros - Cadena Unicode (nvarchar)<br>Con usuario determinado opcional</td>
+                <td class="table-subheader">Consulta Con parámetros - Cadena Unicode (nvarchar) para tipo de datos en parámetros - Y valores de los mismos</td>
+            </tr>
+            <tr>
+                <td class="table-cell">
+                    <div>Para ejecutar una cadena SQL</div>
+                    <div class="code-block">
+<span class="sql-command">{ EXEC | EXECUTE }</span> { ( @string_variable |
+[ N ]'tsql_string' ) [ + ...n ] } [ AS { LOGIN | USER } ] =
+'name' ] [;]
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div class="highlight-red">Declare @tabla Nvarchar(30)</div>
+                        <div class="highlight-red">Declare @query Nvarchar(100)</div>
+                        <br>
+                        <div class="highlight-red">Set @tabla = 'Person.Address'</div>
+                        <div class="highlight-red">Set @query = N'Select * from ' + @tabla</div>
+                        <div class="highlight-red">Exec (@query)</div>
+                    </div>
+                </td>
+                <td class="table-cell">
+                    <div>Para ejecutar una cadena SQL con parámetros</div>
+                    <div class="code-block">
+sp_executesql [ @stmt = ] statement
+[ { , [ @params = ] N'@parameter_name data_type [ OUT | OUTPUT ] [,...n]' }
+{ , [ @param1 = ] 'value1' [ ,...n ] } ]
+                    </div>
+                    
+                    <div style="margin-top: 10px; font-size: 10px;">
+                        El orden de los parámetros debe ser idéntico al de los valores, sino da error.
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div class="highlight-red">Declare @tabla Nvarchar(30)</div>
+                        <div class="highlight-red">Declare @query Nvarchar(500)</div>
+                        <div class="highlight-red">Declare @params Nvarchar(200)</div>
+                        <div class="highlight-red">Declare @edad1 int</div>
+                        <div class="highlight-red">Declare @edad2 int</div>
+                        <br>
+                        <div class="highlight-red">Set @tabla = 'Empleados'</div>
+                        <div class="highlight-red">Set @edad1=30</div>
+                        <div class="highlight-red">Set @edad2=75</div>
+                        <div class="highlight-red">Set @params= N'@edad1 int, @edad2 int'</div>
+                        <div class="highlight-red">Set @query = 'Select * from ' + @tabla + ' Where Edad BETWEEN @edad1 and @edad2'</div>
+                        <div class="highlight-red">Exec sp_executesql @query, @params, @edad1, @edad2</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+</section>
+<!--FIN DE CURSOR-->
+
+<!--TRANSACCIONES Y BLOQUEO-->
+<section id="TransaccionesYBloqueos">
+  <h2>Transacciones y bloqueos</h2>
+  <h2 class="h2Centrado">Variables Tabla en SQL Server</h2>
+  <ul>
+    <li>Tienen un ámbito bien definido. El procedimiento almacenado, la función o el batch en el que se declaran.</li>  
+    <li>Las variables de tipo tabla producen menos recopilaciones de los procedimientos almacenados en los que se encuentran que si utilizamos tablas temporales.</li>  
+    <li>Las variables de tabla no necesitan de bloqueos ni de tantos recursos como las tablas temporales.</li>  
+  </ul>
+  <h3>Inconvenientes </h3>
+  <p>
+    No podemos cambiar la definición de la tabla una vez declarada. <br> 
+    No podemos utilizar índices que no sean agrupados. <br>
+    No se pueden utilizar en INSERT INTO ni en SELECT INTO. <br>
+    No podemos utilizar funciones en las restricciones. 
+</p>
+<strong>Ejemplo: </strong>
+<pre>
+  DECLARE @VariableTabla TABLE (Campo1 int, Campo2 char(50))
+  INSERT INTO @VariableTabla VALUES (1,'Primer campo')
+  INSERT INTO @VariableTabla VALUES (2,'Segundo campo')
+  SELECT * FROM @VariableTabla  
+</pre>
+
+<h2 class="h2Centrado">Manejo de Errores con SQL</h2>
+<pre>
+  TRY - CATCH 
+  BEGIN TRY
+    { sql_statement | statement_block }
+  END TRY
+  BEGIN CATCH
+    { sql_statement | statement_block }
+  END CATCH
+</pre>
+<strong>Ejemplo:</strong>
+<pre>
+  BEGIN TRY
+    SELECT *
+      FROM sys.messages
+      WHERE message_id = 21;
+  END TRY
+  GO   --Error!!!!!!
+  BEGIN CATCH
+    SELECT ERROR_NUMBER () AS ErrorNumber;
+  END CATCH;
+  GO
+</pre>
+
+<strong>Sentencia THROW </strong>
+<strong>Ejemplo: </strong>
+<pre>
+  THROW 51000,'The record does not exist.', 1;
+</pre>
+<strong>Resultado:</strong>
+<p>
+  Msg 51000, Level 16, State 1, Line 1
+  The record does not exist. <br>
+  Sentencia RAISERROR (deprecado) <br>
+  Sentencia PRINT 
+</p>
+
+<h2>Transacciones Explisitas</h2>
+<pre>
+  BEGIN TRANSACTION, 
+  COMMIT TRANSACTION, 
+  ROLLBACK TRANSACTION
+</pre>
+
+<h2>Transacciones Implícitas </h2>
+<pre>
+  SET IMPLICIT_TRANSACTIONS ON  
+</pre>
+
+<p>La variable @@ERROR devuelve el código de error producido </p>
+
+<div style="display: flex;">
+<pre>
+  USE PUBS
+BEGIN TRAN
+UPDATE authors 
+SET state = 'FL'
+WHERE state = 'KS'
+IF @@ERROR <> 0 BEGIN
+    ROLLBACK TRAN
+    GOTO ON_ERROR
+ END
+</pre>
+
+<pre>
+UPDATE jobs 
+SET min_lvl = min_lvl - 10
+IF @@ERROR <> 0 BEGIN
+    ROLLBACK TRAN
+    GOTO ON_ERROR
+ END
+COMMIT TRAN
+ON_ERROR:
+SELECT * FROM authors
+WHERE state = 'FL'
+</pre>
+</div>
+
+<h2 class="h2Centrado">BATCHS y SCRIPTS </h2>
+<img src="https://i.postimg.cc/QCSfzdH6/22.png" alt="">
+<h3>BATCHS</h3>
+<p>Un Batch es un lote de una o más sentencias Transact-SQL, enviadas en una sola vez desde una aplicación a Microsoft SQL Server para ser ejecutada en un solo intento. La cláusula GO indica el fin de un Batch.  </p>
+<p>Lo utilitarios de SQL Server interpretan el GO como un signo de que el Batch (conjunto de sentencias) debe ser enviado para su ejecución. El Batch actual, está compuesto por todas las sentencias antes de la cláusula GO.</p>
+<p>Una sentencia Transact-SQL no puede ocupar en una misma línea el comando GO</p>
+<p>Las variables locales definidas por el usuario son limitadas dentro del Batch, esto significa que no pueden ser referenciadas después del comando GO.  </p>
+
+<h3>SCRIPTS </h3>
+<p>Es un programa, o sea un conjunto de comandos, que se le da al motor SQL para decirle lo que debe hacer y en qué orden debe hacerlo. Los Scripts son series de Batchs ejecutados uno después de otro.  </p>
+
+<h3>Comando GO</h3> 
+<p>Indica a SQL Server el final de un lote de instrucciones Transact-SQL.  GO no es una instrucción Transact-SQL, sino un comando</p>
+<p>El SQL Server interpreta el GO como una señal de que deben enviar el lote actual de instrucciones Transact-SQL a una instancia de SQL Server. El lote actual de instrucciones está formado por todas las instrucciones especificadas desde el último comando GO o desde el comienzo de la sesión.</p>
+
+<h3>Control de Flujo </h3>
+<p><strong>Bloque BEGIN – END: </strong>Encierra un conjunto de instrucciones Transact-SQL de forma que se pueda ejecutar un grupo de instrucciones Transact-SQL. BEGIN y END son palabras clave del lenguaje de control de flujo.</p>
+<p>Se utilizan para controles de flujos como IF, ELSE, WHILE.</p>
+<p><strong>Bloque IF … ELSE: </strong>Impone condiciones en la ejecución de una instrucción Transact-SQL.  <br>
+La instrucción Transact-SQL (sql_statement) que sigue a Boolean_expression se ejecuta si Boolean_expression se evalúa como TRUE. <br>
+La palabra clave opcional ELSE es una instrucción Transact-SQL alternativa que se ejecuta cuando Boolean_expression se evalúa como FALSE o NULL. <br>
+</p>
+
+<h3>Construcción WHILE, BREAK y CONTINUE </h3>
+<p>
+  Establece una condición para la ejecución repetida de una instrucción o bloque de instrucciones SQL. 
+  Las instrucciones se ejecutan repetidamente siempre que la condición especificada sea verdadera. Se puede controlar la ejecución de instrucciones en el bucle WHILE con las palabras clave BREAK y CONTINUE.
+</p>
+<p><strong>BREAK:</strong>Produce la salida del bucle WHILE más interno. Se ejecutan las instrucciones que aparecen después de la palabra clave END, que marca el final del bucle.</p>
+<p><strong>CONTINUE:</strong>Hace que se reinicie el bucle WHILE y omite las instrucciones que haya después de la palabra clave CONTINUE.</p>
+
+<h3>GOTO </h3>
+<p>
+  La instrucción GOTO provoca que, en la ejecución de un lote de Transact-SQL, se salte a una etiqueta. 
+  Ninguna de las instrucciones situadas entre la instrucción GOTO y la etiqueta se ejecutarán. El nombre de la etiqueta se define con la sintaxis: 
+</p>
+<pre>GOTO label_name</pre>
+<p>La etiqueta que constituye el objetivo de un GOTO sólo identifica el destino del salto.</p>
+
+<h3>WAITFOR </h3>
+<p>
+La instrucción WAITFOR suspende la ejecución de un lote, un procedimiento almacenado o una transacción hasta que: <br>
+Haya pasado un intervalo de tiempo especificado. <br>
+Se haya alcanzado una hora del día especificada. <br>
+Una instrucción RECEIVE especificada modifique o devuelva como mínimo una fila en una cola de Service Broker.  <br>
+WAITFOR DELAY '00:00:02'
+print 'pasaron 2 segundos'
+</p>
+
+<h3>Sentencia EXECUTE </h3>
+<p>
+Ejecuta uno de los siguientes módulos: procedimiento almacenado del sistema, procedimiento almacenado definido por el usuario, función con valores escalares definida por el usuario o procedimiento almacenado extendido. <br>
+Ejecuta una cadena de comandos o una cadena de caracteres dentro de un proceso por lotes de Transact-SQL.
+</p>
+<pre>EXECUTE ('select * from titles')</pre>
+
+<h3>Expresión CASE </h3>
+<p><strong>Descripción: </strong>Evalúa una lista de condiciones y devuelve una de las varias expresiones de resultado posibles. La función "case" compara 2 o más valores y devuelve un resultado.</p>
+
+<h3>Función: Simple CASE: </h3>
+<p>La función CASE sencilla compara una expresión con un conjunto de expresiones sencillas para determinar el resultado.  </p>
+<p>La sintaxis es la siguiente:</p>
+<pre>
+  case VALORACOMPARAR
+   when VALOR1 then RESULTADO1
+   when VALOR2 then RESULTADO2
+   ...
+   else RESULTADO3
+  end
+</pre>
+<p>
+Por cada valor hay un "when" y un "then"; si encuentra un valor coincidente en algún "where" ejecuta el "then" correspondiente a ese "where", si no encuentra ninguna coincidencia, se ejecuta el "else"; si no hay parte "else" retorna "null". Finalmente se coloca "end" para indicar que el "case" ha finalizado. <br>
+<strong>Ejemplo: </strong>
+Un profesor guarda las notas de sus alumnos de un curso en una tabla llamada "alumnos" que consta de los siguientes campos:
+</p>
+
+<pre>
+- nombre (30 caracteres),
+- nota (valor entero entre 0 y 10, puede ser nulo).
+Mostrar los nombres, notas de los alumnos y en una columna extra llamada "resultado" empleamos un case que testee la nota y muestre un mensaje diferente si en dicho campo hay un valor:
+- 0, 1, 2 ó 3: 'libre';
+- 4, 5 ó 6: 'regular';
+- 7, 8, 9 ó 10: 'promocionado';
+select nombre,nota,
+case nota
+ when 0 then 'libre'
+ when 1 then 'libre'
+ when 2 then 'libre'
+ when 3 then 'libre'
+ when 4 then 'regular'
+ when 5 then 'regular'
+ when 6 then 'regular'
+ when 7 then 'promocionado'
+ when 8 then 'promocionado'
+ when 9 then 'promocionado'
+ when 10 then 'promocionado'
+end
+from alumnos
+</pre>
+
+<p>Note que cada "where" compara un valor puntual, por ello los valores devueltos son iguales para algunos casos. Note que como omitimos la parte "else", en caso de que el valor no encuentra coincidencia con ninguno valor "when", retorna "null".  </p>
+
+<h3>Función: Searched CASE: </h3>
+<p>La función CASE buscada evalúa un conjunto de expresiones booleanas para determinar el resultado.
+Podemos realizar comparaciones en cada "where". La sintaxis es la siguiente:
+</p>
+<pre>
+case
+ when VALORACOMPARAR OPERADOR VALOR1 then RESULTADO1
+ when VALORACOMPARAR OPERADOR VALOR2 then RESULTADO2
+ ...
+ else RESULTADO3
+end
+</pre>
+<p>Mostramos los nombres de los alumnos y en una columna extra llamada "resultado" empleamos un case que teste si la nota es menor a 4, está entre 4 y 7 o supera el 7:</p>
+<pre>
+select nombre, nota, resultado=
+  case 
+  when nota<4 then 'libre'
+  when nota >=4 and nota<7 then 'regular'
+  when nota>=7 then 'promocionado'
+  else 'sin nota'
+ end
+from alumnos;
+</pre>
+
+<h3>Ordenamiento con CASE </h3>
+<p>
+  Se puede utilizar la función CASE realizar ordenamientos que no sean alfabéticos o numéricos, tanto ascendentes como descendentes. Por ejemplo, queremos realizar un reporte de todos los autores ordenado por el estado en el que viven pero con el siguiente criterio: Primero los que vivan en California, luego los que viven en Washington y el resto ordenado alfabéticamente.
+</p>
+<pre>
+select state, au_fname, au_lname
+from authors
+order by  case when state = “CA” then 1
+          when state = “WA” then 2
+else 3 end,
+state  
+</pre>
+
+<h2 class="h2Centrado">Manejo de Errores con SQL </h2>
+<h3>TRY - CATCH </h3>
+<strong><p> Description: </strong>Además del @@ERROR existe una sentencia más práctica a la hora de detectar que se ha producido un error en un procedimiento y ejecutar un ROLLBACK en consecuencia. Al igual que en otros lenguajes como C#.NET se puede abrir un TRY para la secuencia de comandos que podrían dar error y un CATCH para realizar un “deshacer” si esto ocurre.</p>
+<strong><p>Características: </strong>La a partir de la versión 2005 implementa un mecanismo de control de errores para T-SQL. <br> 
+  e puede incluir un grupo de instrucciones T-SQL en un bloque TRY. Si se produce un error en el bloque TRY, el control se transfiere a otro grupo de instrucciones que está incluido en un bloque CATCH. <br>
+  Un bloque TRY debe ir seguido inmediatamente por un bloque CATCH. Un bloque CATCH se inicia con la instrucción BEGIN CATCH y finaliza con la instrucción END CATCH. En Transact-SQL, cada bloque TRY se asocia a un sólo bloque CATCH.</p>
+
+<strong><p>Sintaxis: </strong></p>
+<pre>
+  BEGIN TRY
+    { sql_statement | statement_block }
+    END TRY
+    BEGIN CATCH
+      { sql_statement | statement_block }
+      END CATCH
+</pre>
+
+<p>
+Cuando utilice la construcción TRY…CATCH, tenga en cuenta las siguientes directrices y sugerencias: <br>
+Un bloque TRY debe ir seguido inmediatamente por un bloque CATCH asociado. Si se incluye cualquier otra instrucción entre las instrucciones END TRY y BEGIN CATCH se genera un error de sintaxis. <br>
+Cada construcción TRY…CATCH debe encontrarse en un solo lote, procedimiento almacenado o desencadenador.  <br>
+Por ejemplo, no se puede colocar un bloque TRY en un lote y el bloque asociado CATCH en otro. La siguiente secuencia de comandos generaría un error:   
+</p>
+
+<pre>
+  BEGIN TRY
+    SELECT *
+    FROM sys.messages
+    WHERE message_id = 21;
+  END TRY
+  GO   --Error!!!!!!
+  BEGIN CATCH
+    SELECT ERROR_NUMBER () AS ErrorNumber;
+  END CATCH;
+  GO
+</pre>
+<p>Un bloque CATCH debe seguir inmediatamente a un bloque TRY.</p>
+<p>
+Las construcciones TRY…CATCH pueden estar anidadas. Esto significa que las construcciones TRY…CATCH se pueden colocar dentro de otros bloques TRY y CATCH. Cuando se produce un error dentro de un bloque TRY anidado, el control del programa se transfiere al bloque CATCH que está asociado al bloque TRY anidado.
+</p>
+
+<p><strong>Sentencia THROW: </strong>Produce una excepción y transfiere la ejecución a un bloque CATCH de una construcción TRY...CATCH.</p>
+<strong>Ejemplo:</strong>
+<pre>THROW 51000,'The record does not exist.', 1;</pre>
+<strong>Resultado: </strong>
+<p>Msg 51000, Level 16, State 1, Line 1 The record does not exist.</p>
+<p>
+Lo nuevo en TRY - CATCH es el THROW en la que ahora podemos manejar los errores internos de SQL Server. Cuando poseemos una estructura TRY CATCH, al fallar la sentencia TRY se maneja un error interno de SQL Server, THROW permite capturar el error interno que se ejecuta en el TRY y nos permite mostrarlo como mensaje dentro del bloque CATCH, lo que nos va permitir administrar y poder almacenar los errores internos que se originan en nuestras transacciones programadas, podemos manejar nuestro propio log de errores y de esa manera generar estadísticas por errores, a fin de mejorar nuestra programación y como tal también nuestras aplicaciones.
+</p>
+
+<p><strong> TRY CATCH THROW: </strong>La captura de errores ha cambiado T-SQL. <br>
+Cuando SQL Server 2005 introdujo la sintaxis BEGIN TRY y BEGIN CATCH, que era una gran mejora con respecto al manejo de errores anterior sobre la base de comprobación @@ERROR después de cada declaración. T-SQL, se unió a la fila de los lenguajes de programación, no más que un lenguaje de acceso a datos. La experiencia ha demostrado que el control de excepciones conduce a un mejor código en comparación con los controles de error. 
+<br>
+Pero cuando se trata de utilizar el nuevo TRY / CATCH de manejo de excepciones en el código T-SQL, se hizo evidente rápidamente uno de los problemas: el bloque CATCH se enmascara los metadatos de error original: número de error / gravedad / estado, el texto de error, la línea de origen y así sucesivamente. Dentro de un bloque CATCH el código sólo se le permitió subir un nuevo archivo * error *. Claro, la información del error original podría ser transmitida en el mensaje de error generado, pero sólo como un mensaje. El código de todos los errores importantes se ha cambiado. Esto puede parecer un tema menor, pero resulta que tiene un efecto cascada muy en serio: la persona que llama ahora tiene que entender los nuevos códigos de error, en lugar de los códigos de error del sistema original. 
+<br>
+Si el código de la aplicación se preparó para controlar interbloqueos (código de error 1205) de una manera determinada (por ejemplo, vuelva a intentar la operación), con un try de T-SQL / catch el código de error estancamiento que de repente se traduce en algo por encima de 50000.
+
+</p>
+<p><strong>Sentencia RAISERROR (deprecado): </strong>Con la introducción de THROW, RAISERROR fue declarado obsoleto. Hasta el momento coexisten ambos.</p>
+
+<p><strong>Sentencia PRINT: </strong> Devuelve al cliente un mensaje definido por el usuario. Devuelve una cadena de caracteres o una constante de cadena Unicode</p>
+<h2 class="h2Centrado">Transacciones </h2>
+<h3>Administración de Transacciones </h3>
+<p>
+Las aplicaciones controlan las transacciones principalmente al especificar cuándo se inicia y finaliza una transacción. <br>
+El sistema también debe ser capaz de controlar correctamente los errores que terminan una transacción antes de que se concluya. <br>
+De manera predeterminada, las transacciones se administran en las conexiones. Cuando se inicia una transacción en una conexión, todas las instrucciones Transact-SQL ejecutadas en esa conexión forman parte de la transacción hasta que ésta finaliza. No obstante, en una sesión de conjunto de resultados activos múltiples (MARS), una transacción de Transact-SQL explícita o implícita se convierte en una transacción de lote que se administra en los lotes. Cuando se termina el lote, si la transacción de lote no se confirma ni se revierte, SQL Server la revierte automáticamente. <br>
+Existen dos tipos de transacciones. Transacciones Implícitas y Transacciones Explícitas.
+</p>
+
+<p><strong>Transacciones Explícitas: </strong>Una transacción explícita es aquella en que se define explícitamente el inicio y el final de la transacción. Las transacciones explícitas también recibían el nombre de transacciones definidas por el usuario. <br>
+Las secuencias de comandos Transact-SQL utilizan las instrucciones BEGIN TRANSACTION, COMMIT TRANSACTION, ROLLBACK TRANSACTION de Transact-SQL para definir transacciones explícitas. <br>
+BEGIN TRANSACTION: Marca el punto de inicio de una transacción explícita para una conexión. 
+
+<p><strong>COMMIT TRANSACTION: </strong>Se utiliza para finalizar una transacción correctamente si no hubo errores. Todas las modificaciones de datos realizadas en la transacción se convierten en parte permanente de la base de datos. Se liberan los recursos ocupados por la transacción.</p>
+<p><strong>ROLLBACK TRANSACTION: </strong>Se utiliza para eliminar una transacción en la que se encontraron errores. Todos los datos modificados por la transacción vuelven al estado en el que estaban al inicio de la transacción. Se liberan los recursos ocupados por la transacción.</p>
+<p><strong>Transacciones Implícitas: </strong>Cuando una conexión funciona en modo de transacciones implícitas, SQL Server Database Engine (Motor de base de datos de SQL Server) inicia automáticamente una nueva transacción después de confirmar o revertir la transacción actual.  <br>
+No tiene que realizar ninguna acción para delinear el inicio de una transacción, sólo tiene que confirmar o revertir cada transacción. El modo de transacciones implícitas genera una cadena continua de transacciones. <br>
+SET IMPLICIT_TRANSACTIONS ON <br>
+</p>
+
+<p><strong>Chequeo de Errores dentro de la Transacción: </strong>La variable @@ERROR devuelve el código de error producido  </p>
+
+<pre>
+  USE PUBS
+  BEGIN TRAN
+  UPDATE authors 
+  SET state = 'FL'
+  WHERE state = 'KS'
+  IF @@ERROR <> 0 BEGIN
+    ROLLBACK TRAN
+    GOTO ON_ERROR
+  END
+  UPDATE jobs 
+  SET min_lvl = min_lvl - 10
+  IF @@ERROR <> 0 BEGIN
+    ROLLBACK TRAN
+    GOTO ON_ERROR
+  END
+  COMMIT TRAN
+  ON_ERROR:
+  SELECT * FROM authors
+  WHERE state = 'FL'
+</pre>
+
+<p><strong>Transacciones(Nivel de Aislamiento): </strong>El nivel de aislamiento con el que se ejecuta una instrucción Transact-SQL determina su comportamiento de bloqueo y de versión de fila.  <br>
+  El nivel de aislamiento con el que se ejecuta una instrucción Transact-SQL determina su comportamiento de bloqueo y de versión de fila.
+</p>
+<p><strong>READ UNCOMMITTED: </strong>es el nivel de aislamiento menos restrictivo porque omite los bloqueos realizados por otras transacciones. Las transacciones que se ejecutan con READ UNCOMMITTED pueden leer valores de datos modificados que aún no han confirmado otras transacciones; éstos se conocen como lecturas no confirmadas.</p>
+<p><strong>READ COMMITTED: </strong> Es el nivel de aislamiento predeterminado en SQL Server. Impide las lecturas no confirmadas al especificar que las instrucciones no pueden leer valores de datos modificados que aún no hayan confirmado otras transacciones. </p>
+<p><strong>REPEATABLE READ: </strong>Es un nivel de aislamiento más restrictivo que READ COMMITTED. Incluye READ COMMITTED y además especifica que ninguna otra transacción puede modificar ni eliminar datos que la transacción actual haya leído hasta que ésta no se confirme. La simultaneidad es menor que en READ COMMITTED porque durante la transacción se mantienen bloqueos compartidos en los datos leídos en lugar de liberarlos al final de cada instrucción.</p>
+<p><strong>SNAPSHOT: </strong>La transacción únicamente puede reconocer las modificaciones de datos confirmadas antes del comienzo de la misma. Las instrucciones que se ejecuten en la transacción actual no verán las modificaciones de datos efectuadas por otras transacciones después del inicio de la transacción actual. El efecto es el mismo que se obtendría si las instrucciones de una transacción obtuviesen una instantánea de los datos confirmados tal como se encontraban al comienzo de la transacción.</p>
+<p><strong>SERIALIZABLE: </strong>Es el nivel de aislamiento más restrictivo, dado que bloquea intervalos enteros de claves y mantiene los bloqueos hasta que la transacción finaliza. Incluye REPEATABLE READ y agrega la restricción de que otras transacciones no pueden insertar filas nuevas en intervalos que haya leído la transacción hasta que ésta no finalice.</p>
+<p><strong>Sentencias de Transacción(ROLLBACK y SAVE):</strong>Se puede evitar tener que deshacer toda la transacción empleando un punto de almacenamiento para deshacer hasta cierto punto de la transacción, en lugar de llegar hasta el comienzo de la transacción. <br>
+Todas las modificaciones producidas hasta el punto de almacenamiento siguen siendo válidas y no se deshacen, pero las instrucciones ejecutadas después del punto de almacenamiento (que debe especificarse en la transacción) y hasta la instrucción ROLLBACK se deshacen.  <br>
+Las instrucciones situadas a continuación de la instrucción ROLLBACK seguirán ejecutándose. Si se deshace posteriormente la transacción sin especificar un punto de almacenamiento, todas las modificaciones se anulan hasta el principio de la transacción, como siempre; se deshace toda la transacción. <br> 
+Hay que tener en cuenta que cuando se deshace una transacción hasta un punto de almacenamiento, SQL Server no libera los recursos bloqueados. Se liberan cuando se confirma la transacción o al producirse una cancelación de toda la transacción. <br>
+Para especificar un punto de almacenamiento en una transacción se utiliza la instrucción siguiente:
+</p>
+<pre>SAVE TRAN[SACTION] nombre</pre>
+<p>Se añade de un punto de almacenamiento en la transacción en la posición hasta la que se desea deshacer. Para deshacer hasta el punto de almacenamiento hay que utilizar ROLLBACK TRAN con el nombre del punto de almacenamiento, como se muestra a continuación:</p>
+<p><strong>ROLLBACK TRAN nombre: </strong>Se pueden tener más instrucciones de T-SQL después de la instrucción ROLLBACK para continuar la transacción. Hay que recordar incluir una instrucción COMMIT u otra instrucción ROLLBACK después de la primera instrucción ROLLBACK para que se complete toda la transacción.</p>
+</section>
+<!--FIN DE TRANSACCIONES Y BLOQUEO-->
+
+  <!-- Botón flotante -->
+  <div class="floating-btn">
+    <button class="main-btn" onclick="toggleSectionButtons()">🎨</button>
+    <div class="section-buttons" id="sectionButtons">
+      <label for="">Fondos:</label>
+      <button class="section-btn" onclick="chooseColor('RepasoBDD')">BDD Repaso</button>
+      <button class="section-btn" onclick="chooseColor('FuncionesAvanzadas')">Funciones avanzadas</button>
+      <button class="section-btn" onclick="chooseColor('CrearBDD')">CrearBDD</button>
+      <button class="section-btn" onclick="chooseColor('Argumentos')">Argumentos</button>
+      <button class="section-btn" onclick="chooseColor('Indices')">INDICES</button>
+      <button class="section-btn" onclick="chooseColor('Vistas')">VISTAS</button>
+      <button class="section-btn" onclick="chooseColor('ProcedimientosYFunciones')">PROCEDIMIENTOSYFUNCIONES</button>
+      <button class="section-btn" onclick="chooseColor('Seguridad')">SEGURIDAD</button>
+      <button class="section-btn" onclick="chooseColor('Triggers')">TRIGGERS</button>
+      <button class="section-btn" onclick="chooseColor('Aislamiento')">AISLAMIENTO</button>
+      <button class="section-btn" onclick="chooseColor('Cursor')">CURSO</button>
+      <button class="section-btn" onclick="chooseColor('TransaccionesYBloqueos')">TransaccionesYBloqueos</button>
+
+    </div>
+    <input type="color" id="colorPicker" class="color-picker" onchange="applyColor()" />
+  </div>
+
+
+  <script>
+    const sectionButtons = document.getElementById('sectionButtons');
+    const colorPicker = document.getElementById('colorPicker');
+    let currentSectionId = null;
+
+    function toggleSectionButtons() {
+      sectionButtons.style.display = sectionButtons.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function chooseColor(sectionId) {
+      currentSectionId = sectionId;
+      colorPicker.click(); // abre el selector de color
+    }
+
+    function applyColor() {
+      const color = colorPicker.value;
+      if (currentSectionId) {
+        const section = document.getElementById(currentSectionId);
+        section.style.backgroundColor = color;
+        // Guardar en localStorage
+        localStorage.setItem(`bgColor-${currentSectionId}`, color);
+      }
+    }
+
+    // Al cargar la página, restaurar colores guardados
+    window.onload = () => {
+      ['RepasoBDD', 'FuncionesAvanzadas', 'CrearBDD','Argumentos', 'Indices','Vistas','ProcedimientosYFunciones','Seguridad','Triggers','Aislamiento','Cursor','TransaccionesYBloqueos'].forEach(id => {
+        const savedColor = localStorage.getItem(`bgColor-${id}`);
+        if (savedColor) {
+          document.getElementById(id).style.backgroundColor = savedColor;
+        }
+      });
+    };
+
+  </script>
+
+  
+</body>
+</html>

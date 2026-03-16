@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taller web 2</title>
+  <link rel="stylesheet" href="./Estilo/Estilo.css" />
+  
+</head>
+<body>
+  <header>
+    <h1>Taller web 2</h1>
+  </header>
+
+  <div class="botonera">
+    <a href="index.html"><button>Resumenes</button></a>
+    <a href="index2.html"><button>Parciales</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <button class="clase-button" onclick="PrimerParcial()">Primer parcial</button>
+    </div>
+
+        <div id="pdf-container" class="pdfviewer" width="100% height="100%">
+
+  </div>
+
+
+  <script>
+ 
+function PrimerParcial() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1b5Oif1v1HObsJAaOFQPhDOrHnYV9m-lG/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+</script>
+
+
+</body>
+</html>

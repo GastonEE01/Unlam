@@ -1,0 +1,87 @@
+
+
+body h1{
+text-align: center;
+}
+
+body h2{
+    text-align: center;
+    color: red;
+    font-family: cursive;
+    border-radius:  black solid 10px ;
+}
+
+body h3{
+   background-color: rgb(120, 120, 231);
+   font-family: Arial, Helvetica, sans-serif;
+   border-radius: 0px; /* Establece el radio de las esquinas a 15px para lograr bordes redondeados */
+    display: inline-block;
+    font-size: 35px;
+    display: inline-block;
+    vertical-align: top; /* Opcional: Alinea verticalmente los elementos al principio */
+
+}
+
+body h4{
+    font-family: sans-serif; 
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: top; /* Opcional: Alinea verticalmente los elementos al principio */
+    
+}
+
+
+h3 {
+    margin-right: 10px; /* Ajusta el espacio entre h3 y h4 según sea necesario */
+    display: inline-block;
+    vertical-align: top; /* Opcional: Alinea verticalmente los elementos al principio */
+}
+
+.inline-container {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente al centro, puedes cambiar a top si lo prefieres */
+}
+
+.inline-container h3 {
+    margin-right: 10px; /* Ajusta el espacio entre h3 y h4 según sea necesario */
+}
+body {
+    background-color: rgb(182, 172, 86);
+}
+
+body ol{
+    font-family: sans-serif; 
+    background-color: white;
+    
+}
+
+body ul{
+    font-family: sans-serif; 
+
+}
+
+.imagenes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    margin: 10px;
+    margin-left: 38%;
+    background-color: black
+}
+
+.sitioWeb{
+max-width: 100%; /* Esto asegura que la imagen no exceda el ancho del contenedor */
+height: auto;    /* Mantiene la proporción de la imagen */
+display: block;  /* Elimina el pequeño espacio debajo de la imagen */
+}
+
+body ul,li{
+    background-color: black;
+    font-size: 20px;
+    font-family: serif;
+    color: rgb(226, 48, 48);
+
+}
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taller web 2</title>
+  <link rel="stylesheet" href="./Estilo/Estilo.css" />
+
+</head>
+<body>
+  <header>
+    <h1>Taller web 2</h1>
+  </header>
+
+  <div class="botonera">
+    <a href="index.html"><button>Resumenes</button></a>
+    <a href="index2.html"><button>Parciales</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <button class="clase-button" onclick="PdfDominio()">Dominio</button>
+      <button class="clase-button" onclick="PdfComputacionEnLaNube()">Computacion en la nube</button>
+      <button class="clase-button" onclick="PdfServidores()">Servidores</button>
+      <button class="clase-button" onclick="PdfCloudYArquitecturaYEsquemaDeSeguridad()">Cloud,arquitectura cloud y esquema de seguridad</button>
+      <button class="clase-button" onclick="PdfAngularYNode()">Angular y Node.js</button>      
+      <button class="clase-button" onclick="PdfResumenCompleto()">Resumen completo</button>
+    </div>
+
+    <!-- Este es el contenedor que mostrará el PDF en el centro -->
+    <div id="pdf-container" class="pdfviewer" width="100% height="100%">
+      <!-- Aquí se cargan los PDFs dinámicamente -->
+    </div>
+  </div>
+
+  
+  <script>
+
+function PdfDominio() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1EQSvqspcTINswXHMVXxy6rJi0UNp_UAI/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+
+function PdfComputacionEnLaNube() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1BEf02A3vF7dVj4sc-_WwnBcB7dvKr2we/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+
+function PdfServidores() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1LLregpyneuN-dc4z6ZKRGQodPxSjwVS4/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+
+function PdfCloudYArquitecturaYEsquemaDeSeguridad() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1KPhAHF3qUWbxP2k-RgYdlTkXWifmnNwT/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+
+function PdfAngularYNode() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1JRwXK6OtjJk0jKRwIrw_6DU05DHxP1iq/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+}
+function PdfResumenCompleto() {
+  document.getElementById("pdf-container").innerHTML = `
+    <iframe 
+      src="https://drive.google.com/file/d/1DzKeP9xNzAmK10OKrPRYxNGU9UCFl1FE/preview" 
+      width="99.5%" 
+      height="100%" 
+      allow="autoplay">
+    </iframe>
+  `;
+} 
+</script>
+ 
+</body>
+</html>

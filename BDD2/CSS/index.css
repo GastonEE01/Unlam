@@ -1,0 +1,326 @@
+/* Mejora la legibilidad general */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  font-size: 17px;
+  color: #222;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+.enlaceYBoton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    margin: 0;
+    text-align: center; /* Centrado de los botones */
+    margin-top: 20px;
+}
+
+
+
+/* Títulos destacados */
+h2 {
+  font-size: 28px;
+  color: #2e7d32; /* verde oscuro */
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.h2Centrado{
+  text-align: center;
+}
+h3 {
+  font-size: 22px;
+  margin-top: 30px;
+  color: #1565c0;
+}
+
+h4, h5 {
+  font-size: 19px;
+  margin-top: 25px;
+  color: #333;
+}
+
+/* Párrafos */
+p {
+  font-size: 17px;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+/* Listas */
+ul, ol {
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Código y consultas */
+pre {
+  background-color: #f4f4f4;
+  border-left: 4px solid #4CAF50;
+  padding: 1rem;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  overflow-x: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Imágenes centradas */
+img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Subbloques visuales */
+.subbloque {
+  background-color: inherit;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+
+    section {
+      padding: 60px 20px;
+      border-bottom: 1px solid #ccc;
+      transition: background-color 0.3s;
+    }
+
+    article{
+    padding: 2.5rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    }
+
+    .articuloSQLServer{
+          background-color: rgb(131, 125, 113);
+
+    }
+    h2 {
+      margin-top: 0;
+    }
+
+    /* Botón flotante */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .main-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .section-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      align-items: flex-end;
+    }
+
+    .section-btn {
+      padding: 10px 15px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .color-picker {
+      display: none;
+    }
+
+       .botonera {
+      margin-bottom: 30px;
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* para que no se desborden en pantallas pequeñas */
+  margin-bottom: 30px;
+    }
+
+    .botonera a input[type="button"] {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+      
+    }
+
+    .botonera a input[type="button"]:hover {
+      background-color: #0056b3;
+      align-items: center;
+    }
+
+    .fila-iframe {
+    display: flex;
+    flex-wrap: wrap; /* para que bajen si no entran */
+    justify-content: center;
+    gap: 20px; /* espacio entre iframes */
+    padding: 20px;
+  }
+
+  .fila-iframe iframe {
+    width: 43vw;
+    height: 95vh;
+    border: none;
+  }
+      iframe {
+      width: 43vw; /* ocupar ancho total de la pantalla */
+  height: 95vh; /* casi toda la altura visible */
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: 400px;
+      }
+    }
+
+    /*
+    VER EN EL PDF O AGREGAR INFO SOBRE : 
+    SYSTEM_USER ,
+     retención de log,Definiciones del procediminetos almacendos, - Funciones Tabulares MultiSentencias,trigger,2) Características ACID: => Atomicidad (Atomicity)
+
+     
+    */
+    /*
+VER PREGUNTA 2) Procedimientos Almacenados - Caracteristicas:
+ No aceptan parámetros de entrada.
+ Devuelven mas de un valor de retorno (escalar) que indica el éxito o falla de su ejecución.
+ No pueden llamar a otros SPs (o sea dentro de un SP no se puede llamar a otros SP).
+ No pueden devolver valores en la forma de parámetros de salida.
+ Mas de una respuesta de las ANTERIORES es correcta.
+Todas las respuestas ANTERIORES son correctas.
+check_circle Ninguna de TODAS las respuestas ANTERIORES es correcta. CORRECTA
+
+    */
+/*
+
+Dos categorias de aplicaciones de BD
+
+Proceso de transacciones
+
+bdd de sistema
+
+EN la bdd hay 2 archivos 
+
+1 de datos(MDF) y otro de transacciones(LDF)
+El MDF almacena los datos y el LDF almacena las transacciones que se realizan en la bdd.
+
+CHECK es una restriccion que se le pone a una tabla para que no se inserten datos erroneos.
+CHECK (nombre_columna condiccion)       
+Ejemplo: CHECK (edad > 18)  --> no se podra insertar un registro con edad menor a 18.
+Ejemplo: CHECK (nombre_columna IN (valor1, valor2, valor3)) --> no se podra insertar un registro con un valor que no este en la lista.
+Ejemplo: CHECK (nombre_columna BETWEEN valor1 AND valor2) --> no se podra insertar un registro con un valor que no este entre los 2 valores.
+
+JUEVES 15 DE MAYO VEMOS EL ULTMIO TEMA .
+-----------------------------SEGUNDO PARCIAL--------------------------
+El campo de tipo text se usa cuando tenemos que usar subconsultas 
+ENCRYPTION encripta la logica del procedimiento.
+Con EXEC llama al procedimiento
+HACER EL TP 4 Y 6 ,NOTA EL EJERCICIO 15 NO HACER !
+-------------------------------------------------------------------------------
+
+dbo A NIVEL DE BASE DE DATOS, ES UN ESQUEMA QUE SE USA POR DEFECTO EN SQL SERVER.
+
+el rol d no dbouner solo 
+
+certificado es un metodo de autenticacion que usa el sistema operativo para autenticar al usuario, es decir, el usuario debe tener un certificado valido para poder acceder a la base de datos.
+
+Usuario guest es un usuario que no se puede eliminar, es un usuario que se usa para dar acceso a la base de datos a usuarios que no tienen un usuario creado en la base de datos.
+
+proteger al servidor con contraseñas robustas
+A nivel de bases de datos, las tablas se pueden relacionar entre si mediante claves primarias y foraneas.
+Claves simetricas y asimetricas son dos tipos de claves que se usan para encriptar datos.
+
+no se van a alejar del WORD DEL SEGURIDAD 
+Profundizar el nombre de los temas que estan en la dia positiva pttx
+
+triggers DML: es un disparador que se ejecuta cuando se realiza una operación de manipulación de datos (DML) en la base de datos, como INSERT, UPDATE o DELETE.
+a nivel de base de datos, los triggers DML se utilizan para auditar cambios en los datos, como la inserción, actualización o eliminación de registros.
+
+TRIGGER DDL : Es un disparador que se ejecuta cuando se realiza una operación de definición de datos (DDL) en la base de datos, como CREATE, ALTER o DROP.
+a nivel de base de datos, los triggers DDL se utilizan para auditar cambios en la estructura de la base de datos, como la creación o eliminación de tablas, columnas o índices.
+
+3 segundo parcial !
+El recuperatorio de seguridad son 15 preguntas 
+*/
+
+transacciones y bloqueos lo da la clase que viene ,26/6
+,el sql esta dentro del word de cursores 
+
+/*
+
+En transacciones implisitas c
+
+
+
+
+*/

@@ -1,0 +1,221 @@
+   body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: rgb(0, 0, 0);
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .botonera {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 1rem 0;
+    }
+
+    .botonera a button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botonera a button:hover {
+      background-color: #2980b9;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 160px); /* ajustado para header + botones */
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: brown;
+      padding: 1rem;
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    .clase-button, .submenu-button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .clase-button {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .clase-button:hover {
+      background-color: #2980b9;
+    }
+
+    .clase-button.active {
+      background-color: #1abc9c;
+    }
+
+    .clase-menu {
+      display: none;
+      margin-bottom: 1rem;
+    }
+
+    .clase-menu.active {
+      display: block;
+    }
+
+    .submenu-button {
+      background-color: #95a5a6;
+      color: white;
+    }
+
+    .submenu-button:hover {
+      background-color: #7f8c8d;
+    }
+
+    .content {
+      flex: 1;
+      background-color: #000000;
+    }
+
+    .pdfviewer{
+      justify-content: center;
+      width: 100%;
+      height: 75vh;
+    }
+
+    
+/*
+TP : ES GRUPAL !!!
+
+ZONE.js es un script que permite la comunicación entre el iframe y la página principal.
+El script se encarga de enviar y recibir mensajes entre el iframe y la página principal.
+El script se carga al final del body para asegurar que el DOM esté completamente cargado antes de ejecutarse.
+Detecta que cambios en las propiedades y notifica a la plantilla para que pueda voler a renderirazse .
+
+Señales es una librería que permite la comunicación entre diferentes partes de una aplicación.
+
+Signal es un objeto que permite enviar y recibir mensajes entre diferentes partes de una aplicación.
+Una señal es un contenedo que envuelve 
+
+Signal - GET 
+Signal - SET
+Signal - UPDATE
+Signal - DELETE
+Signal - POST
+Signal - PUT
+Signal - PATCH
+Signal - OPTIONS
+Signal - HEAD
+Signal - TRACE
+
+La Signal va a estar en todas las app de angular 
+
+Mutate es una función que permite modificar el estado de una señal.Pero en la version 17 lo sacaron
+
+Computed es una señal de lectura que su valor depende de otras señales.
+Cuando una señal dependiente del computed ,cambie,esta se actualiza automaticamente.
+
+Efects: Una operacion que se ejecuta cuando uno o mas signal que estan dentro de su funcion cambian.
+
+El data binding es una forma de enlazar datos entre el modelo y la vista en Angular
+
+En Agular,la interpolacion es una forma de mostrar datos desde el componente hacia la plantilla 
+
+Las rutas en Angular son el sistema de navegacion que permite cargar componentes de forma dinamica en funcion
+
+Modules: Se manejan a traves del Router 
+
+Lazy Load permite cargar modulos solo cuadno se necesiten,optimizando el rendimiento.
+Los modules permiten hacer lazy load completos pero no individuales.
+
+-----------------------------------------INYECCION DE DEPENDENCIAS--------------------------------
+La inyeccion de dependencias es un patron de diseño que permite a una clase recibir sus dependencias desde el exterior en lugar de crearlas internamente.
+Los servicios se crean manualmente o con el comando ng generate service o ng g s nameService
+
+Evita la creacion manual de instancias 
+No necesitamos hacer new MiServicio() 
+Reduce el acoplamiento 
+El componenete no depende de la implementacion del servicio
+Promueve la reutilizacion
+Un mismo servicio puede ser usado en multiples componentes, multples instancias
+Facilita la prueba(unit testing).
+
+Servicio 
+Peticiones HTTP
+Los sevicios encapsulan las llamadas a APIs externas 
+
+HttpClient es un servicio de Angular que permite realizar peticiones HTTP para comunicarse con servidores y API 
+Es parte del paquete @angular/common/http y proporciona metodos para realizar solicitudes GET,POST,PUT 
+Es mas eficiente que XMLHttpRequest o fetch,ya que: 
+Soporta Observables -> Permite manejar respuestas asincro
+
+Modulos nicos -> Permite cargar modulos de forma asincornica
+Operadores de RxJS 
+Cancelacion de peticiones
+Menor acoplamiento
+Menor 
+
+Los Observables permiten cancelar peticiones en curso,evitando fugas de memoria y mejorando el rendimiento.
+
+
+Pipes ,es una funcion especial que transforma datos directamente en el template 
+
+Decimal Pipe p Number Pipe
+
+Currency pipe : muestra en formato de moneda
+
+Configurar el httpClientModule en el app.module.ts para usar las peticiones HTTP en la aplicacion en empleado.service.séct.ts
+PARCIAL: HASTA EL TEMA 5 ENTRA Y VA A AVISAR EL HORARIO DEL PARCIAL
+TIEMPO MAXIMO 40 MINUTOS
+EN EL FORO AVISA QUE LABORATORIO ES 
+REPASAR LOS PRACTICOS 
+LA NOTA LA DA EN EL MOMENTO ,NO SE SABE LA CANTIDAD DE LA PREGUNTAS ENTRE 10 Y 20 ,DEPENDERA LA COMPLEJIDAD 
+
+el value es para mostrar el valor de la señal en el template
+
+Es mas prolijo hacerlo  de esta forma el create -empledo.componenent.ts
+en angular se pueden cconfiguradores persolizados para los componentes,que permiten definir propiedades y metodos que se pueden usar en el template
+
+Cuando se hace el enlade desde el html al ts se hace a traves de la propiedad value
+La manera que senecesita para enlazar el create name 
+ng g enviroment es para evitar repetir codigo en producciona 1 es cuando la app esta en modo desarrollo y otra en modo
+produccion dandote una URL 
+
+EL node.js es una 
+
+Server.ts para el node.js ,usa el framework expres (no se bien para que es)  
+
+async start() para inicializar un servidor 
+
+export class Server{} configura el puerta y mas cosas crea un constructor
+Es importante configurar y poner los enviroment para que la APP funciones
+
+router.use('/api/
+
+TP: 
+FILTRAR MINIMO POR 3 CAMPOS ,CUANDO ESTES LISTANDO UN PRODUCTO  ,2RQUISITO CUANDO VUELVA A OTRA PANTALLA ES QUE CUANDO SALGA DE LA PANTALLA SE GUARDE
+
+EXPLICACION ULTIMOS MINUTOS EXPLICACION DE REQUISITOS DE FRONT Y BACK END
+tema de NODE solo como funciona sincronicamente y asincronicamente en el parcial,de angular no púede ser codigo ,componente ,pais ,explicame este codigo y por que ,justificar 
+
+IMPORTANTE LAS PREGUNTAS DEL PARCIAL DEL CUATRIMESTRE PASADO NO VAN A ESTAR NINGUNA
+NO SE SABE EL LABORATORIO
+*/

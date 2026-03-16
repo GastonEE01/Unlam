@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./CSS/index2.css">
+  <title>Pagina de seguridad y calidad de aplicacion web</title>
+</head>
+<body>
+  
+  <!-- Botón hamburguesa solo visible en móvil -->
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar" id="sidebar">
+    <h3>Temas</h3>
+    <button onclick="cargarTema('primerParcial')">Primer parcial</button>
+    <button onclick="cargarTema('segundoParcial')">Segundo parcial </button>
+
+    <button onclick="window.location.href='index.html'">← Volver a Teoría</button>
+  </div>
+
+  <div class="main" id="contenido">
+    <h2>Seleccioná un tema para comenzar</h2>
+  </div>
+  
+  <script src="./JS/primerParcial.js"></script>
+  <script src="./JS/segundoParcial.js"></script>
+  <script src="./JS/practica.js"></script>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

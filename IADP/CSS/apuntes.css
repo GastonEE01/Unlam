@@ -1,0 +1,243 @@
+/*
+26/8/2025
+
+Hay 2 TP grupales,1 de esos se entrega en clase.
+Se puede recuperar el mismo día los 2 parciales,es una sola instancia.
+Te deja la nota más alta,ejemplo tienes un 6, recuperas te sacas un 2 y te deja el 6.
+ 
+Vemos el pdf de Introducción-Ingenieria- Software 
+
+Vemos lo más importante porque sino no nos da el tiempo,las preguntas del parcial salen de los conceptos que vemos que se complementa con el texto. 
+RFP : es cuando vos queres construir algo y haces un RFP 
+Lo de cotización NO LO VAMOS A VER también costo y planificación.
+
+-------------------------------------------
+Producto es lo que se va a contruir,lo que se va a vender,lo que se va trabajar
+
+Proceso: se necesita una organizacion y la organizacion necesita una necesidad y para esa necesidad se necesita una solucion que es un prodcuto y todo esto se produce en un marco de proceso
+
+El unico modelo de proceso que vemos es el triple x 64  (no escuche bien) 
+
+Proyecto: se planean y controlan 
+
+Lean lo de 4P ,Semana que viene ,vemos planificacion y va a decir la FECHA DEL PARCIAL
+-------------------------------------------
+16/9/2025
+
+El parcial es multiple choe y preguntas a desarrollar y es presencial
+Los temas que estan en MIEL,NO ESTAN EN ORDEN!
+
+repaso 
+PROCESO: el producto,proceso debe estar en el marco de un proceso,una vez que lo elegis es muy dificil de cambiarlo.
+
+PROYECTO: Es en donde tiene mas peso ya que ahi es en donde se plantea,se hace el proceso ,el producto y se controla.
+
+Tema de hoy: PLANIFICACION(es el tema mas importante para el profe)
+
+responder cuanto va a salir,cuando va a salir,como va a salir y quien lo va a hacer,el tiempo de estimacion.
+
+El cono de la incertidumbre: al principio no sabes nada y a medida que avanza el proyecto vas sabiendo mas y mas.Por eso la estimacion no es precisa al principio.
+Se reduce al comienzo del proyecto y su forma ilustrada de "cono" es menos apreciable.
+
+El riesgo tambien se estima.
+Siempre ir por el escenario mas complejo que lleve mas tiempo,por si tardas menos es mejor antes de hacer al reves estimas un tiempo y que te lleva mas de lo estimado.
+
+NOTA: El profe uso la ptt de 22 pag en vez de la que es similar y tiene 32 ,Yo tome la de 32.
+
+Descomposicion del proyecto: cuando se descompone el proyecto en partes mas pequeñas es mas facil de manejar y controlar. que son una jerarquia de numeros. 
+
+TAREA: investigar sobre: (definiciones y ejemplos).
+NOTA: La clase que viene llama aleatoriamente 4 o 5 personas para que lo puedan explicar.Se entrega si o si y va con nota.
+Estimacion basada en el problema.
+Estimacion basada en el proceso.
+Estimacion basada en Casos de Uso.
+Se ENTREGA POR MIEL(portafolio) para antes del martes 23/9/2025 por que despues desaparece
+
+CRONOGRAMA: grafico de personal y esfuerzo 
+
+Secuencia actividades: vemos la siguiente clase y tambien vemos el camino critico que se toma en el parcial.
+
+--------------------------
+23/9/2025
+
+PLANIFICACIÓN: 
+
+Cronograma: comprension del cronograma: Consiste en acortar el cronograma sin modificar el alcance
+
+Secuencias de actividades: Diagramacion por precedencia (PDM):
+
+Existen 3 tipos: 
+
+Final a inicio: Por prioridad primero A buscar la info y despues el B analizar la info 
+
+Final a final: 
+
+Inicio a inicio: hasta que no termina el A no puedo iniciar el B
+
+Tipo de dependencias: 
+1) obligatorias: son las que no se pueden cambiar
+2) Discrecionales: son las que se pueden cambiar
+3) Externas: son las que dependen de un tercero
+4) Internas: son las que dependen de uno mismo
+depende de la optica cuando es interna o externa 
+-------------------------------------------
+
+Candalizar: 
+Es dividir en partes mas pequeñas el proyecto para poder manejarlo mejor.
+NOTA: Ver la clase que viene que es el camino critico aunque el profe lo va explicar,investigar el calculo del camino critico!
+
+Hay 3 actvidades:
+1) Actividades del proyecto
+2) Actividades de la organizacion
+3) Actividades de gestion
+
+Si algunas de esas tareas se demora ,se demora todo el proyecto.
+
+El camino critico es el conjunto de tareas que se suman entre si
+
+NOTA: Hay un ejercicio de calcular el camino critico FIJO
+VER: COMO SE CALCULA EL CAMINO CRITICO!
+
+-------------------------------------------
+30/9/2025
+
+Hoy vemos el CAMINO CRITICO y riesgos
+
+Ejercicio de CAMINO CRITICO con el profe
+
+0 A 12 
+0 B 9 
+
+Nota: Primero hace el ES y EF que seria el inicio y finalizacion mas temprana
+Despues hace el mas tardio
+
+No se puede llevar calculadora 
+
+La holgura es mayor a 0 y la fecha no se atrasa
+En el parcial van a preguntar que pasa si G u otro se atrasa
+
+Para revisar si esta bien sumar todos los caminos 
+tarea: ENTREGAR EL TP DE CAMINO CRITICO ANTES DEL PARCIAL 
+
+Hay 2 preguntas que vale el 50 % del parcial:
+Las preguntas del proceso y las preguntas del camino critico
+
+Eso de clasificar el riesgo en alto,medio y bajo ,nosotros le ponemos ojo 
+
+SCRUM 
+Origen: No toma las fechas 
+
+Valores del manifiesto agil: Es hacer lo que el cliente necesita ,si el cliente no lo usa ,por que lo vas a hacer ?
+Complejidad relativa si entra 
+
+Complejidad absoluta
+La complijada escencial es la complejidad al problema a resolver ,no se puede modificar
+accidenta es la que no viene del proyecto,si se puede modificar,eliminar o reducir
+
+Beneficios? 
+Scrum: Es un framework o marcao de trabajo, que sera el andamiaje que nos va ayudar a encontrar,iteracion a iteracion, el mejor 
+proceso posible dada nuestras caracteristicas y las del proyecto.
+La daily es para ver como venimos con esto te das cuenta si vas bien o mal con el proyecto
+
+Roles mas importantes para el parcial: Product Owner tiene cosas incompletas y hay que nivelar al equipo, Equipo posee todos los skill para poder entregar el producto,autoorganizado , Scrum Master es para que el equipo pueda trabajar tranquilo,es un facilitador.
+Historia de usuario(US)
+I 
+N
+V
+E
+S
+T
+DOR
+DOD
+Cumple con la definicion de aceptacion
+Codifo y Doc en el 
+MVP: Minimo producto viable
+-------------------------------------------
+14/10/2025
+
+Camino critico entra en el segundo parcial
+HOY VEMOS RIESGOS
+Vimos una ptt de 13 pag
+
+No importa el camino que tomes sino de como lo tomes 
+Una cosa es las cosas que yo hago y otra es la de monitorear el riesgo
+No puede haber un riesgos sin un plan de accion(Mtigacion)
+
+Los mas importantes de un riesgo es estar preparado y tener un plan de accion
+Tarea: Investigar algun sistema o sofware para la gestion de riesgos,una carilla como mucho ,destallar sus capacidades .
+
+
+21/10/2025 
+
+Calidad de software
+Vimos hasta la pag 12 del apunte "El dilema de la calidad"
+
+Nota: El profe sugerie leer los apuntes que hablan un poco mas especifico 
+Esto: "Criterios de calidad,criterios de proceso" entra en el parcial que es el 11/11/2025 
+
+-------------------------------------------
+28/10/2025
+
+hAY 2 TIPOS DE CALIDAD 
+1) Calidad del producto es 
+2) Calidad del proceso es 
+
+Gestion de configuracion 
+Gestion de proyectos
+Desarrollo de tecnico
+Sistema de calidad
+
+un proyecto cuando aggarra se necesita un diseño,contrato,ese diseño tiene que estar controlado y gestionado
+Origen de cambio: que te piden agregar mas funcionalidades o hacer algun cambio.
+Versionado semantico 2.0.0 es un 
+
+Control de versiones: Cada uno elige que version usar 
+
+Auditoria fisica es 
+
+CLASE QUE vienen es mas extensa
+Nota vemos: metricas y practica de ejercicIo(supongo que es del camino critico) 
+11/11 Segundo parcial 
+
+-------------------------------------------
+4/11/2025
+Ultima clase antes del parcial
+
+Modelo de proceso, No es un ciclo de vida!
+
+Modelo de proceso es el TRIPLE EEE ,hasta se puede traer uno de ejemplo.
+
+Para la gestion de proyecto 
+CPM explique el metodo CPM: Es el metodo del camino critico,6 personas respondieron regular o bien.
+
+El parcial es choice mas el ejercicio de camino critico pero no hay preguntas a desarrollar,va a ver preguntas para pensar!
+
+recorrer todos los caminos  asi ya tenemos el camino critico 
+Modelo macold entra fijo en el examen
+Modelos de calidad es esquema con las flechas hacia abajo entre fijo.
+Modelo McCall(lo tenemos en el resumen pero chequear el resumen)
+
+NOTA: GESTION DE CONFIGURACION ME FALTA RESUMIR!
+NOTA: La ppt de calidad tiene algunas diferencias con el anexo asique CHEQUEAR LA INFO,MEJORARLA!
+
+METRICA DE PRODUCTO ES PARA ESTABLECER LA CALIDAD,LOS ATRIBUTOS.
+
+Falta basadas en funciones: Valor de dominio de informacion,Entradas externas(EE),Salidas externas(SE),Consultas externas(CE),Archivos logicos internos(ALI),Archivos de interfaz externos (AIE).
+
+Metricas de proceso y proyecto: 
+
+metricas de proceso es para la organizacion.
+
+temas: riesgos,metrica,calidad y configuracion de desarrollo.
+Riesgos
+Calidad
+Gestion de la confg
+Metricas
+Ejercicio CPM
+
+La clase que viene despues del segundo parcial le tenemos que decir si es presencial o no la clase de consulta.
+
+Examen Parcial 2: 11/11
+Clase Consultas: 18/11
+Examen Recuperatorio: 25/11
+*/

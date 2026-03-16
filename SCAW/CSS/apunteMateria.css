@@ -1,0 +1,368 @@
+/*
+25/8
+incidente de seguridad : 
+Intrucion:agregar info 
+Amenaza: es al externo ,estan afuera y no podes resolver una amenaza ,lo que se puede hacer es evaluar el riesgo y tomar una eleccion
+Vulnerabilidad: A diferencia de la amenaza si puedo tomar accion directa
+
+Los sistemas aislados son mas seguros que los sistemas interconectados (para esta materia)
+
+Aceptar las cookies: es un estado de inseguridad activo 
+El hash no es un cifrador,es una funcion cuya caracteristica no es reversible,puede ir del punto a al punto b pero no del punto b al punto a
+
+La img7 la info va abajo de Practicas de seguridad logica en moviles
+
+la copia diferencial es de un set a otro set
+copia incremental copia la diferencia de un set a otro set
+
+Seguridad logica: frewalls ,etc son temas que se desarrolla en otro anexo
+
+Nota en seguridad logica falta: Escaners de vulnerabilidades!
+
+Referencia VPN permite manejar un pc que esta en otro lugar como si estuviera en la red local,es decir desde tu casa manejar un pc que esta en la oficina.
+
+Utilizacion de guardias que 
+sITEMA BIOMETRICO 
+VAF 
+
+impacto en la organizacion poner el color verder en los items
+
+Es comun ver a personas jubiladas la misma tecnologia que maneja un adolecente
+FIN DE LA UNIDAD 1 1/9/2025
+
+
+Hacer coalisionar un hash que es dificil 
+Hash no es un cifrado ,es una representacion de un valor que se representa de otro
+Cifrado es bidireccional
+
+Unidad 2 
+
+El area del servidor es mas segura,por que es el area donde  yo puedo controlar
+
+Vimos hasta areas de vulnerabilidades en entornos web.(Este diagrama es el mas clave para esta materia,segun el profe).
+Van a subir los archivos que vimos.
+
+---------------------------------------
+8/9/2025
+
+No se evalua las herramientas vistas en clase ,solo los conceptos vistos en clase
+
+Si puede aparecer si necesito una herramienta para tener acceso a un sistema de archivos ,se necesita : esa herramienta y privilegios de administrador , no es necesario tener acceso fisico al equipo
+
+La clave brock change e la criptografia por que preveen ataques 
+
+Con la nube podes contratar el servicio durante abril y el resto del año 2 sevidores para ciertas operaciones 
+
+Se puede hacer que el servidor aumente o disminuya la memoria cuando  pasa x cantidad de de memoria RAM  + 80% - 20%
+
+Lo que pasa con el sistema de intraconsulta es que se sobrecarga el servidor.
+A partir de que subo a la nube,dependo de la nube, osea de un tercero el proveedor de la nube   
+
+A veces tener que confiar en el provedor de que si no te ven los datos que se guardan
+
+Si alguien quiere obtener la informacion de un servidor propio tiene que tener acceso fisico al equipo
+Si alguien quiere obtener la informacion de un servidor en la nube tiene que tener las credenciales de acceso
+
+El profe dio un ejemplo de buscar una tecnologia para encontrar vulnerabilidades en un sistema de archivos,son CVE
+
+CWE son vulnerabilidades de un producto
+Hay scanner de vulnerabiliades que estan orientados a plataformas
+
+Como el antivirus detecto el virus antes ,es como el huevo y la gallina ,para eso se usa honeynet,si no se sabe si hay un virus esperan a que ataquen al honeynet y ahi lo detectan
+
+flooding modifica la interaccion normal de un sistema,por ejemplo un servidor web que recibe muchas peticiones y no puede atender a todas,dispara un peticion y despues otra y otra, y por cada peticion debe haber un proceso para atender esa peticion
+
+BotNet es una red de maquinas zombies que son controladas por un atacante
+podes saber si tu compu es un zombie a traves de un buen antivirus.
+
+vimos hasta el  pagina 8 de la unidad 2
+---------------------------------------
+15/9/2025
+
+PARCIAL 29/9/2025
+
+SAST Es de caja blanca
+
+panelco es un claro ejemplo de CIRT
+
+En el Low Rate hay una variante que es el Slow loris(HTTP requests parciales)
+
+Sniffer: el paquete que recibia de una CPU o otra a traves usando un HUB  a diferencia de un switch que solo lo envia a la MAC destino
+
+Existen sniffers con wifi 
+
+OWASP - Riesgos de seguridad en aplicaciones
+Proveedores de datos
+CORREGIR "GitLab HackerOne" por "GitLab
+                                 HackerOne"
+
+NOTA: Resumir el OWASP TOP 10 y ordenarla mejor ,ejemplo pag 14 de la unidad 2 
+
+Vimos hasta la pagina 15 de la unidad 2, A2 Fallas criptograficas
+
+hoy suben el materia de esta clase para el parcial ,ya que es el definitivo
+---------------------------------------
+22/9/2025
+
+Aula 111
+Temas: Unidad 1 y 2 de todos sus anexos.
+
+Hacer foco en las tecnicas y buenas practicas de los proactivos
+Lo que sera evaluado es lo visto en clase y los anexos
+El parcial se completa en 45 min aproximadamente pero nos dan 1 hora
+
+UNION (SQL): para que haga 2 tareas 
+
+Nota: SABER BIEN EL CONCEPTO DE "SALT" en la unidad 1 
+
+CSRF
+
+auto sanitización.(Ejemplo AntiSamy) es una tecnica de proteccion contra XSS
+
+A4 - Diseño inseguro ,en la ppt esta distinto
+
+NOTA: Esto puede ser importante
+XXE es una vulnerabilidad que ocurre cuando un procesador XML
+
+El XML es flexible y permite definir etiquetas propias
+
+XML el foo define una entidad externa que hace referencia a un archivo del sistema operativo
+El profe hizo foco en Escenario #3: del A8 omitio el Escenario #1: y #2:
+El A9 tambien lo omitio por que es muy descriptivo.
+El A10 aca se busca hacer que el usuario no pueda subir archivos .php
+
+Controles Pro-activos que es otro proyecto del OWASP
+
+El parcial arranca 19:15 ,llevar el DNI.
+---------------------------------------
+6/10/2025
+
+Nota: No hacen preguntas sobre en que año se invento la criptografia
+La clave depende del algoritmo
+
+Cifradores por sustitución alfabética: K es el valor expandido
+Van a subir el ANEXO de la historia de la criptografia y ejercicio para desifrar un mensaje
+
+A defina una contraseña y se lo pasa a B  
+A toma M y lo procesa con la clave K y genera C
+B toma C y lo procesa con la clave K y obtiene M
+
+Algoritmo simetrico de bloque: Es el mas comun,por que es mas rapido que el de flujo 
+El AES es un algoritmo de bloque y es simetrico ademas de ser el mas seguro hoy en dia y rapido
+
+La referencia matematica XOR puede operar como un cifrador de flujo 
+
+ECB en la entrada tiene que ser 128 bits y en la salida 128 bits
+
+CBC en el key donde esta el Block Cipher Decrtyption se necesita hacer un XOR para tener el texto plano y con esto ya se soluciona el tema de la marca de agua
+Si perdes el vector inicial vas a tener un cifrado basura 
+
+CFB: Aca se obtiene un valor de cifrado y se hace un XOR con el texto plano para obtener el texto cifrado despues 
+
+OFB: El OFB es parecido al CFB pero en vez de usar el texto cifrado usa el valor de salida del Block Cipher Encryption
+
+NO LO TENGO EN EL RESUMEN!
+El esqquem de Padding o esquema de relleno es para completar bloques de 128 bits en AES
+
+Semana que viene vemos cifrado de flujo
+Si es inmportante saber la diferencia entre un cifrado de bloque simetrico y un cifrado de flujo simetrico,sus referentes e identificarlos
+
+---------------------------
+13/10/2025
+Lo que va a entrar los acronimos de los que estamos viendo,cifradores de bloques que estan en el slide Y LO QUE ESTA EN VERDE SON LOS MAS IMPORTANTES
+
+Criptografia por sustitucion: solo cambia el lugar de las letras y no su valor real,tiene un tamaño fijo (ejemplo Cesar) y luego se lee como un cifrado de bloque (AES,DES,3DES)
+Criptografia por transposicion: cambia el valor de las letras y no su lugar (ejemplo XOR) y luego se lee como un cifrado de flujo (RC4)
+
+Sustitucion Monoalfabetica: cada letra del alfabeto se sustituye por otra letra del alfabeto y es mas facil de implementar que la poli alfabetica
+
+el Algoritmos simétricos de Bloque utiliza un funcion matematica XOR,el XOR es una operacion logica que se utiliza en los cifradores de flujo y en los cifradores de bloque (CBC)
+
+Padding o esquema de relleno 
+(PKCS#7)  es para completar bloques de 128 bits en AES
+
+Cifrado de flujo: se llama de flujo por que se necesita un flujo continuo de datos para cifrar y descifrar.El flujo pseudocodigo es rapido y sencillo de implementar
+
+la funcion MDC busca garantizar la integridad del mensaje,pero no garantiza la autenticidad del mensaje ni la confidencialidad del mensaje en cambio la funcion del hash buscar garantizar la integridad del mensaje,la autenticidad del mensaje y la confidencialidad del mensaje
+MDC detecta claves, no las protege
+
+Funcion hash-MAC: el MAC es un codigo de autenticacion de mensaje (Message Authentication Code) que se utiliza para verificar la integridad y autenticidad de un mensaje. El MAC se genera a partir del mensaje original y una clave secreta compartida entre el emisor y el receptor. El MAC se calcula utilizando una funcion hash criptografica, como HMAC (Hash-based Message Authentication Code), que combina el mensaje y la clave secreta para producir un valor hash unico.
+
+Funciones de derivacion de clave (KDF): son algoritmos que se utilizan para generar claves criptograficas a partir de una clave maestra o una contraseña. El objetivo principal de un KDF es fortalecer la seguridad de la clave generada, haciendola mas resistente a ataques de fuerza bruta y ataques de diccionario.
+
+La matematica modular es una rama de las matematicas que se ocupa de los numeros enteros y sus propiedades bajo la operacion de la division con resto. En la matematica modular, dos numeros son considerados congruentes si tienen el mismo resto cuando se dividen por un numero entero positivo llamado modulo.
+
+Algotiritmos asimetricos: RSA,DSA,ECC
+
+El algoritmo de Diffie-Hellman (DH) es un metodo de intercambio de claves que permite a dos partes generar una clave secreta compartida a traves de un canal inseguro. El algoritmo se basa en la dificultad de calcular logaritmos discretos en grupos multiplicativos finitos.
+NOTA: en el examen no van a tomar un ejercicio de Diffie-Hellman.
+NOTA: VER LAS FORMULAS QUE TENGO EN EL RESUMEN POR QUE NO ESTAN BIEN ESCRITAS 
+ver pag 57
+
+Algoritmo asimetrico Autenticacion: 
+K pub a -> k pub b
+k pub b -> k pri
+k pri -> k pri ,E(r(m))
+MDC -> k pri ,E(r(m))
+Mensaje -> MDC
+ 
+El algoritmo de fillie y Helman no sirve para decifrar pero fue el primer algoritmo de intercambio de claves
+Clase siguiente vemos: El Gamal
+
+En MIEL hay ejercicios de cifrado con la respuesta para practicar
+---------------------------
+20/10/2025
+
+Funciones HASH: MD4,MD5,RIPEMD-160,SHA-1,SHA-2,SHA-3
+Funciones de derivacion de claves (KDF): PBKDF2, bcrypt, scrypt, Argon2
+Algoritmos asimétricos - Diffie-Hellman
+NOTA: Acomodar bien las formulas de Diffie-Hellman en el resumen
+Con: 
+● CRYSTALS-Kyber (ML-KEM)
+● CRYSTALS-Dilithium (ML-DSA)
+● Sphincs+ (SLH-DSA)
+● FALCON (FN-DSA) 
+Se puede hacer criptografia post cuántica 
+A con la clave publica puede hacer lo que quiera,pero con la clave privada no puede hacer nada,lo que si p
+
+Algoritmos RSA: la formula es facil lo dificil es a la hora de generar los numeros primos 
+En el examen no hay matematica ,sino saber que los problemas de RSA radica en la factorizacion de numeros primos grandes puede es firmar digitalmente un mensaje.
+Si puede haber algun ejercicio de decifrado como estan los ejercicios en MIEL
+Algoritmos asimetricos El Gamal: 
+Lo que hace es vincular el dominio de la clase con el dominio de los numeros enteros modulo p
+dipie helman es para establecer una clave comun entre 2 partes
+
+Algoritmos asimetricos DSA: es un algoritmo de firma digital estandarizado por el gobierno de los estados unidos en 1991
+
+NOTA: HASTA AHORA ESTO "Algoritmos públicos y privados" NO LO DIO EL PROFE(Lo dio al final pero mas adelante lo explico despues del algortimo cuantico)
+
+Algoritmos Post-cuánticos: Son algoritmos convencionales que pueden funcionar en computadoras convencionales que estan preparados para computadoras cuanticas
+Tipos de algoritmos: FIPS 203 – CRYSTALS-Kyber,FIPS 204 – CRYSTALS-Dilithium,FIPS 205 – Spxhincs,FIPS 206 - FALCON*
+Con esto se termina el tema de algritmos 
+
+Algoritmos públicos y privados: el poder de tener un algoritmo depende de su patente,no si es publico o privado
+
+el http que corre en el puerto 80 se creo para transferir hipertexto sin cifrar,por lo que es inseguro
+SSL (Secure Socks Layer) tiene 3 fases,una de conexion,otra de intercambio de claves y otra de transferencia de datos
+
+TLS (Transport Layer Security)
+Caracteristicas de TLS:
+incompatible con SSL
+Uso de funciones MAC en lugar de funciones MDC
+Numeracion secuencial de los paquetes
+etc
+
+Firma electronica y digital
+
+PKI – Infraestructura de Clave Pública:
+Fin de la unidad 3 
+---------------------------
+27/10/2025
+Segundo parcial 24 de noviembre de 2025
+Recuperatorio 1 de diciembre de 2025
+-----------------
+(cuatrimestre pasado)
+NOTA : Se pide que en el parcial sepamos el manejo de las siglas y el conpectto ,no toma en el parcial mostrar el codigo y decir que puede pasar.La sigueinete  clase vamos a ver 2 unidades juntas ,que tiene poco contenido.
+IR PREPARANDO PARA EL EXAMEN ,EN EL EXAMEN ENTRAR LA UNIDAD 3 TODO LOS ANEXOS (EL DE LA CRIPTOFGRAFIA ES EL UNICO QUE SE PUEDE OMITIR) ,4 ,5 Y 6 
+-----------------
+
+PKI – Infraestructura de Clave Pública:yo siempre podes ver el certificado publico de alguien
+
+Certificado de revocacion si en algun momento 
+
+Certificate transparency es un sistema que permite monitorear y auditar los certificados SSL/TLS emitidos por las autoridades de certificacion (CA). El objetivo principal de Certificate Transparency es mejorar la seguridad y la confianza en el ecosistema de certificados digitales al proporcionar una mayor transparencia y visibilidad sobre los certificados emitidos.
+
+Online Certificate Status Protocol es
+
+El anillo o circulo de confianza es un concepto utilizado en la criptografia y la seguridad de la informacion para describir una red de entidades que confian mutuamente entre si. En un anillo de confianza, cada entidad dentro del anillo confia en las otras entidades para autenticar y verificar la identidad de los demas miembros del anillo.
+Al confiar tienen una firma digital valida un protocolo utilizado para verificar el estado de revocacion de los certificados digitales en tiempo real. El OCSP permite a los clientes consultar a una autoridad de certificacion (CA) para determinar si un certificado digital especifico es valido, ha sido revocado o ha expirado.
+ 
+HOY SUBE LA PTT DE LA UNIDAD 3 
+
+
+Generar clave RSA: 
+pone un par de comandos en linux para generar una clave RSA 
+La buena practica es que la clave privada este cifrada con una contraseña
+Ahora si termina la unidad 3
+La semana que viene vemos la unidad 4 
+
+Nota: no intereza suar los comandos 
+
+----------------------------------
+importante: 17/11 SEGUNDO PARCIAL
+importante: 01/12 RECUPERATORIO
+----------------------------------
+-----------------
+3/11/2025
+Inicio de la unidad 4
+
+Aplicaciones de Seguridad.pdf
+
+lectores de guella digital que cuando lo haces todos los seres humanos tiene  a
+
+Autenticacion en la web 
+
+factor multiple es la combinacion de algo que se tiene y que se sabe
+La debilidad que tiene uno lo cubre el otro
+
+Hay diccionarios para diferentes contextls para la autenticacion web 
+
+RFC-4226 es un generador de contraseña de HMAC
+
+TOTP  son contraseña de un solo uso lo que serian los toquen 
+
+Técnicas de autenticación de Usuarios
+
+Autenticación básica y segura (HTTP-Basic, HTTP-Digest) esto esta dentron del protocolo http
+para gestionar los usuarios,se hace un autenticacion de usuarios con un registro 
+
+En el framework configuras el servidor de tu aplicacion,las contraseñas deese sistema ,lo mandas ahi al usuario y de ahi obtenes las cookies 
+(el profe por ahi proporciona alguna info de esto) 
+cuando guardas el historial tambien hay que gestionarla ,proteger el historial es igual de importante que proteger el actual.
+
+Saber su rol OAuth2 OpenID SAML y campo de accion.
+
+JWT JSON Web Token.
+
+Mandatory Access Control (MAC): No se asigna a un nivel de contraseña sino a un nivel de informacion 
+
+Buenas prácticas de implementación:
+● Codificar el control en la actividad objetivo (Esto viene desde la unidad 2) 
+
+Administración de Usuarios y privilegios
+NOTA: ANTES DE MEJORES PRACTICAS ME FALTA 3 O 4 ITEM DE INFO
+Mejores prácticas
+
+DevSecOps Es la evolucion de OPS.
+
+XML se eligio otro basado en XML que es el SOAP
+
+Web Services - WS-Security - WSS: Si bien esto es mas complejo esto hizo que web service tenga una buena implementacion en sistemas.
+
+Fin de la unidad 4
+Algun ejercicio de cifrado de criptografia clasica que esta en MIEL,mas que eso no va a pedir. 
+Hoy suben la unidad 4
+La semana que vbiene vemos unidad 5 y 6 que es la ultima antes del parcial.
+-----------------
+10/11/2025
+Unidad 5 y 6 (ultima antes del parcial),aula 111
+
+el ISO/IEC 25000 SQuaRE es un conjunto de normas internacionales para la calidad del software y los requisitos de calidad del sistema. Proporciona un marco para evaluar, medir y mejorar la calidad del software a lo largo de su ciclo de vida.
+El Calidad en los modelos de desarrollo es la capacidad de un software para cumplir con los requisitos especificados y satisfacer las necesidades del usuario final. La calidad del software se refiere a varios aspectos, incluyendo la funcionalidad, la usabilidad, la eficiencia, la mantenibilidad, la fiabilidad y la seguridad del software.
+Dependiendo el proyecto se puede elegir un modelo de desarrollo u otro,no es necesario usar todos los modelos en un proyecto.
+
+Calidad en los modelos de desarrollo es la capacidad de un software para cumplir con los requisitos especificados y satisfacer las necesidades del usuario final. La calidad del software se refiere a varios aspectos, incluyendo la funcionalidad, la usabilidad, la eficiencia, la mantenibilidad, la fiabilidad y la seguridad del software.
+hay sprint,product owner,scrum master,team
+La restrocpectiva esta apuntada sobre que se puede mejorar en el proximo sprint 
+
+Unidad 6 CMM
+
+SEE-CMM Dimensiones es una metodologia para la mejora de procesos de ingenieria de software desarrollada por el Software Engineering Institute (SEI) de la Universidad Carnegie Mellon. El SEE-CMM proporciona un marco estructurado para evaluar y mejorar los procesos de desarrollo de software en una organizacion.
+
+PCI DSS ES (Estándar de Seguridad de Datos para la Industria de Tarjetas de Pago) es un conjunto de requisitos de seguridad diseñados para garantizar que todas las empresas que procesan, almacenan o transmiten información de tarjetas de crédito mantengan un entorno seguro. Fue desarrollado por el Consejo de Normas de Seguridad de la Industria de Tarjetas de Pago (PCI SSC), que fue fundado por las principales marcas de tarjetas de crédito, incluyendo Visa, MasterCard, American Express, Discover y JCB.
+
+ISO/IEC 12207 es un estándar internacional para los procesos del ciclo de vida del software. Proporciona un marco para la gestión, desarrollo, operación y mantenimiento del software a lo largo de su ciclo de vida. El estándar define un conjunto de procesos que cubren todas las etapas del ciclo de vida del software, desde la concepción hasta la retirada del software.
+
+los bancos esta obloigados a cumplir con PCI DSS 
+*/
+
