@@ -5,7 +5,7 @@ const visor = document.getElementById('visorPDF');
 // Función para cargar el PDF
 function cargarPDF(pdfNombre) {
     // Ruta relativa correcta desde viewer.html
-    const rutaPDF = '/PDF/SCAW/' + pdfNombre;
+    const rutaPDF = '/PDF/TW2/' + pdfNombre;
 
     // URL al visor con el PDF
     const viewerURL = '/PDFS/web/viewer.html?file=' + encodeURIComponent(rutaPDF);
@@ -21,4 +21,4 @@ botones.forEach(boton => {
 });
 
 // Cargar PDF por defecto
-cargarPDF('Unidad1.pdf');
+cargarPDF('ResumenPrimerParcial.pdf');

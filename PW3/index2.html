@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Estilo/estilo.css">
+    <link rel="stylesheet" href="../common/estilo2.css">
     <title>Parciales teoricos y consignas practicas</title>
 </head>
-<body>
-    <header>
-        <h1>Programacion web 3</h1>  
-    </header>
-
-  <div class="botonera">
-    <a href="index.html"><button>Parciales</button></a>
-    <a href="index2.html"><button>Resumenes</button></a>
+<body style="display: flex; flex-direction: column; height: 100vh; margin: 0;">
+  <div class="main" id="contenido">
+    <h2>Seleccioná un tema para comenzar</h2>
   </div>
+  <div style="display: flex; flex: 1 1 auto; height: calc(100vh - 130px); align-items: flex-start;">
+    <div class="sidebar" id="sidebar">
+      <h3>Primer Parcial práctica</h3>
+      <button data-pdf="/PrimerParcialPractica/primer_parcial_registro_aduanero.pdf">primer_parcial_calculador_pañales</button>
+      <button data-pdf="/PrimerParcialPractica/primer_parcial_calculadora.pdf">primer_parcial_calculadora</button>
+      <button data-pdf="/PrimerParcialPractica/primer_parcial_registro_aduanero.pdf">registro_aduanero</button>
+      <button data-pdf="/PrimerParcialPractica/primer_parcial_registro_de_ventas.pdf">primer_parcial_registro_de_ventas</button>
+      <button data-pdf="/PrimerParcialPractica/primer_parcial_reserva_de_viajes.pdf">primer_parcial_reserva_de_viajes</button>
+      <h3>Primer Parcial teoría</h3>
+      <button data-pdf="/PrimerParcialTeoria/primer_parcial_teorico.pdf">Parcial teorico 1</button>
+      <button data-pdf="/PrimerParcialTeoria/Parcial teorico 1 respuesta.pdf">Parcial teorico 1 respuesta</button>
+      <button data-pdf="/PrimerParcialTeoria/primer_parcial_teorico_1.pdf">Parcial teorico 2</button>
+      <button data-pdf="/PrimerParcialTeoria/Parcial teorico 2 respuesta.pdf">Parcial teorico 2 respuesta</button>
+      <button data-pdf="/PrimerParcialTeoria/recuperatorio_primer_parcial_teorico.pdf">recuperatorio_primer_parcial_teorico</button>
+      <h3>Segundo Parcial teoría</h3>
+      <button data-pdf="/SegundoParcialPractica/2024_rec_segundo_parcial_gestion_pilotos.pdf">2024_rec_segundo_parcial_gestion_pilotos</button>
+      <button data-pdf="/SegundoParcialPractica/segundo_parcial_gestión_empleados.pdf">segundo_parcial_gestión_empleados</button>
+      <h3>Segundo Parcial práctica</h3>
+      <button data-pdf="/SegundoParcialTeoria/ModeloParcial2-PW3-RESUELTO-2-LEN.docx.pdf">ModeloParcial2-PW3-RESUELTO-2-LEN</button>
+      <button data-pdf="/SegundoParcialTeoria/ModeloParcial2-PW3-RESUELTO-LEN.docx.pdf">ModeloParcial2-PW3-RESUELTO-LEN.docx</button>
+      <button onclick="window.location.href='index.html'">← Volver a Teoría</button>
+    </div>
+    <div id="pdf-container" style="flex:1; display:flex; align-items:flex-start; justify-content:center; height: 100%;">
+      <iframe id="visorPDF" src="" width="95%" height="99%" style="border:none;"></iframe>
+    </div>
+  </div>
+
+  
+  <script src="JS/main.js"></script>
+</body>
+</html>

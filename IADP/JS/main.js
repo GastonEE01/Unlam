@@ -5,10 +5,10 @@ const visor = document.getElementById('visorPDF');
 // Función para cargar el PDF
 function cargarPDF(pdfNombre) {
     // Ruta relativa correcta desde viewer.html
-    const rutaPDF = '../../PDF/' + pdfNombre;
+    const rutaPDF = '/PDF/IAD/' + pdfNombre;
 
     // URL al visor con el PDF
-    const viewerURL = './PDFS/web/viewer.html?file=' + encodeURIComponent(rutaPDF);
+    const viewerURL = '/PDFS/web/viewer.html?file=' + encodeURIComponent(rutaPDF);
     visor.src = viewerURL;
 }
 

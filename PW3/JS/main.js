@@ -1,11 +1,12 @@
 // Seleccionamos todos los botones
-const botones = document.querySelectorAll('#botonesPDF button');
+//const botones = document.querySelectorAll('#botonesPDF button');
+const botones = document.querySelectorAll('.sidebar button[data-pdf]');
 const visor = document.getElementById('visorPDF');
 
 // Función para cargar el PDF
 function cargarPDF(pdfNombre) {
     // Ruta relativa correcta desde viewer.html
-    const rutaPDF = '/PDF/SCAW/' + pdfNombre;
+    const rutaPDF = '/PDF/PW3/' + pdfNombre;
 
     // URL al visor con el PDF
     const viewerURL = '/PDFS/web/viewer.html?file=' + encodeURIComponent(rutaPDF);
@@ -21,4 +22,4 @@ botones.forEach(boton => {
 });
 
 // Cargar PDF por defecto
-cargarPDF('Unidad1.pdf');
+cargarPDF('primer_parcial_calculador_pañales.pdf');
